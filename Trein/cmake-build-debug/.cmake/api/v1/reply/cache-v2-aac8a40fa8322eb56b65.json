@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Samue/CLionProjects/Trein/cmake-build-debug"
+			"value" : "c:/Users/Samue/Documents/GitHub/Project-PSE/Trein/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Samue/CLionProjects/Trein"
+			"value" : "C:/Users/Samue/Documents/GitHub/Project-PSE/Trein"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Samue/CLionProjects/Trein/cmake-build-debug"
+			"value" : "C:/Users/Samue/Documents/GitHub/Project-PSE/Trein/cmake-build-debug"
 		},
 		{
 			"name" : "Trein_IS_TOP_LEVEL",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Samue/CLionProjects/Trein"
+			"value" : "C:/Users/Samue/Documents/GitHub/Project-PSE/Trein"
 		}
 	],
 	"kind" : "cache",
