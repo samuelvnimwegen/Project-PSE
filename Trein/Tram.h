@@ -5,7 +5,7 @@
 #ifndef TREIN_TRAM_H
 #define TREIN_TRAM_H
 
-
+// Alle waarden / eigenschappen Tram
 class Tram {
     int lijnNr;
     Station* beginStation;

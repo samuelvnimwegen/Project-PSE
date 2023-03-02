@@ -8,7 +8,8 @@
 #define TREIN_TRAMSYSTEEM_H
 
 
-
+// Hier komt het systeem: hier zitten beide classes tram en station in.
+// Of zelf waarden heeft, nog te zien.
 class TramSysteem {
 
 };

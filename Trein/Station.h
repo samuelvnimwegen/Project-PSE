@@ -6,7 +6,7 @@ using namespace std;
 #ifndef TREIN_STATION_H
 #define TREIN_STATION_H
 
-
+// Alle eigenschappen / waarden station
 class Station {
 public:
     string naam;
