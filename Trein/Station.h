@@ -13,6 +13,29 @@ public:
     Station* volgende;
     Station* vorige;
     int spoorNr;
+
+    const string &getNaam() const;
+
+    void setNaam(const string &naam);
+
+    Station *getVolgende() const;
+
+    void setVolgende(Station *volgende);
+
+    Station *getVorige() const;
+
+    void setVorige(Station *vorige);
+
+    int getSpoorNr() const;
+
+    void setSpoorNr(int spoorNr);
+
+    Station();
+
+
+
+    Station(const string &naam, Station *volgende, Station *vorige, int spoorNr);
+
 };
 
 

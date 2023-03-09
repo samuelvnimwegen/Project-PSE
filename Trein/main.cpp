@@ -2,7 +2,7 @@
 #include "TramSysteem.h"
 #include "XML/tinyxml.h"
 int main() {
-    auto tramsysteem = TramSysteem();
+    TramSysteem tramsysteem = TramSysteem();
     tramsysteem.openFile();
     return 0;
 }

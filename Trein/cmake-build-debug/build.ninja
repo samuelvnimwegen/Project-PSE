@@ -73,6 +73,30 @@ build CMakeFiles/Trein.dir/TramSysteem.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Us
   OBJECT_DIR = CMakeFiles\Trein.dir
   OBJECT_FILE_DIR = CMakeFiles\Trein.dir
 
+build CMakeFiles/Trein.dir/XML/tinystr.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/Trein/XML/tinystr.cpp || cmake_object_order_depends_target_Trein
+  DEP_FILE = CMakeFiles\Trein.dir\XML\tinystr.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Trein.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trein.dir\XML
+
+build CMakeFiles/Trein.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/Trein/XML/tinyxml.cpp || cmake_object_order_depends_target_Trein
+  DEP_FILE = CMakeFiles\Trein.dir\XML\tinyxml.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Trein.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trein.dir\XML
+
+build CMakeFiles/Trein.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/Trein/XML/tinyxmlerror.cpp || cmake_object_order_depends_target_Trein
+  DEP_FILE = CMakeFiles\Trein.dir\XML\tinyxmlerror.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Trein.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trein.dir\XML
+
+build CMakeFiles/Trein.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/Trein/XML/tinyxmlparser.cpp || cmake_object_order_depends_target_Trein
+  DEP_FILE = CMakeFiles\Trein.dir\XML\tinyxmlparser.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Trein.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trein.dir\XML
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Trein
@@ -81,7 +105,7 @@ build CMakeFiles/Trein.dir/TramSysteem.cpp.obj: CXX_COMPILER__Trein_Debug C$:/Us
 #############################################
 # Link the executable Trein.exe
 
-build Trein.exe: CXX_EXECUTABLE_LINKER__Trein_Debug CMakeFiles/Trein.dir/main.cpp.obj CMakeFiles/Trein.dir/Tram.cpp.obj CMakeFiles/Trein.dir/Station.cpp.obj CMakeFiles/Trein.dir/TramSysteem.cpp.obj
+build Trein.exe: CXX_EXECUTABLE_LINKER__Trein_Debug CMakeFiles/Trein.dir/main.cpp.obj CMakeFiles/Trein.dir/Tram.cpp.obj CMakeFiles/Trein.dir/Station.cpp.obj CMakeFiles/Trein.dir/TramSysteem.cpp.obj CMakeFiles/Trein.dir/XML/tinystr.cpp.obj CMakeFiles/Trein.dir/XML/tinyxml.cpp.obj CMakeFiles/Trein.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/Trein.dir/XML/tinyxmlparser.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Trein.dir
