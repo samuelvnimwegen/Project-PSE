@@ -1,7 +1,9 @@
 #include <iostream>
-
+#include "TramSysteem.h"
+#include "XML/tinyxml.h"
 int main() {
-    // Hier komt de testcode
+    auto tramsysteem = TramSysteem();
+    tramsysteem.openFile();
     return 0;
 }
 

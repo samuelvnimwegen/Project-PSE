@@ -4,7 +4,7 @@
 
 #include "TramSysteem.h"
 
-void TramSysteem::openFile(string) {
+void TramSysteem::openFile() {
     TiXmlDocument doc;
     if(!doc.LoadFile("eenCD.xml")) {
         cerr << doc.ErrorDesc() << endl;
@@ -15,13 +15,16 @@ void TramSysteem::openFile(string) {
         cerr << "Failed to load file: No root element." << endl;
         doc.Clear();
     }
+    if (root->GetText() == "STATION"){
+        cout << "station" << endl;
+        for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr;
+            elem = elem->NextSiblingElement()) {
+            string elemName = elem->Value();
 
-    for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr;
-        elem = elem->NextSiblingElement()) {
-        string elemName = elem->Value();
-
-        if(elemName == "ARTIST" or elemName == "TITLE") {
-            cout << elemName << ": "<< elem->GetText() << endl;
+            cout << elemName <<": " << elem->GetText() << endl;
         }
     }
+
 }
+
+TramSysteem::TramSysteem() {}
