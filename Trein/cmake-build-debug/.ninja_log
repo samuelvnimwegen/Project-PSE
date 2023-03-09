@@ -31,3 +31,9 @@
 533	728	7000759482984924	Trein.exe	1500a83a23acfde6
 5	595	7000759944810390	CMakeFiles/Trein.dir/TramSysteem.cpp.obj	2c3b8a6e18a10f3e
 596	793	7000759946750332	Trein.exe	1500a83a23acfde6
+14	912	7000790785787895	CMakeFiles/Trein.dir/Tram.cpp.obj	82e13f4eb7e7b7b0
+6	938	7000790786067943	CMakeFiles/Trein.dir/Station.cpp.obj	a77b1e83ddd1ab55
+19	1029	7000790786957873	CMakeFiles/Trein.dir/main.cpp.obj	a627091e4410997f
+26	1102	7000790787705933	CMakeFiles/Trein.dir/TramSysteem.cpp.obj	2c3b8a6e18a10f3e
+7	896	7000791863187884	CMakeFiles/Trein.dir/main.cpp.obj	a627091e4410997f
+15	998	7000791864228187	CMakeFiles/Trein.dir/TramSysteem.cpp.obj	2c3b8a6e18a10f3e

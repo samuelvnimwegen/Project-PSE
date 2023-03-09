@@ -13,7 +13,7 @@
 // Hier komt het systeem: hier zitten beide classes tram en station in.
 // Of zelf waarden heeft, nog te zien.
 class TramSysteem {
-    vector<Station*> stations;
+    static vector<Station*> stations;
     vector<Tram*> trams;
 public:
     static bool add_station(Station* station);
@@ -27,6 +27,8 @@ public:
     const vector<Tram *> &getTrams() const;
 
     void setTrams(const vector<Tram *> &trams);
+
+    const vector<Station *> & getStations();
 };
 
 

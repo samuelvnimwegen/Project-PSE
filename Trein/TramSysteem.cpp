@@ -89,3 +89,12 @@ void TramSysteem::openFile() {
 }
 
 TramSysteem::TramSysteem() {}
+
+bool TramSysteem::add_station(Station *station) {
+    stations.emplace_back(station);
+    return true;
+}
+
+const vector<Station *> & TramSysteem::getStations() {
+    return stations;
+}

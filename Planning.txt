@@ -1,8 +1,11 @@
 Samuel:
-XML inlezen, dealine 11/03
-Excel extra dingen die nog komen ofzo: 8/03
+XML afmaken.
+
 Google test fixen 12/03
 
 Moaad:
-Excel main dingen invullen 8/03
+C++ leren tegen volgende les.
 Toevoegen aan classes/ classes toevoegen indien nodig 11/03
+
+Deadline:
+22 Maart
