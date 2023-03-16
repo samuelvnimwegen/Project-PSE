@@ -7,20 +7,23 @@
 #include "Station.h"
 #include "XML/tinyxml.h"
 #include "vector"
-
+#include "gtest/include/gtest/gtest.h"
+#define nullptr 0
 
 
 // Hier komt het systeem: hier zitten beide classes tram en station in.
 // Of zelf waarden heeft, nog te zien.
 class TramSysteem {
-    static vector<Station*> stations;
+    vector<Station*> stations;
     vector<Tram*> trams;
 public:
-    static bool add_station(Station* station);
-    static void openFile();
+    bool add_station(Station* station);
+    void openFile();
     TramSysteem();
 
-    static const vector<Station *> &getStations();
+    void addTram(Tram*);
+
+    vector<Station *> &getStations();
 
     void setStations(const vector<Station *> &stations);
 
@@ -28,7 +31,7 @@ public:
 
     void setTrams(const vector<Tram *> &trams);
 
-    const vector<Station *> & getStations();
+
 };
 
 

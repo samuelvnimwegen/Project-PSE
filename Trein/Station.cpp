@@ -8,36 +8,39 @@ Station::Station(const string &naam, Station *volgende, Station *vorige, int spo
                                                                                         vorige(vorige),
                                                                                         spoorNr(spoorNr) {}
 
-Station::Station() {}
+Station::Station() {
+    volgende = 0;
+    vorige = 0;
+}
 
 const string &Station::getNaam() const {
     return naam;
 }
 
-void Station::setNaam(const string &naam) {
-    Station::naam = naam;
+void Station::setNaam(const string &nm) {
+    Station::naam = nm;
 }
 
 Station *Station::getVolgende() const {
     return volgende;
 }
 
-void Station::setVolgende(Station *volgende) {
-    Station::volgende = volgende;
+void Station::setVolgende(Station *vlgd) {
+    Station::volgende = vlgd;
 }
 
 Station *Station::getVorige() const {
     return vorige;
 }
 
-void Station::setVorige(Station *vorige) {
-    Station::vorige = vorige;
+void Station::setVorige(Station *vrg) {
+    Station::vorige = vrg;
 }
 
 int Station::getSpoorNr() const {
     return spoorNr;
 }
 
-void Station::setSpoorNr(int spoorNr) {
-    Station::spoorNr = spoorNr;
+void Station::setSpoorNr(int nr) {
+    Station::spoorNr = nr;
 }

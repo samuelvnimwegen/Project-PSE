@@ -10,6 +10,20 @@ class Tram {
     int lijnNr;
     Station* beginStation;
     double snelheid;
+public:
+    int getLijnNr() const;
+
+    void setLijnNr(int nr);
+
+    Station *getBeginStation() const;
+
+    void setBeginStation(Station *beginStation);
+
+    double getSnelheid() const;
+
+    void setSnelheid(double snelh);
+
+    Tram();
 };
 
 

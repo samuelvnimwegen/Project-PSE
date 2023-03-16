@@ -16,19 +16,19 @@ public:
 
     const string &getNaam() const;
 
-    void setNaam(const string &naam);
+    void setNaam(const string &nm);
 
     Station *getVolgende() const;
 
-    void setVolgende(Station *volgende);
+    void setVolgende(Station *vlgd);
 
     Station *getVorige() const;
 
-    void setVorige(Station *vorige);
+    void setVorige(Station *vrg);
 
     int getSpoorNr() const;
 
-    void setSpoorNr(int spoorNr);
+    void setSpoorNr(int nr);
 
     Station();
 
