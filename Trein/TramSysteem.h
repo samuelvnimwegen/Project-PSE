@@ -9,6 +9,7 @@
 #include "vector"
 #include "sstream"
 #include "gtest/gtest.h"
+#include "fstream"
 #define nullptr 0
 
 
@@ -32,6 +33,9 @@ public:
 
     void setTrams(const vector<Tram *> &trams);
 
+    void makeTxtFile();
+
+    bool move(Tram*, Station*);
 
 };
 

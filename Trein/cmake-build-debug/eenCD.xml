@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <STATION>
-	<naam>Antwerpen Centraal</naam>
-	<volgende>Station Leuven</volgende>
-	<vorige>Mechelen</vorige>
-	<spoorNr>2</spoorNr>
+	<naam>A</naam>
+	<volgende>B</volgende>
+	<vorige>C</vorige>
+	<spoorNr>12</spoorNr>
 </STATION>
 <STATION>
-	<naam>Sint Petersburg</naam>
+	<naam>B</naam>
+	<volgende>C</volgende>
+	<vorige>A</vorige>
+	<spoorNr>12</spoorNr>
 </STATION>
+<STATION>
+	<naam>C</naam>
+	<volgende>A</volgende>
+	<vorige>B</vorige>
+	<spoorNr>12</spoorNr>
+</STATION>
+<TRAM>
+	<lijnNr>12</lijnNr>
+	<snelheid>60</snelheid>
+	<beginStation>A</beginStation>
+</TRAM>

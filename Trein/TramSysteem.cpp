@@ -34,7 +34,7 @@ void TramSysteem::openFile() {
         // Als dit kind als naam STATION heeft: (hier het geval)
         if (x == "STATION"){
             // Maak nieuw station aan:
-            Station* station = new Station();
+            Station* station;
             // Ga alle kinderen van het kind 'STATION' af. Begin bij eerste kind (root->FirstChildElement()),daarna gwn
             // telkens naar volgende kind (elem = elem->NextSiblingElement()), als kind gelijk is aan nullptr aka er is geen kind meer
             // dan stop.
@@ -46,7 +46,22 @@ void TramSysteem::openFile() {
                 string elemName = elem->Value();
                 // Als elemName naam is: geef het nieuwe station de naam van de tekst hiervan.
                 if (elemName == "naam"){
-                    station->naam = elem->GetText();
+                    string naam = elem->GetText();
+                    // Checkt of er al een station met deze naam in het systeem staat.
+                    bool gevonden = false;
+                    for (int i = 0; i < size; ++i){
+                        if (getStations()[i]->getNaam() == naam){
+                            station = getStations()[i];
+                            gevonden = true;
+                        }
+                    }
+                    // Als het station nog niet eerder vermeld was, wordt deze gemaakt.
+                    if (!gevonden){
+                        station = new Station();
+                        station->naam = elem->GetText();
+                        add_station(station);
+                    }
+
                 }
                 else if (elemName == "volgende"){
                     bool gevonden = false;
@@ -90,7 +105,6 @@ void TramSysteem::openFile() {
                     cout << "Type niet herkend" << endl;
                 }
             }
-            add_station(station);
         }
         else if (x == "TRAM"){
             // Maak nieuwe tram aan:
@@ -164,4 +178,50 @@ void TramSysteem::setTrams(const vector<Tram *> &tr) {
 
 void TramSysteem::addTram(Tram * tr) {
     trams.push_back(tr);
+}
+
+void TramSysteem::makeTxtFile() {
+    ofstream outfile("tramregeling.txt");
+    outfile << "----- Tramregeling ----- " << endl << endl;
+    int size = getStations().size();
+    for (int i = 0; i < size; ++i){
+        Station* station = getStations()[i];
+        outfile << "Station " <<station->getNaam() << endl;
+        if (station->getVorige() != nullptr){
+            outfile << "<- Station " << station->getVorige()->getNaam() << endl;
+        }
+        if (station->getVolgende() != nullptr){
+            outfile << "-> Station " << station->getVolgende()->getNaam() << endl;
+        }
+        if (station->getSpoorNr() != -1){
+            outfile << "Spoor " << station->getSpoorNr() << endl;
+        }
+        outfile << endl;
+    }
+    size = getTrams().size();
+    for (int i = 0; i < size; ++i){
+        Tram* tram = getTrams()[i];
+        outfile << "Tram "<<tram->getLijnNr() << " in Station " << tram->getBeginStation()->getNaam() << endl << endl;
+    }
+
+}
+
+bool TramSysteem::move(Tram* tram, Station* station) {
+    Station* vorig_station = tram->getStation();
+    if (tram->getLijnNr() != station->getSpoorNr()){
+        cout << "tram en station niet op dezelfde lijn" << endl;
+        return false;
+    }
+    if (vorig_station == station){
+        cout << "het oude station is hetzelfde als het nieuwe station" << endl;
+        return false;
+    }
+    tram->setStation(station);
+
+    ofstream outfile;
+    outfile.open("tramregeling.txt", ios_base::app);
+    outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
+    << station->getNaam() << "." << endl;
+    outfile.close();
+    return true;
 }

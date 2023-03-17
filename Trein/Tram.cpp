@@ -18,6 +18,9 @@ Station *Tram::getBeginStation() const {
 
 void Tram::setBeginStation(Station *stat) {
     Tram::beginStation = stat;
+    if (Tram::station == 0){
+        Tram::station = stat;
+    }
 }
 
 double Tram::getSnelheid() const {
@@ -30,4 +33,15 @@ void Tram::setSnelheid(double snelh) {
 
 Tram::Tram() {
     beginStation = 0;
+    station = 0;
+    snelheid = -1;
+    lijnNr = -1;
+}
+
+Station *Tram::getStation() const {
+    return station;
+}
+
+void Tram::setStation(Station *stat) {
+    Tram::station = stat;
 }

@@ -5,7 +5,8 @@
 int main(int argc, const char * argv[]) {
     TramSysteem tramsysteem = TramSysteem();
     tramsysteem.openFile();
-    cout << tramsysteem.getStations()[2]->getNaam() << endl;
+    tramsysteem.makeTxtFile();
+    tramsysteem.move(tramsysteem.getTrams()[0], tramsysteem.getStations()[1]);
     return 0;
 }
 

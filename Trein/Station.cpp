@@ -11,6 +11,7 @@ Station::Station(const string &naam, Station *volgende, Station *vorige, int spo
 Station::Station() {
     volgende = 0;
     vorige = 0;
+    spoorNr = -1;
 }
 
 const string &Station::getNaam() const {
