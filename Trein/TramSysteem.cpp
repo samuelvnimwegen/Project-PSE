@@ -40,7 +40,7 @@ void TramSysteem::openFile() {
             // dan stop.
             for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr;
                 elem = elem->NextSiblingElement()) {
-
+                int size = getStations().size();
                 // elemName is bv. naam:
                 // elem.value is bv. Antwerpen Centraal:
                 string elemName = elem->Value();
@@ -50,7 +50,7 @@ void TramSysteem::openFile() {
                 }
                 else if (elemName == "volgende"){
                     bool gevonden = false;
-                    for (int i = 0; i < getStations().size(); ++i){
+                    for (int i = 0; i < size; ++i){
                         if (getStations()[i]->getNaam() == elem->GetText()){
                             station->setVolgende(getStations()[i]);
                             gevonden= true;
@@ -67,7 +67,7 @@ void TramSysteem::openFile() {
                 }
                 else if (elemName == "vorige"){
                     bool gevonden = false;
-                    for (int i = 0; i < getStations().size(); ++i){
+                    for (int i = 0; i < size; ++i){
                         if (getStations()[i]->getNaam() == elem->GetText()){
                             station->setVorige(getStations()[i]);
                             gevonden= true;
@@ -98,7 +98,7 @@ void TramSysteem::openFile() {
 
             for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr;
                 elem = elem->NextSiblingElement()) {
-
+                int size = getStations().size();
                 string elemName = elem->Value();
 
                 if (elemName == "lijnNr"){
@@ -109,7 +109,7 @@ void TramSysteem::openFile() {
                 }
                 else if (elemName == "beginStation"){
                     bool gevonden = false;
-                    for (int i = 0; i < getStations().size(); ++i){
+                    for (int i = 0; i < size; ++i){
                         if (getStations()[i]->getNaam() == elem->GetText()){
                             tram->setBeginStation(getStations()[i]);
                             gevonden= true;

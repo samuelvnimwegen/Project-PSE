@@ -7,7 +7,8 @@
 #include "Station.h"
 #include "XML/tinyxml.h"
 #include "vector"
-#include "gtest/include/gtest/gtest.h"
+#include "sstream"
+#include "gtest/gtest.h"
 #define nullptr 0
 
 
