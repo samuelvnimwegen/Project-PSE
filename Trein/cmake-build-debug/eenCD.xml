@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <STATION>
 	<naam>A</naam>
 	<volgende>B</volgende>
@@ -6,19 +5,19 @@
 	<spoorNr>12</spoorNr>
 </STATION>
 <STATION>
-	<naam>B</naam>
-	<volgende>C</volgende>
-	<vorige>A</vorige>
-	<spoorNr>12</spoorNr>
+<naam>B</naam>
+<volgende>C</volgende>
+<vorige>A</vorige>
+<spoorNr>12</spoorNr>
 </STATION>
 <STATION>
-	<naam>C</naam>
-	<volgende>A</volgende>
-	<vorige>B</vorige>
-	<spoorNr>12</spoorNr>
+<naam>C</naam>
+<volgende>A</volgende>
+<vorige>B</vorige>
+<spoorNr>12</spoorNr>
 </STATION>
 <TRAM>
-	<lijnNr>12</lijnNr>
-	<snelheid>60</snelheid>
-	<beginStation>A</beginStation>
+<lijnNr>12</lijnNr>
+<snelheid>60</snelheid>
+<beginStation>A</beginStation>
 </TRAM>

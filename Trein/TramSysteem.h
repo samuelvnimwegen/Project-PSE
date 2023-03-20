@@ -8,19 +8,19 @@
 #include "XML/tinyxml.h"
 #include "vector"
 #include "sstream"
-#include "gtest/gtest.h"
 #include "fstream"
-#define nullptr 0
 
 
-// Hier komt het systeem: hier zitten beide classes tram en station in.
-// Of zelf waarden heeft, nog te zien.
+
 class TramSysteem {
     vector<Station*> stations;
     vector<Tram*> trams;
+    string filename;
 public:
     bool add_station(Station* station);
-    void openFile();
+
+    bool readFile(const string &name);
+
     TramSysteem();
 
     void addTram(Tram*);
@@ -33,10 +33,17 @@ public:
 
     void setTrams(const vector<Tram *> &trams);
 
-    void makeTxtFile();
+    void makeTxtFile(const string& name);
 
     bool move(Tram*, Station*);
 
+    bool simulate(int tijd);
+
+    bool complete_summary();
+
+    bool tram_summary();
+
+    bool station_summary();
 };
 
 

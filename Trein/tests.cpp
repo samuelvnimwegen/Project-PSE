@@ -16,13 +16,7 @@ protected:
 };
 
 TEST_F(LargestTest, SimpleTest){
-    vector<int> some_numbers = vector<int>();
-    some_numbers.push_back(3);
-    some_numbers.push_back(5);
-    some_numbers.push_back(-11);
-
-    int max = some_numbers.size();
-    EXPECT_EQ(3, max);
+    EXPECT_EQ(3, 4);
 }
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);

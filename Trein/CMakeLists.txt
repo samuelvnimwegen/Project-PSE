@@ -26,7 +26,7 @@ set(DEBUG_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp tests.cpp
 add_executable(ttt ${RELEASE_SOURCE_FILES})
 
 # Create DEBUG target
-add_executable(ttt_debug ${DEBUG_SOURCE_FILES})
+add_executable(ttt_debug ${DEBUG_SOURCE_FILES} )
 
 # Link library
 target_link_libraries(ttt_debug gtest)
