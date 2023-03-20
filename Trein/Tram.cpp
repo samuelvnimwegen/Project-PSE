@@ -18,6 +18,7 @@ Station *Tram::getBeginStation() const {
 
 void Tram::setBeginStation(Station *stat) {
     Tram::beginStation = stat;
+    // Als de tram nog niet bij een station staat, wordt deze op het beginstation gezet.
     if (Tram::station == 0){
         Tram::station = stat;
     }

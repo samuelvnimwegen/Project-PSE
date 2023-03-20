@@ -4,7 +4,7 @@
 
 #include "TramSysteem.h"
 
-// Er waren wat problemen
+// Hulpfunctie die strings van integers naar integers omzet.
 int stringToInt(const string& s){
     int i;
     std::istringstream(s) >> i;
@@ -12,7 +12,7 @@ int stringToInt(const string& s){
 }
 
 
-// Opent een file
+
 bool TramSysteem::readFile(const string &name) {
 
     //  XML document
@@ -61,7 +61,7 @@ bool TramSysteem::readFile(const string &name) {
                     // Als het station nog niet eerder vermeld was, wordt deze gemaakt.
                     if (!gevonden){
                         station = new Station();
-                        station->naam = elem->GetText();
+                        station->setNaam(elem->GetText());
                         add_station(station);
                     }
 
@@ -152,14 +152,26 @@ bool TramSysteem::readFile(const string &name) {
         }
         root = root->NextSiblingElement();
     }
-    return true;
+    if (trams.empty() or stations.empty()){
+        cerr << "mist stations of trams" << endl;
+        return true;
+    }
+    return false;
 }
 
 TramSysteem::TramSysteem() {}
 
 bool TramSysteem::add_station(Station *station) {
+    if (station == 0){
+        return false;
+    }
     stations.push_back(station);
-    return true;
+
+    int size = stations.size();
+    if (stations[size - 1] == station){
+        return true;
+    }
+    return false;
 }
  vector<Station *> & TramSysteem::getStations() {
     return stations;
@@ -177,14 +189,24 @@ void TramSysteem::setTrams(const vector<Tram *> &tr) {
     trams = tr;
 }
 
-void TramSysteem::addTram(Tram * tr) {
+bool TramSysteem::addTram(Tram * tr) {
+    if (tr == 0){
+        return false;
+    }
     trams.push_back(tr);
+
+    int size = trams.size();
+    if (trams[size - 1] == tr){
+        return true;
+    }
+    return false;
 }
 
 void TramSysteem::makeTxtFile(const string& name) {
     ofstream outfile(name.c_str());
     filename = name;
     outfile << "----- Tramregeling ----- " << endl << endl;
+
 }
 
 
@@ -204,13 +226,16 @@ bool TramSysteem::move(Tram* tram, Station* station) {
         return false;
     }
     tram->setStation(station);
-
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
     outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
     << station->getNaam() << "." << endl << endl;
     outfile.close();
-    return true;
+
+    if (tram->getStation() == station){
+        return true;
+    }
+    return false;
 }
 
 bool TramSysteem::simulate(int tijd) {
@@ -218,23 +243,28 @@ bool TramSysteem::simulate(int tijd) {
         cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
+    if (!isConsistent()){
+        return false;
+    }
     int aantalTrams = trams.size();
     int counter = 0;
+    // Verplaatst telkens de tram 1 plaats per tijdseenheid.
     if (tijd > 0){
         while (counter < tijd){
             for (int i = 0; i < aantalTrams; ++i){
-                if (trams[i]->getStation()->volgende != 0){
+                if (trams[i]->getStation()->getVolgende() != 0){
                     move(trams[i], trams[i]->getStation()->getVolgende());
                 }
             }
             counter += 1;
         }
     }
+    // Om terug in de tijd te gaan (tijd < 0)
     else if (tijd < 0){
         int negatieve_tijd = -tijd;
         while (counter < negatieve_tijd){
             for (int i = 0; i < aantalTrams; ++i){
-                if (trams[i]->getStation()->vorige != 0){
+                if (trams[i]->getStation()->getVorige() != 0){
                     move(trams[i], trams[i]->getStation()->getVorige());
                 }
             }
@@ -253,6 +283,7 @@ bool TramSysteem::complete_summary() {
     outfile.open(filename.c_str(), ios_base::app);
 
     int size = getStations().size();
+    // Voor elk station wordt het volgende station en het vorige weergeven.
     for (int i = 0; i < size; ++i){
         Station* station = getStations()[i];
         outfile << "Station " <<station->getNaam() << endl;
@@ -267,6 +298,8 @@ bool TramSysteem::complete_summary() {
         }
         outfile << endl;
     }
+
+    // Alle trams worden gedisplayd.
     size = getTrams().size();
     for (int i = 0; i < size; ++i){
         Tram* tram = getTrams()[i];
@@ -274,6 +307,7 @@ bool TramSysteem::complete_summary() {
     }
     return true;
 }
+
 
 bool TramSysteem::tram_summary() {
     if (filename.empty()){
@@ -315,4 +349,60 @@ bool TramSysteem::station_summary() {
         outfile << endl;
     }
     return true;
+}
+
+bool TramSysteem::isConsistent() {
+    // checkt of elk station een volgend en vorig heeft
+    int size = stations.size();
+    for (int i = 0; i < size; ++i){
+        if (stations[i]->getVorige() == 0 or stations[i]->getVolgende() == 0){
+            return false;
+        }
+    }
+    // Vector om de lijnnummers bij te houden.
+    vector<int> lijnnummers;
+
+    // Voor alle trams
+    size = trams.size();
+    for (int i = 0; i < size; ++i){
+        // Vergelijkt tramlijn met lijn van beginstation
+        if (trams[i]->getBeginStation()->getSpoorNr() != trams[i]->getLijnNr()){
+            return false;
+        }
+        // Checkt of beginstation geldig is in het metronet:
+        int stationsSize = stations.size();
+        bool gevonden = false;
+        for (int j = 0; j < stationsSize; ++j){
+            if (stations[j] == trams[i]->getBeginStation()){
+                gevonden = true;
+            }
+        }
+        if (!gevonden){
+            return false;
+        }
+        lijnnummers.push_back(trams[i]->getLijnNr());
+    }
+
+    // Checkt alle lijnnummers op duplicates
+    size = lijnnummers.size();
+    for (int i = 0; i < size; ++i){
+        for (int j = 0; j < size; ++j){
+            if (lijnnummers[i] == lijnnummers[j] and i != j){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+TramSysteem::~TramSysteem() {
+    int size = stations.size();
+    for (int i = 0; i < size; ++i){
+        delete stations[i];
+    }
+    size = trams.size();
+    for (int i = 0; i < size; ++i){
+        delete trams[i];
+    }
 }

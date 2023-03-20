@@ -12,6 +12,7 @@ Station::Station() {
     volgende = 0;
     vorige = 0;
     spoorNr = -1;
+    // Deze waarde is -1 zodat duidelijk is dat deze nog niet gekozen is.
 }
 
 const string &Station::getNaam() const {
