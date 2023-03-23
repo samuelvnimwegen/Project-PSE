@@ -1,0 +1,15 @@
+----- Tramregeling ----- 
+
+Station A
+<- Station C
+-> Station B
+Spoor 12
+
+Station B
+
+Station C
+
+Station 
+
+Tram 12 in Station A
+
