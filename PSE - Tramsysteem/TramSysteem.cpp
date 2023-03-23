@@ -11,8 +11,6 @@ int stringToInt(const string& s){
     return i;
 }
 
-
-
 bool TramSysteem::readFile(const string &name) {
 
     //  XML document
