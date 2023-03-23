@@ -27,3 +27,15 @@
 1545	1890	7010478338485008	ttt.exe	5ab5f11440a9564d
 5	587	7010478543703456	CMakeFiles/ttt.dir/main.cpp.obj	e7c8edc5ad47556b
 588	876	7010478546522117	ttt.exe	5ab5f11440a9564d
+5	715	7012951134839660	CMakeFiles/ttt.dir/main.cpp.obj	e7c8edc5ad47556b
+715	1254	7012951140171611	ttt.exe	5ab5f11440a9564d
+14	590	7012951689797746	CMakeFiles/ttt.dir/main.cpp.obj	e7c8edc5ad47556b
+591	845	7012951692277313	ttt.exe	5ab5f11440a9564d
+183	549	7012953304973955	CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj	c0590f15723ac6a4
+209	561	7012953305093945	CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj	b78f23e67655831a
+12	583	7012953305324130	CMakeFiles/ttt_debug.dir/Station.cpp.obj	7f0d9686f3769a19
+67	625	7012953305748031	CMakeFiles/ttt_debug.dir/Tram.cpp.obj	af5f11459e36adfe
+135	671	7012953306208130	CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj	7f83fd33ec1061d
+158	775	7012953307243689	CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj	b3c334653aeddedf
+114	965	7012953309144065	CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj	2eab516e55300640
+92	1057	7012953310070139	CMakeFiles/ttt_debug.dir/tests.cpp.obj	db37c4dec119477a

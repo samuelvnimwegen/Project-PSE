@@ -1,19 +1,8 @@
 ----- Tramregeling ----- 
 
-Station A
-<- Station C
--> Station B
-Spoor 12
-
-Station B
-<- Station A
--> Station C
-Spoor 12
-
-Station C
-<- Station B
--> Station A
-Spoor 12
-
 Tram 12 in Station A
+
+Tram 12 reed van Station A naar Station B.
+
+Tram 12 in Station B
 
