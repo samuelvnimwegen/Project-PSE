@@ -19,7 +19,6 @@ bool TramSysteem::readFile(const string &name) {
     TiXmlDocument doc;
     // opent XML met deze naam, anders foutmelding:
     if(!doc.LoadFile(name.c_str())) {
-        cerr << doc.ErrorDesc() << endl;
         return false;
     };
     // Root = eerste kind: hier STATION
@@ -27,7 +26,6 @@ bool TramSysteem::readFile(const string &name) {
 
     // Checkt of dit kind de nullptr is en geeft dan foutmelding.
     if (root == 0) {
-        cerr << "Failed to load file: No root element." << endl;
         doc.Clear();
         return false;
     }
@@ -104,9 +102,6 @@ bool TramSysteem::readFile(const string &name) {
                     int nr = stringToInt(elem->GetText());
                     station->setSpoorNr(nr);
                 }
-                else{
-                    cout << "Type niet herkend" << endl;
-                }
             }
         }
         else if (x == "TRAM"){
@@ -142,21 +137,18 @@ bool TramSysteem::readFile(const string &name) {
 
                 }
                 else{
-                    cout << "Type niet herkend" << endl;
                 }
             }
             addTram(tram);
         }
         else{
-            cout << "type niet herkent" << endl;
         }
         root = root->NextSiblingElement();
     }
     if (trams.empty() or stations.empty()){
-        cerr << "mist stations of trams" << endl;
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
 TramSysteem::TramSysteem() {}
@@ -213,16 +205,13 @@ void TramSysteem::makeTxtFile(const string& name) {
 
 bool TramSysteem::move(Tram* tram, Station* station) {
     if (filename.empty()){
-        cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
     Station* vorig_station = tram->getStation();
     if (tram->getLijnNr() != station->getSpoorNr()){
-        cout << "tram en station niet op dezelfde lijn" << endl;
         return false;
     }
     if (vorig_station == station){
-        cout << "het oude station is hetzelfde als het nieuwe station" << endl;
         return false;
     }
     tram->setStation(station);
@@ -240,7 +229,6 @@ bool TramSysteem::move(Tram* tram, Station* station) {
 
 bool TramSysteem::simulate(int tijd) {
     if (filename.empty()){
-        cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
     if (!isConsistent()){
@@ -276,7 +264,6 @@ bool TramSysteem::simulate(int tijd) {
 
 bool TramSysteem::complete_summary() {
     if (filename.empty()){
-        cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
     ofstream outfile;
@@ -311,7 +298,6 @@ bool TramSysteem::complete_summary() {
 
 bool TramSysteem::tram_summary() {
     if (filename.empty()){
-        cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
     ofstream outfile;
@@ -327,7 +313,6 @@ bool TramSysteem::tram_summary() {
 
 bool TramSysteem::station_summary() {
     if (filename.empty()){
-        cerr << "error: nog geen outputfile gemaakt" << endl;
         return false;
     }
     ofstream outfile;
