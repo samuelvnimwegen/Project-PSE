@@ -1,13 +1,13 @@
-#include "TramSysteem.h"
+#include "XMLParser.h"
 
 
 int main(int argc, const char * argv[]) {
-    TramSysteem tramsysteem = TramSysteem();
-    tramsysteem.readFile("test1.xml");
-    tramsysteem.makeTxtFile("tramregeling.txt");
-    tramsysteem.tram_summary();
-    tramsysteem.simulate(1);
-    tramsysteem.tram_summary();
+    XMLParser parser = XMLParser();
+    TramSysteem* tramsysteem = parser.readFile("test1.xml");
+    tramsysteem->makeTxtFile("tramregeling.txt");
+    tramsysteem->complete_summary();
+    tramsysteem->simulate(1);
+    tramsysteem->complete_summary();
     return 0;
 }
 

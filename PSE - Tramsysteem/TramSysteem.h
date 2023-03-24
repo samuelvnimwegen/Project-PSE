@@ -9,50 +9,52 @@
 #include "vector"
 #include "sstream"
 #include "fstream"
-
+#include "DesignByContract.h"
 
 // Bevat het volledige tramsysteem en bevat alle andere classes.
 class TramSysteem {
+    TramSysteem* initCheck;
     vector<Station*> stations;
     vector<Tram*> trams;
     string filename;
-
 public:
-    bool add_station(Station* station);
-    /* Deze functie voegt een station toe aan het systeem
-     * Preconditie: station != 0 en is een Station*
-     * Postconditie: stations[station.size() - 1] == station
-    */
-
-    bool readFile(const string &name);
-    /* Deze functie leest een XML-file met de ingegeven bestandsnaam.
-     * Preconditie: de XML-file met de gegeven naam bestaat.
-     * Postconditie: !trams.empty() and !stations.empty()
+    TramSysteem();
+    /**
+     * ENSURE(properlyInitialized(), "constructor moet in juiste staat eindigen bij initialisatie bij TramSysteem");
      */
 
-    TramSysteem();
-    // Maakt een tramsysteem aan.
+    bool properlyInitialized();
 
-    bool addTram(Tram* tram);
-    /* Voegt een tram aan het systeem toe.
-     * Preconditie: tram != 0
-     * Postconditie: trams[trams.size() - 1] == tram
+    bool add_station(Station* station);
+    /**
+     * REQUIRE((station != 0), "Station moet bestaan bij add_station");
+     * ENSURE(stations[size - 1] == station, "Laatste station in de stations-vector moet het nieuwe station zijn bij addStation");
+    */
+
+
+    void addTram(Tram* tram);
+    /**
+     * REQUIRE(tr != 0, "tram moet bestaan bij addTram");
+     * ENSURE(trams[size - 1] == tr, "tram moet laatste element in trams-vector zijn bij addTram");
      */
 
     vector<Station *> &getStations();
-    // Getter voor de stations
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
+     * ENSURE(stat == getStations(), "Moet alle stat teruggeven bij getStations");
+     */
 
-    void setStations(const vector<Station *> &stations);
-    // Setter voor de stations
+    void setStations(const vector<Station *> &stat);
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setStations was gebruikt");
+     * ENSURE(getStations() == stat, "Postconditie fout bij setStation");
+     */
 
     const vector<Tram *> &getTrams() const;
     // Getter voor de trams
 
     void setTrams(const vector<Tram *> &trams);
     // Setter voor de trams
-
-    void makeTxtFile(const string& name);
-    // Maakt een .txt file aan waarin alle bewerkingen worden genoteerd.
 
     bool move(Tram*, Station*);
     // Verplaatst een tram naar een gegeven station:
