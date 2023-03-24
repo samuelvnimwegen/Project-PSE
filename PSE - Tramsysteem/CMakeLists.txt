@@ -16,7 +16,7 @@ link_directories(./gtest/lib)
 
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp  main.cpp
-        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp)
+        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp XMLParser.cpp XMLParser.h TxtWriter.cpp TxtWriter.h)
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp tests.cpp

@@ -55,8 +55,6 @@ build CMakeFiles/ttt.dir/Station.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samu
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/Tram.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/Tram.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\Tram.cpp.obj.d
@@ -64,8 +62,6 @@ build CMakeFiles/ttt.dir/Tram.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/D
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/TramSysteem.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TramSysteem.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\TramSysteem.cpp.obj.d
@@ -73,8 +69,6 @@ build CMakeFiles/ttt.dir/TramSysteem.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/main.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/main.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\main.cpp.obj.d
@@ -82,8 +76,6 @@ build CMakeFiles/ttt.dir/main.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/D
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlparser.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\XML\tinyxmlparser.cpp.obj.d
@@ -91,8 +83,6 @@ build CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_Debug C$:/
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinystr.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\XML\tinystr.cpp.obj.d
@@ -100,8 +90,6 @@ build CMakeFiles/ttt.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxml.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\XML\tinyxml.cpp.obj.d
@@ -109,8 +97,6 @@ build CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
 
 build CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlerror.cpp || cmake_object_order_depends_target_ttt
   DEP_FILE = CMakeFiles\ttt.dir\XML\tinyxmlerror.cpp.obj.d
@@ -118,8 +104,20 @@ build CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_Debug C$:/U
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
-  TARGET_PDB = ttt.pdb
+
+build CMakeFiles/ttt.dir/XMLParser.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XMLParser.cpp || cmake_object_order_depends_target_ttt
+  DEP_FILE = CMakeFiles\ttt.dir\XMLParser.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt.dir
+
+build CMakeFiles/ttt.dir/TxtWriter.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TxtWriter.cpp || cmake_object_order_depends_target_ttt
+  DEP_FILE = CMakeFiles\ttt.dir\TxtWriter.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt.dir
 
 
 # =============================================================================
@@ -129,7 +127,7 @@ build CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_Debug C$:/U
 #############################################
 # Link the executable ttt.exe
 
-build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/Station.cpp.obj CMakeFiles/ttt.dir/Tram.cpp.obj CMakeFiles/ttt.dir/TramSysteem.cpp.obj CMakeFiles/ttt.dir/main.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt.dir/XML/tinystr.cpp.obj CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj
+build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/Station.cpp.obj CMakeFiles/ttt.dir/Tram.cpp.obj CMakeFiles/ttt.dir/TramSysteem.cpp.obj CMakeFiles/ttt.dir/main.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt.dir/XML/tinystr.cpp.obj CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/ttt.dir/XMLParser.cpp.obj CMakeFiles/ttt.dir/TxtWriter.cpp.obj
   FLAGS = -std=c++98 -Wall -Werror -O0 -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -137,10 +135,9 @@ build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/Station.cpp.o
   OBJECT_DIR = CMakeFiles\ttt.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\ttt.dir\
   TARGET_FILE = ttt.exe
   TARGET_IMPLIB = libttt.dll.a
-  TARGET_PDB = ttt.pdb
+  TARGET_PDB = ttt.exe.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ttt_debug
@@ -157,8 +154,6 @@ build CMakeFiles/ttt_debug.dir/Station.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/Tram.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/Tram.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\Tram.cpp.obj.d
@@ -166,8 +161,6 @@ build CMakeFiles/ttt_debug.dir/Tram.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/U
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TramSysteem.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\TramSysteem.cpp.obj.d
@@ -175,8 +168,6 @@ build CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj: CXX_COMPILER__ttt_debug_Debu
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/tests.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/tests.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\tests.cpp.obj.d
@@ -184,8 +175,6 @@ build CMakeFiles/ttt_debug.dir/tests.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlparser.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlparser.cpp.obj.d
@@ -193,8 +182,6 @@ build CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_debu
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinystr.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinystr.cpp.obj.d
@@ -202,8 +189,6 @@ build CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_debug_Debu
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxml.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxml.cpp.obj.d
@@ -211,8 +196,6 @@ build CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_debug_Debu
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 build CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlerror.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlerror.cpp.obj.d
@@ -220,8 +203,6 @@ build CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_debug
   INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
-  TARGET_PDB = ttt_debug.pdb
 
 
 # =============================================================================
@@ -239,10 +220,9 @@ build ttt_debug.exe: CXX_EXECUTABLE_LINKER__ttt_debug_Debug CMakeFiles/ttt_debug
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\ttt_debug.dir\
   TARGET_FILE = ttt_debug.exe
   TARGET_IMPLIB = libttt_debug.dll.a
-  TARGET_PDB = ttt_debug.pdb
+  TARGET_PDB = ttt_debug.exe.dbg
 
 
 #############################################
@@ -291,14 +271,14 @@ build all: phony ttt.exe ttt_debug.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCCompilerABI.c D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCompilerIdDetection.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompileFeatures.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompilerABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineRCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeFindBinUtils.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseImplicitIncludeInfo.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseImplicitLinkInfo.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseLibraryArchitecture.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystem.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCXXCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCompilerCommon.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestRCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ADSP-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ARMCC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ARMClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/AppleClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Borland-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Bruce-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Clang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Clang-DetermineCompilerInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Compaq-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Cray-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Embarcadero-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Fujitsu-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GHS-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-FindBinUtils.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/HP-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/HP-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IAR-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Intel-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/LCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/MSVC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/NVHPC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/NVIDIA-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/PGI-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/PathScale-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SCO-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SDCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SunPro-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/TI-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Watcom-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XL-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XL-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XLClang-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/zOS-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Internal/FeatureTesting.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-Determine-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCCompilerABI.c D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXCompilerABI.cpp D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCompilerIdDetection.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompileFeatures.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompilerABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineRCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeDetermineSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeFindBinUtils.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseImplicitIncludeInfo.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseImplicitLinkInfo.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeParseLibraryArchitecture.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCCompiler.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystem.cmake.in D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCXXCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestCompilerCommon.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeTestRCCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ADSP-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ARMCC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/ARMClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/AppleClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Borland-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Bruce-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Clang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Clang-DetermineCompilerInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Compaq-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Cray-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Embarcadero-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Fujitsu-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GHS-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-FindBinUtils.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/HP-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/HP-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IAR-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Intel-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/LCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/MSVC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/NVHPC-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/NVIDIA-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/PGI-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/PathScale-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SCO-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SDCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SunPro-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/TI-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/Watcom-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XL-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XL-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XLClang-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/zOS-C-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Internal/FeatureTesting.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-Determine-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake: phony
+build C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/CMakeLists.txt CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeRCCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCXXInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeGenericSystem.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeRCInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Compiler/GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-C.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU-CXX.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-GNU.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows-windres.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/Windows.cmake D$:/JetBrains/CLion$ 2022.3.2/bin/cmake/win/x64/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake: phony
 
 
 #############################################
