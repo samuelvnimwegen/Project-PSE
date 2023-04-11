@@ -35,12 +35,16 @@ void TramSysteem::setStations(const vector<Station *> &stat) {
     ENSURE(getStations() == stat, "Postconditie fout bij setStation");
 }
 
-const vector<Tram *> &TramSysteem::getTrams() const {
+const vector<Tram *> & TramSysteem::getTrams() {
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getTrams was gebruikt");
+    ENSURE(trams == getTrams(), "Moet alle stat teruggeven bij getTrams");
     return trams;
 }
 
 void TramSysteem::setTrams(const vector<Tram *> &tr) {
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setTrams was gebruikt");
     trams = tr;
+    ENSURE(getTrams() == trams, "Postconditie fout bij setTrams");
 }
 
 void TramSysteem::addTram(Tram * tr) {
@@ -54,37 +58,23 @@ void TramSysteem::addTram(Tram * tr) {
 
 
 
-bool TramSysteem::move(Tram* tram, Station* station) {
-    if (filename.empty()){
-        return false;
-    }
+void TramSysteem::move(Tram* tram, Station* station) {
+    REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
+    REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
+    REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
     Station* vorig_station = tram->getStation();
-    if (tram->getLijnNr() != station->getSpoorNr()){
-        return false;
-    }
-    if (vorig_station == station){
-        return false;
-    }
     tram->setStation(station);
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
     outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
     << station->getNaam() << "." << endl << endl;
     outfile.close();
-
-    if (tram->getStation() == station){
-        return true;
-    }
-    return false;
+    ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
 }
 
 bool TramSysteem::simulate(int tijd) {
-    if (filename.empty()){
-        return false;
-    }
-    if (!isConsistent()){
-        return false;
-    }
+    REQUIRE(!filename.empty(), "Bij simulate is er nog geen filenaam aangemaakt");
+    REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
     int aantalTrams = trams.size();
     int counter = 0;
     // Verplaatst telkens de tram 1 plaats per tijdseenheid.
@@ -114,9 +104,8 @@ bool TramSysteem::simulate(int tijd) {
 }
 
 bool TramSysteem::complete_summary() {
-    if (filename.empty()){
-        return false;
-    }
+    REQUIRE(!filename.empty(), "Bij complete_summary is er nog geen filenaam aangemaakt");
+    REQUIRE(isConsistent(), "Systeem niet consistent bij complete_summary");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
@@ -148,9 +137,8 @@ bool TramSysteem::complete_summary() {
 
 
 bool TramSysteem::tram_summary() {
-    if (filename.empty()){
-        return false;
-    }
+    REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
+    REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 

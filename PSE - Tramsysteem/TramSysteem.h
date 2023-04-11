@@ -41,7 +41,7 @@ public:
     vector<Station *> &getStations();
     /**
      * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
-     * ENSURE(stat == getStations(), "Moet alle stat teruggeven bij getStations");
+     * ENSURE(stations == getStations(), "Moet alle stat teruggeven bij getStations");
      */
 
     void setStations(const vector<Station *> &stat);
@@ -50,24 +50,37 @@ public:
      * ENSURE(getStations() == stat, "Postconditie fout bij setStation");
      */
 
-    const vector<Tram *> &getTrams() const;
-    // Getter voor de trams
+    const vector<Tram *> & getTrams();
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getTrams was gebruikt");
+     * ENSURE(trams == getTrams(), "Moet alle stat teruggeven bij getTrams");
+     */
 
     void setTrams(const vector<Tram *> &trams);
-    // Setter voor de trams
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setTrams was gebruikt");
+     * ENSURE(getTrams() == trams, "Postconditie fout bij setTrams");
+     */
 
-    bool move(Tram*, Station*);
-    // Verplaatst een tram naar een gegeven station:
-    // Preconditie: Station ligt op de lijn, er moet een outputfile zijn en het moet een nieuw station zijn.
-    // Postconditie: tram->getStation() == station
+    void move(Tram*, Station*);
+    /**
+     * REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
+     * REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
+     * REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
+     * ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
+     */
 
     bool simulate(int tijd);
-    // Simuleert het circuit voor een gegeven aantal stappen (werkt ook voor negatieve getallen om terug in de tijd te gaan).
-    // Preconditie: zelfde condities als de move functie + moet consistent zijn.
+    /**
+     * REQUIRE(!filename.empty(), "Bij simulate is er nog geen filenaam aangemaakt");
+     * REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
+     */
 
     bool complete_summary();
-    // Geeft een compleet overzicht van alle stations en trams in de txt file.
-    // Preconditie: er is een txt file geopend
+    /**
+     * REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
+     * REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
+     */
 
     bool tram_summary();
     // Geeft een overzicht van alle trams in de txt file.
