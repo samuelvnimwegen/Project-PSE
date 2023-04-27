@@ -9,7 +9,9 @@
 #include "fstream"
 #include "ostream"
 
+
 using namespace std;
+class TramSysteem;
 class TramSysteemOut {
     string filename;
 public:
@@ -17,6 +19,12 @@ public:
     /** REQUIRE(name.substr(name.length() - 4) == ".txt", "moet een .txt file zijn");
      *  ENSURE(file, "file moet aangemaakt zijn");
      */
+
+    void tram_summary(TramSysteem*);
+
+
+    void station_summary(TramSysteem *tramSysteem);
+
 };
 
 

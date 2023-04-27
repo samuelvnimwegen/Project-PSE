@@ -118,6 +118,9 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 else if (elemName == "snelheid"){
                     tram->setSnelheid(stringToInt(elem->GetText()));
                 }
+                else if (elemName == "voertuigNr"){
+                    tram->setVoertuigNummer(stringToInt(elem->GetText()));
+                }
                 else if (elemName == "beginStation"){
                     bool gevonden = 0;
                     for (int i = 0; i < size; ++i){

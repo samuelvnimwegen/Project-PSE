@@ -46,3 +46,27 @@ Station *Tram::getStation() const {
 void Tram::setStation(Station *stat) {
     Tram::station = stat;
 }
+
+int Tram::getVoertuigNummer() const {
+    return voertuigNummer;
+}
+
+void Tram::setVoertuigNummer(int voertuigNummer) {
+    Tram::voertuigNummer = voertuigNummer;
+}
+
+double Tram::getReparatieKosten() const {
+    return reparatieKosten;
+}
+
+void Tram::setReparatieKosten(double reparatieKosten) {
+    Tram::reparatieKosten = reparatieKosten;
+}
+
+const string &Tram::getType() const {
+    return type;
+}
+
+void Tram::setType(const string &type) {
+    Tram::type = type;
+}

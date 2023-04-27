@@ -11,7 +11,19 @@ class Tram {
     Station* beginStation;
     double snelheid;
     Station* station;
+    int voertuigNummer;
+    string type;
+    double reparatieKosten;
 public:
+    const string &getType() const;
+
+    void setType(const string &type);
+
+
+    double getReparatieKosten() const;
+
+    void setReparatieKosten(double reparatieKosten);
+
     int getLijnNr() const;
     // Getter van het lijnnummer
 
@@ -38,6 +50,9 @@ public:
 
     void setStation(Station *stat);
     // Setter van het station waar de tram is
+    int getVoertuigNummer() const;
+
+    void setVoertuigNummer(int voertuigNummer);
 };
 
 

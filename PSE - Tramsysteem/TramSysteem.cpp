@@ -136,44 +136,8 @@ bool TramSysteem::complete_summary() {
 }
 
 
-bool TramSysteem::tram_summary() {
-    REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
-    REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
-    ofstream outfile;
-    outfile.open(filename.c_str(), ios_base::app);
 
-    int size = getTrams().size();
-    for (int i = 0; i < size; ++i){
-        Tram* tram = getTrams()[i];
-        outfile << "Tram "<<tram->getLijnNr() << " in Station " << tram->getStation()->getNaam() << endl << endl;
-    }
-    return true;
-}
 
-bool TramSysteem::station_summary() {
-    if (filename.empty()){
-        return false;
-    }
-    ofstream outfile;
-    outfile.open(filename.c_str(), ios_base::app);
-
-    int size = getStations().size();
-    for (int i = 0; i < size; ++i){
-        Station* station = getStations()[i];
-        outfile << "Station " <<station->getNaam() << endl;
-        if (station->getVorige() != 0){
-            outfile << "<- Station " << station->getVorige()->getNaam() << endl;
-        }
-        if (station->getVolgende() != 0){
-            outfile << "-> Station " << station->getVolgende()->getNaam() << endl;
-        }
-        if (station->getSpoorNr() != -1){
-            outfile << "Spoor " << station->getSpoorNr() << endl;
-        }
-        outfile << endl;
-    }
-    return true;
-}
 
 bool TramSysteem::isConsistent() {
     // checkt of elk station een volgend en vorig heeft

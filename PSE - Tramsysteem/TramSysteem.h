@@ -10,6 +10,7 @@
 #include "sstream"
 #include "fstream"
 #include "DesignByContract.h"
+#include "TramSysteemOut.h"
 
 // Bevat het volledige tramsysteem en bevat alle andere classes.
 class TramSysteem {
@@ -81,10 +82,6 @@ public:
      * REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
      * REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
      */
-
-    bool tram_summary();
-    // Geeft een overzicht van alle trams in de txt file.
-    // Preconditie: er is een txt file geopend
 
     bool station_summary();
     // Geeft een overzicht van alle stations in de txt file.
