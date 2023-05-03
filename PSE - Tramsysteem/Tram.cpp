@@ -51,22 +51,22 @@ int Tram::getVoertuigNummer() const {
     return voertuigNummer;
 }
 
-void Tram::setVoertuigNummer(int voertuigNummer) {
-    Tram::voertuigNummer = voertuigNummer;
+void Tram::setVoertuigNummer(int nr) {
+    Tram::voertuigNummer = nr;
 }
 
 double Tram::getReparatieKosten() const {
     return reparatieKosten;
 }
 
-void Tram::setReparatieKosten(double reparatieKosten) {
-    Tram::reparatieKosten = reparatieKosten;
+void Tram::setReparatieKosten(double rk) {
+    Tram::reparatieKosten = rk;
 }
 
 const string &Tram::getType() const {
     return type;
 }
 
-void Tram::setType(const string &type) {
-    Tram::type = type;
+void Tram::setType(const string &tp) {
+    Tram::type = tp;
 }

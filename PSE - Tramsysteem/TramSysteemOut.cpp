@@ -5,7 +5,7 @@
 #include "TramSysteemOut.h"
 #include "TramSysteem.h"
 
-TramSysteemOut::TramSysteemOut(const string &name) : filename(name) {
+TramSysteemOut::TramSysteemOut(const string &name, TramSysteem* ts) : filename(name), tramSysteem(ts) {
     REQUIRE(name.substr(name.length() - 4) == ".txt", "moet een .txt file zijn");
     ofstream outfile(name.c_str());
     filename = name;
@@ -16,7 +16,7 @@ TramSysteemOut::TramSysteemOut(const string &name) : filename(name) {
     ENSURE(file, "file moet aangemaakt zijn");
 }
 
-void TramSysteemOut::tram_summary(TramSysteem* tramSysteem) {
+void TramSysteemOut::tram_summary() {
     REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -32,7 +32,7 @@ void TramSysteemOut::tram_summary(TramSysteem* tramSysteem) {
     }
 }
 
-void TramSysteemOut::station_summary(TramSysteem* tramSysteem) {
+void TramSysteemOut::station_summary() {
     REQUIRE(!filename.empty(), "Bij station_summary is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);

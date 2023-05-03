@@ -46,3 +46,11 @@ int Station::getSpoorNr() const {
 void Station::setSpoorNr(int nr) {
     Station::spoorNr = nr;
 }
+
+const string &Station::getType() const {
+    return type;
+}
+
+void Station::setType(const string &tp) {
+    Station::type = tp;
+}

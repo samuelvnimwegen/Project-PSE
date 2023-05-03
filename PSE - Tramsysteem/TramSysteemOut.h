@@ -14,16 +14,16 @@ using namespace std;
 class TramSysteem;
 class TramSysteemOut {
     string filename;
+    TramSysteem* tramSysteem;
 public:
-    explicit TramSysteemOut(const string &filename);
+    explicit TramSysteemOut(const string &filename, TramSysteem* ts);
     /** REQUIRE(name.substr(name.length() - 4) == ".txt", "moet een .txt file zijn");
      *  ENSURE(file, "file moet aangemaakt zijn");
      */
 
-    void tram_summary(TramSysteem*);
+    void tram_summary();
 
-
-    void station_summary(TramSysteem *tramSysteem);
+    void station_summary();
 
 };
 

@@ -17,12 +17,12 @@ class Tram {
 public:
     const string &getType() const;
 
-    void setType(const string &type);
+    void setType(const string &tp);
 
 
     double getReparatieKosten() const;
 
-    void setReparatieKosten(double reparatieKosten);
+    void setReparatieKosten(double rk);
 
     int getLijnNr() const;
     // Getter van het lijnnummer
@@ -52,7 +52,7 @@ public:
     // Setter van het station waar de tram is
     int getVoertuigNummer() const;
 
-    void setVoertuigNummer(int voertuigNummer);
+    void setVoertuigNummer(int nr);
 };
 
 

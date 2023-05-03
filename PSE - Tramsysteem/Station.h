@@ -9,11 +9,16 @@ using namespace std;
 // Alle eigenschappen / waarden station
 class Station {
     string naam;
+    string type;
     Station* volgende;
     Station* vorige;
     int spoorNr;
 
 public:
+    const string &getType() const;
+
+    void setType(const string &tp);
+
     const string &getNaam() const;
     // Getter van de naam van het statimomn
 
