@@ -26,7 +26,9 @@ void TramSysteemOut::tram_summary() {
         Tram* tram = tramSysteem->getTrams()[i];
         outfile << "Tram "<<tram->getLijnNr() << " nr " << tram->getVoertuigNummer() << endl ;
         outfile << "\t" << "type: " << tram->getType() << endl;
-        outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
+        if (tram->getSnelheid() > 0){
+            outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
+        }
         outfile << "\t" << "huidig station: " << tram->getStation()->getNaam() << endl;
         outfile << "\t" << "reparatiekosten: " << tram->getReparatieKosten() << " euro" << endl << endl;
     }
@@ -46,5 +48,14 @@ void TramSysteemOut::station_summary() {
         outfile << "-> Station " << station->getVolgende()->getNaam() << endl;
         outfile << endl;
     }
+}
+
+void TramSysteemOut::complete_summary() {
+    station_summary();
+    tram_summary();
+}
+
+void TramSysteemOut::advanced_summary() {
+
 }
 

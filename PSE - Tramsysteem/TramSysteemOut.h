@@ -25,6 +25,10 @@ public:
 
     void station_summary();
 
+    void complete_summary();
+
+    void advanced_summary();
+
 };
 
 

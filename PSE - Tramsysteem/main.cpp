@@ -3,11 +3,9 @@
 
 int main(int argc, const char * argv[]) {
     XMLParser parser = XMLParser();
-    TramSysteem* tramsysteem = parser.readFile("test1.xml");
-    tramsysteem->makeTxtFile("tramregeling.txt");
-    tramsysteem->complete_summary();
-    tramsysteem->simulate(1);
-    tramsysteem->complete_summary();
+    TramSysteem* tramsysteem = parser.readFile("beteretest1.xml");
+    TramSysteemOut output("tramregeling.txt", tramsysteem);
+    output.complete_summary();
     return 0;
 }
 

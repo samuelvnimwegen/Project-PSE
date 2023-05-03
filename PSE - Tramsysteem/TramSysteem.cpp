@@ -25,7 +25,7 @@ bool TramSysteem::add_station(Station *station) {
 }
  vector<Station *> & TramSysteem::getStations(){
     REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
-    ENSURE(stations == getStations(), "Moet alle stations teruggeven bij getStations");
+
     return stations;
 }
 
@@ -36,8 +36,6 @@ void TramSysteem::setStations(const vector<Station *> &stat) {
 }
 
 const vector<Tram *> & TramSysteem::getTrams() {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getTrams was gebruikt");
-    ENSURE(trams == getTrams(), "Moet alle stat teruggeven bij getTrams");
     return trams;
 }
 
@@ -62,13 +60,26 @@ void TramSysteem::move(Tram* tram, Station* station) {
     REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
     REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
     REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
-    Station* vorig_station = tram->getStation();
-    tram->setStation(station);
-    ofstream outfile;
-    outfile.open(filename.c_str(), ios_base::app);
-    outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
-    << station->getNaam() << "." << endl << endl;
-    outfile.close();
+    while (tram->getStation() != station){
+        Station* vorig_station = tram->getStation();
+        Station* volgend_station = vorig_station->getVolgende();
+        bool bevatTram = false;
+        int size = trams.size();
+        for (int i = 0; i < size; ++i){
+            if (tram->getStation() == volgend_station){
+                bevatTram = true;
+            }
+        }
+        if (bevatTram){
+            return;
+        }
+        tram->setStation(vorig_station->getVolgende());
+        ofstream outfile;
+        outfile.open(filename.c_str(), ios_base::app);
+        outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
+                << volgend_station->getNaam() << "." << endl << endl;
+        outfile.close();
+    }
     ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
 }
 
@@ -134,10 +145,6 @@ bool TramSysteem::complete_summary() {
     }
     return true;
 }
-
-
-
-
 
 bool TramSysteem::isConsistent() {
     // checkt of elk station een volgend en vorig heeft

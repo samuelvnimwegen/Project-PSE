@@ -41,8 +41,7 @@ public:
 
     vector<Station *> &getStations();
     /**
-     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
-     * ENSURE(stations == getStations(), "Moet alle stat teruggeven bij getStations");
+     *
      */
 
     void setStations(const vector<Station *> &stat);
