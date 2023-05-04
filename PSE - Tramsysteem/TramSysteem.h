@@ -11,6 +11,7 @@
 #include "fstream"
 #include "DesignByContract.h"
 #include "TramSysteemOut.h"
+#include "algorithm"
 
 // Bevat het volledige tramsysteem en bevat alle andere classes.
 class TramSysteem {
@@ -18,7 +19,12 @@ class TramSysteem {
     vector<Station*> stations;
     vector<Tram*> trams;
     string filename;
+    vector<int> lijnen;
 public:
+    const vector<int> &getLijnen() const;
+
+    void setLijnen(const vector<int> &ln);
+
     TramSysteem();
     /**
      * ENSURE(properlyInitialized(), "constructor moet in juiste staat eindigen bij initialisatie bij TramSysteem");
@@ -82,12 +88,11 @@ public:
      * REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
      */
 
-    bool station_summary();
-    // Geeft een overzicht van alle stations in de txt file.
-    // Preconditie: er is een txt file geopend
 
     bool isConsistent();
     // Checkt of het tramsysteem consistent is
+
+    void addLijn(int lijn);
 
     virtual ~TramSysteem();
     // Destructor die alle stations en trams verwijderd

@@ -5,6 +5,7 @@
 #include "TramSysteemOut.h"
 #include "TramSysteem.h"
 
+
 TramSysteemOut::TramSysteemOut(const string &name, TramSysteem* ts) : filename(name), tramSysteem(ts) {
     REQUIRE(name.substr(name.length() - 4) == ".txt", "moet een .txt file zijn");
     ofstream outfile(name.c_str());
@@ -56,6 +57,22 @@ void TramSysteemOut::complete_summary() {
 }
 
 void TramSysteemOut::advanced_summary() {
+    ofstream outfile;
+    outfile.open(filename.c_str(), ios_base::app);
 
+    int lijnenSize = tramSysteem->getLijnen().size();
+    int stationSize = tramSysteem->getStations().size();
+
+    for (int i = 0; i < lijnenSize; ++i){
+        int huidigeLijn = tramSysteem->getLijnen()[i];
+        Station* beginStation;
+        for (int j = 0; j < stationSize; ++j){
+            Station* huidigStation = tramSysteem->getStations()[j];
+            if (huidigStation->getSpoorNr() == huidigeLijn){
+                beginStation = huidigStation;
+                break;
+            }
+        }
+    }
 }
 

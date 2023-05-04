@@ -205,3 +205,17 @@ TramSysteem::~TramSysteem() {
 bool TramSysteem::properlyInitialized() {
     return initCheck == this;
 }
+
+const vector<int> &TramSysteem::getLijnen() const {
+    return lijnen;
+}
+
+void TramSysteem::setLijnen(const vector<int> &ln) {
+    TramSysteem::lijnen = ln;
+}
+
+void TramSysteem::addLijn(int lijn) {
+    lijnen.push_back(lijn);
+}
+
+
