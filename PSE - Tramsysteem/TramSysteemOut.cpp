@@ -65,14 +65,35 @@ void TramSysteemOut::advanced_summary() {
 
     for (int i = 0; i < lijnenSize; ++i){
         int huidigeLijn = tramSysteem->getLijnen()[i];
-        Station* beginStation;
+
+        vector<Station*> stationsInLijn;
+        Station* beginStation = 0;
         for (int j = 0; j < stationSize; ++j){
             Station* huidigStation = tramSysteem->getStations()[j];
             if (huidigStation->getSpoorNr() == huidigeLijn){
                 beginStation = huidigStation;
-                break;
+                j = stationSize;
             }
         }
+        stationsInLijn.push_back(beginStation);
+        Station* huidigStation = beginStation->getVolgende();
+        int stations = 1;
+        while (huidigStation != beginStation){
+            stationsInLijn.push_back(huidigStation);
+            huidigStation = huidigStation->getVolgende();
+            stations += 1;
+        }
+        string lijn1 = "=";
+        string lijn2 = " ";
+        for (int j = 0; j < stations; ++j){
+            Station* stat = stationsInLijn[j];
+            lijn1 += stat->getNaam() + "==";
+            bool bevatStation = false;
+            for (int k = 0; k < stationSize; ++k){
+                if ()
+            }
+        }
+        lijn1 = lijn1.substr(0, lijn1.size() - 2);
     }
 }
 

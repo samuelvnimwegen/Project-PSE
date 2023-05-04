@@ -20,7 +20,9 @@ const string &Station::getNaam() const {
 }
 
 void Station::setNaam(const string &nm) {
+    REQUIRE(!nm.empty(), "Bij setNaam van station was de naam leeg");
     Station::naam = nm;
+    ENSURE(naam == nm, "Bij setNaam van station was de naam niet correct aangepast");
 }
 
 Station *Station::getVolgende() const {

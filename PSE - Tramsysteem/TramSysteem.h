@@ -18,7 +18,6 @@ class TramSysteem {
     TramSysteem* initCheck;
     vector<Station*> stations;
     vector<Tram*> trams;
-    string filename;
     vector<int> lijnen;
 public:
     const vector<int> &getLijnen() const;
@@ -46,9 +45,7 @@ public:
      */
 
     vector<Station *> &getStations();
-    /**
-     *
-     */
+
 
     void setStations(const vector<Station *> &stat);
     /**
@@ -70,7 +67,6 @@ public:
 
     void move(Tram*, Station*);
     /**
-     * REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
      * REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
      * REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
      * ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
@@ -81,13 +77,6 @@ public:
      * REQUIRE(!filename.empty(), "Bij simulate is er nog geen filenaam aangemaakt");
      * REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
      */
-
-    bool complete_summary();
-    /**
-     * REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
-     * REQUIRE(isConsistent(), "Systeem niet consistent bij tram_summary");
-     */
-
 
     bool isConsistent();
     // Checkt of het tramsysteem consistent is

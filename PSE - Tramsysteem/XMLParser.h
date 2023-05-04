@@ -13,6 +13,9 @@ class XMLParser {
     vector<TramSysteem*> tramsystemen;
 public:
     TramSysteem* readFile(const string &name);
+    /**
+     *
+     */
 };
 
 

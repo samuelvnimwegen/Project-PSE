@@ -2,6 +2,7 @@
 // Created by Space Movie 1992 on 02/03/2023.
 //
 #include "iostream"
+#include "DesignByContract.h"
 using namespace std;
 #ifndef TREIN_STATION_H
 #define TREIN_STATION_H
@@ -23,7 +24,10 @@ public:
     // Getter van de naam van het statimomn
 
     void setNaam(const string &nm);
-    // Setter van de naam
+    /**
+     * REQUIRE(!nm.empty(), "Bij setNaam van station was de naam leeg");
+     * ENSURE(naam == nm, "Bij setNaam van station was de naam niet correct aangepast");
+     */
 
     Station *getVolgende() const;
     // Getter van het volgende station

@@ -57,34 +57,23 @@ void TramSysteem::addTram(Tram * tr) {
 
 
 void TramSysteem::move(Tram* tram, Station* station) {
-    REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
     REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
     REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
     while (tram->getStation() != station){
         Station* vorig_station = tram->getStation();
         Station* volgend_station = vorig_station->getVolgende();
-        bool bevatTram = false;
         int size = trams.size();
         for (int i = 0; i < size; ++i){
             if (tram->getStation() == volgend_station){
-                bevatTram = true;
+                return;
             }
         }
-        if (bevatTram){
-            return;
-        }
         tram->setStation(vorig_station->getVolgende());
-        ofstream outfile;
-        outfile.open(filename.c_str(), ios_base::app);
-        outfile << "Tram " << tram->getLijnNr() << " reed van Station " << vorig_station->getNaam() << " naar Station "
-                << volgend_station->getNaam() << "." << endl << endl;
-        outfile.close();
     }
     ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
 }
 
 bool TramSysteem::simulate(int tijd) {
-    REQUIRE(!filename.empty(), "Bij simulate is er nog geen filenaam aangemaakt");
     REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
     int aantalTrams = trams.size();
     int counter = 0;
@@ -114,37 +103,6 @@ bool TramSysteem::simulate(int tijd) {
     return true;
 }
 
-bool TramSysteem::complete_summary() {
-    REQUIRE(!filename.empty(), "Bij complete_summary is er nog geen filenaam aangemaakt");
-    REQUIRE(isConsistent(), "Systeem niet consistent bij complete_summary");
-    ofstream outfile;
-    outfile.open(filename.c_str(), ios_base::app);
-
-    int size = getStations().size();
-    // Voor elk station wordt het volgende station en het vorige weergeven.
-    for (int i = 0; i < size; ++i){
-        Station* station = getStations()[i];
-        outfile << "Station " <<station->getNaam() << endl;
-        if (station->getVorige() != 0){
-            outfile << "<- Station " << station->getVorige()->getNaam() << endl;
-        }
-        if (station->getVolgende() != 0){
-            outfile << "-> Station " << station->getVolgende()->getNaam() << endl;
-        }
-        if (station->getSpoorNr() != -1){
-            outfile << "Spoor " << station->getSpoorNr() << endl;
-        }
-        outfile << endl;
-    }
-
-    // Alle trams worden gedisplayd.
-    size = getTrams().size();
-    for (int i = 0; i < size; ++i){
-        Tram* tram = getTrams()[i];
-        outfile << "Tram "<<tram->getLijnNr() << " in Station " << tram->getStation()->getNaam() << endl << endl;
-    }
-    return true;
-}
 
 bool TramSysteem::isConsistent() {
     // checkt of elk station een volgend en vorig heeft
