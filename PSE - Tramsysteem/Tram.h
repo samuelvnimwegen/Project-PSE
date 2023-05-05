@@ -16,22 +16,39 @@ class Tram {
     double reparatieKosten;
 public:
     const string &getType() const;
+    /**
+     * REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
+     */
 
     void setType(const string &tp);
+    /**
+     * REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
+     * ENSURE(type == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
+     */
 
 
     double getReparatieKosten() const;
+    /**
+     * REQUIRE(reparatieKosten != 0 , "Bij getReparatieKosten van tram was de input 0");
+     */
 
     void setReparatieKosten(double rk);
 
     int getLijnNr() const;
-    // Getter van het lijnnummer
+    /**
+     * REQUIRE(lijnNr != 0 , "Bij getLijnNr van tram was de input 0");
+     */
 
     void setLijnNr(int nr);
-    // Setter van het lijnnummer
+    /**
+     * REQUIRE(lijnNr != 0, "Bij setLijnNr van station was de naam leeg");
+     * ENSURE(lijnNr = nr, "Bij setLijnNr van station was het nummer niet correct aangepast");
+     */
 
     Station *getBeginStation() const;
-    // Getter van het beginstation
+    /**
+     * REQUIRE(beginStation != 0 , "Bij beginStation van tram was de naam leeg");
+     */
 
     void setBeginStation(Station *beginStation);
     // Setter van het beginstation
@@ -46,13 +63,27 @@ public:
     // Constructor van de tramklasse
 
     Station *getStation() const;
-    // Getter van het station waar de tram is
+    /**
+     * REQUIRE(station != 0 , "Bij getStation van tram was de input 0");
+     */
 
     void setStation(Station *stat);
-    // Setter van het station waar de tram is
+    /**
+     * REQUIRE(stat != 0, "Bij setStation tram was de input 0");
+     * ENSURE(station = stat, "Bij setStation van tram is het niet correct uitgevoerd");
+     */
+
     int getVoertuigNummer() const;
+    /**
+     * REQUIRE(voertuigNummer != 0 , "Bij getVoertuigNummer van tram was de input 0");
+     */
+
 
     void setVoertuigNummer(int nr);
+    /**
+     * REQUIRE(voertuigNummer != 0, "Bij setVoertuigNummer van tram was de naam leeg");
+     * ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
+     */
 };
 
 

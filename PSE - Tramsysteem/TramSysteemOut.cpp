@@ -62,6 +62,7 @@ void TramSysteemOut::advanced_summary() {
 
     int lijnenSize = tramSysteem->getLijnen().size();
     int stationSize = tramSysteem->getStations().size();
+    int tramSize = tramSysteem->getTrams().size();
 
     for (int i = 0; i < lijnenSize; ++i){
         int huidigeLijn = tramSysteem->getLijnen()[i];
@@ -77,23 +78,33 @@ void TramSysteemOut::advanced_summary() {
         }
         stationsInLijn.push_back(beginStation);
         Station* huidigStation = beginStation->getVolgende();
-        int stations = 1;
+        int aantalStationsInLijn = 1;
         while (huidigStation != beginStation){
             stationsInLijn.push_back(huidigStation);
             huidigStation = huidigStation->getVolgende();
-            stations += 1;
+            aantalStationsInLijn += 1;
         }
         string lijn1 = "=";
         string lijn2 = " ";
-        for (int j = 0; j < stations; ++j){
-            Station* stat = stationsInLijn[j];
-            lijn1 += stat->getNaam() + "==";
+        for (int j = 0; j < aantalStationsInLijn; ++j){
+            Station* huidigStationInLijn = stationsInLijn[j];
+            lijn1 += huidigStationInLijn->getNaam() + "===";
             bool bevatStation = false;
-            for (int k = 0; k < stationSize; ++k){
-                if ()
+            for (int k = 0; k < tramSize; ++k){
+                if (tramSysteem->getTrams()[i]->getStation() == huidigStationInLijn){
+                    bevatStation = true;
+                }
+            }
+            if (bevatStation){
+                lijn2 += "T   ";
+            }
+            else{
+                lijn2 += "   ";
             }
         }
         lijn1 = lijn1.substr(0, lijn1.size() - 2);
+        lijn2 = lijn2.substr(0, lijn2.size() - 2);
+        outfile << lijn1 << endl << lijn2 << endl << endl;
     }
 }
 

@@ -17,11 +17,21 @@ class Station {
 
 public:
     const string &getType() const;
+    /**
+     * REQUIRE(!type.empty() , "Bij getType van station was de naam leeg");
+     */
 
     void setType(const string &tp);
+    /**
+     * REQUIRE(!tp.empty(), "Bij setType van station was de naam leeg");
+     * ENSURE(type == tp, "Bij setType van station was de naam niet correct aangepast");
+     */
+
 
     const string &getNaam() const;
-    // Getter van de naam van het statimomn
+    /**
+     * REQUIRE(naam.empty(), "Bij getNaam van station was de naam leeg");
+     */
 
     void setNaam(const string &nm);
     /**
@@ -30,26 +40,40 @@ public:
      */
 
     Station *getVolgende() const;
-    // Getter van het volgende station
+    /**
+     * REQUIRE(volgende != 0 , "Bij getVolgende van station was de input 0");
+     */
 
     void setVolgende(Station *vlgd);
-    // Setter van het volgende station
+    /**
+     * REQUIRE(vlgd != 0, "Bij setVolgende van station was de input 0");
+     * ENSURE(volgende == vlgd, "Bij setVolgende van station is het niet correct uitgevoerd");
+     */
 
     Station *getVorige() const;
-    // Getter van het vorige station
+    /**
+     * REQUIRE (vorige != 0,"Bij getVorige van station was de input 0");
+     */
 
     void setVorige(Station *vrg);
-    // Setter van het vorige station
+    /**
+     * REQUIRE(vrg != 0, "Bij setVorige van station was de input 0");
+     * ENSURE(vorige == vrg, "Bij setVorige van station is het niet correct uitgevoerd");
+     */
 
     int getSpoorNr() const;
-    // Getter van het spoornummer
+    /**
+     * REQUIRE(spoorNr !=0, "Bij getSpoorNr van station was de naam leeg");
+     */
 
     void setSpoorNr(int nr);
-    // Setter van het spoornummer
+    /**
+     * REQUIRE(spoorNr != 0, "Bij setSpoorNr van station was de naam leeg");
+     * ENSURE(spoorNr = nr, "Bij setSpoorNr van station was het nummer niet correct aangepast");
+     */
 
     Station();
     // constructor
-
 
     Station(const string &naam, Station *volgende, Station *vorige, int spoorNr);
 
