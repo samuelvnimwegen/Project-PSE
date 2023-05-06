@@ -1623,7 +1623,7 @@ private:
 	@endverbatim
 
 	It seems reasonable, but it is in fact two embedded while loops. The Child method is 
-	a linear walk to find the element, so this code would iterate much more than it needs 
+	a linear walk to findStation the element, so this code would iterate much more than it needs
 	to. Instead, prefer:
 
 	@verbatim

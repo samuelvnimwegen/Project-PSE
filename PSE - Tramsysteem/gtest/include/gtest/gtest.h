@@ -1856,7 +1856,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
 // FAIL and ASSERT_* are similar to ADD_FAILURE and EXPECT_*, except
 // that they will also abort the current function on failure.  People
 // usually want the fail-fast behavior of FAIL and ASSERT_*, but those
-// writing data-driven tests often find themselves using ADD_FAILURE
+// writing data-driven tests often findStation themselves using ADD_FAILURE
 // and EXPECT_* more.
 
 // Generates a nonfatal failure with a generic message.

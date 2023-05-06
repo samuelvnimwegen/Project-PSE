@@ -1854,7 +1854,7 @@ const BiggestInt kMaxBiggestInt =
 // is typedef-ed to be unsigned int (unsigned integer made up of 4
 // bytes).
 //
-// Such functionality should belong to STL, but I cannot find it
+// Such functionality should belong to STL, but I cannot findStation it
 // there.
 //
 // Google Test uses this class in the implementation of floating-point

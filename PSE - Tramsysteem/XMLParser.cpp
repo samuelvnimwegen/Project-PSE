@@ -11,6 +11,8 @@ int stringToInt(const string& s){
     return i;
 }
 
+
+
 TramSysteem* XMLParser::readFile(const string &name) {
     TramSysteem* systeem = new TramSysteem;
     //  XML document
@@ -21,147 +23,146 @@ TramSysteem* XMLParser::readFile(const string &name) {
     TiXmlElement* metronet = doc.FirstChildElement();
 
     // Root = eerste kind: hier STATION
-    TiXmlElement* root = metronet->FirstChildElement();
+    TiXmlElement* huidigMetronetObject = metronet->FirstChildElement();
     REQUIRE(metronet != 0, "Bij readFile in XMLParser.cpp was er geen metronet.");
+
+    // Eerste loop om alle stations en trams aan te maken;
     while (metronet != 0) {
-        while (root != 0) {
+        while (huidigMetronetObject != 0) {
             // x is gelijk aan de naam van dit kind.
-            string x = root->Value();
+            string x = huidigMetronetObject->Value();
+            REQUIRE((x == "STATION") or (x == "TRAM"), "Bij readFile van XMLParser was het type geen Station of Tram");
             // Als dit kind als naam STATION heeft: (hier het geval)
             if (x == "STATION") {
                 // Maak nieuw station aan:
                 Station *station;
-                // Ga alle kinderen van het kind 'STATION' af. Begin bij eerste kind (root->FirstChildElement()),daarna gwn
-                // telkens naar volgende kind (elem = elem->NextSiblingElement()), als kind gelijk is aan nullptr aka er is geen kind meer
-                // dan stop.
-                for (TiXmlElement *elem = root->FirstChildElement(); elem != 0;
-                     elem = elem->NextSiblingElement()) {
-                    int size = systeem->getStations().size();
-                    // elemName is bv. naam:
-                    // elem.value is bv. Antwerpen Centraal:
-                    string elemName = elem->Value();
-                    // Als elemName naam is: geef het nieuwe station de naam van de tekst hiervan.
-                    if (elemName == "naam") {
-                        string naam = elem->GetText();
-                        // Checkt of er al een station met deze naam in het systeem staat.
-                        bool gevonden = 0;
-                        for (int i = 0; i < size; ++i) {
-                            if (systeem->getStations()[i]->getNaam() == naam) {
-                                station = systeem->getStations()[i];
-                                gevonden = true;
-                            }
-                        }
-                        // Als het station nog niet eerder vermeld was, wordt deze gemaakt.
-                        if (!gevonden) {
-                            station = new Station();
-                            station->setNaam(elem->GetText());
-                            systeem->add_station(station);
-                        }
+                TiXmlElement *attribuut = huidigMetronetObject->FirstChildElement();
+                string attribuutNaam = attribuut->Value();
 
-                    } else if (elemName == "type") {
-                        station->setType(elem->GetText());
+                // Leest de naam in en slaat deze op.
+                REQUIRE(attribuutNaam == "naam", "Bij readFile van XMLParser heeft het ingelezen station geen naam");
+                string naam = attribuut->GetText();
 
-                    } else if (elemName == "volgende") {
-                        bool gevonden = 0;
-                        for (int i = 0; i < size; ++i) {
-                            if (systeem->getStations()[i]->getNaam() == elem->GetText()) {
-                                station->setVolgende(systeem->getStations()[i]);
-                                gevonden = true;
-                            }
-                        }
-                        // Als station nog niet eerder vermeld was, wordt deze toegevoegd.
-                        if (!gevonden) {
-                            Station *st = new Station();
-                            st->setNaam(elem->GetText());
-                            systeem->add_station(st);
-                            station->setVolgende(st);
-                        }
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
 
-                    } else if (elemName == "vorige") {
-                        bool gevonden = 0;
-                        for (int i = 0; i < size; ++i) {
-                            if (systeem->getStations()[i]->getNaam() == elem->GetText()) {
-                                station->setVorige(systeem->getStations()[i]);
-                                gevonden = true;
-                            }
-                        }
-                        // Als station nog niet eerder vermeld was, wordt deze toegevoegd.
-                        if (!gevonden) {
-                            Station *st = new Station();
-                            st->setNaam(elem->GetText());
-                            systeem->add_station(st);
-                            station->setVorige(st);
-                        }
-
-                    } else if (elemName == "spoor") {
-                        int nr = stringToInt(elem->GetText());
-                        station->setSpoorNr(nr);
-                    }
+                // Leest het type in en maakt het bijhorende klasse-element aan.
+                REQUIRE(attribuutNaam == "type", "Bij readFile van XMLParser heeft het ingelezen station geen type");
+                string type = attribuut->GetText();
+                REQUIRE((type == "Halte") or (type == "Metrostation"), "Bij readFile van XMLParser was het station-type niet herkend");
+                if (type == "Metrostation"){
+                    station = new Metrostation;
                 }
-            } else if (x == "TRAM") {
-                // Maak nieuwe tram aan:
-                Tram *tram = new Tram();
-
-                for (TiXmlElement *elem = root->FirstChildElement(); elem != 0;
-                     elem = elem->NextSiblingElement()) {
-                    int size = systeem->getStations().size();
-                    string elemName = elem->Value();
-
-                    if (elemName == "lijnNr") {
-                        int nr = stringToInt(elem->GetText());
-                        tram->setLijnNr(nr);
-                        if (!count(systeem->getLijnen().begin(), systeem->getLijnen().end(), nr)){
-                            systeem->addLijn(nr);
-                        }
-                    } else if (elemName == "snelheid") {
-                        tram->setSnelheid(stringToInt(elem->GetText()));
-                    } else if (elemName == "type") {
-                        string soort = elem->GetText();
-                        tram->setType(soort);
-                        if (soort == "PCC"){
-                            tram->setSnelheid(40);
-                        }
-                        else if (soort == "Albatros"){
-                            tram->setSnelheid(70);
-                        }
-                        else if (soort == "Stadslijner"){
-                            tram->setSnelheid(70);
-                        }
-                    } else if (elemName == "voertuigNr") {
-                        tram->setVoertuigNummer(stringToInt(elem->GetText()));
-                    } else if (elemName == "beginStation") {
-                        bool gevonden = 0;
-                        for (int i = 0; i < size; ++i) {
-                            if (systeem->getStations()[i]->getNaam() == elem->GetText()) {
-                                tram->setBeginStation(systeem->getStations()[i]);
-                                gevonden = true;
-                            }
-                        }
-                        // Als station nog niet eerder vermeld was, wordt deze toegevoegd.
-                        if (!gevonden) {
-                            Station *st = new Station();
-                            st->setNaam(elem->GetText());
-                            systeem->add_station(st);
-                            tram->setBeginStation(st);
-                        }
-
-                    } else {
-                    }
+                else {
+                    station = new Halte;
                 }
-                systeem->addTram(tram);
-            } else {
+
+                // Naam geven en station pushen.
+                station->setNaam(naam);
+                systeem->add_station(station);
+
             }
-            root = root->NextSiblingElement();
+            else if (x == "TRAM") {
+                // Maak nieuwe tram aan:
+                Tram *tram;
+                TiXmlElement *attribuut = huidigMetronetObject->FirstChildElement();
+                string attribuutNaam = attribuut->Value();
+
+                // Leest het lijnnummer in en slaat deze op.
+                REQUIRE(attribuutNaam == "lijnNr", "Bij readFile van XMLParser heeft de ingelezen tram geen lijn");
+                string lijnString = attribuut->GetText();
+                int lijn = stringToInt(lijnString);
+
+
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
+
+                // Leest het type in en maakt het bijhorende klasse-element aan.
+                REQUIRE(attribuutNaam == "type", "Bij readFile van XMLParser heeft het ingelezen station geen type");
+                string type = attribuut->GetText();
+                REQUIRE((type == "Stadslijner") or (type == "PCC") or (type == "Albatros"), "Bij readFile van XMLParser was het station-type niet herkend");
+                if (type == "Stadslijner"){
+                    tram = new Stadslijner;
+                }
+                else if (type == "PCC") {
+                    tram = new PCC;
+                }
+                else {
+                    tram = new Albatros;
+                }
+
+                // Lijnnummer ingeven
+                tram->setLijnNr(lijn);
+
+                // Als lijn nog niet in systeem zit, er in zetten.
+                if (!count(systeem->getLijnen().begin(), systeem->getLijnen().end(), lijn)){
+                    systeem->addLijn(lijn);
+                }
+
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
+
+                // Voertuignummer ingeven
+                REQUIRE(attribuutNaam == "voertuigNr", "Bij readFile van XMLParser had een tram geen voertuignummer.");
+                tram->setVoertuigNummer(stringToInt(attribuut->GetText()));
+
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
+
+                // Beginstation van tram ingeven.
+                REQUIRE(attribuutNaam == "beginStation", "Bij readFile van XMLParser had een tram geen beginstation.");
+                tram->setBeginStation(findStation(attribuut->GetText(), systeem->getStations()));
+
+                // Tram in systeem zetten
+                systeem->addTram(tram);
+            }
+            huidigMetronetObject = huidigMetronetObject->NextSiblingElement();
         }
         metronet = metronet->NextSiblingElement();
     }
+
+    // Tweede loop om alle stations te verbinden.
+    metronet = doc.FirstChildElement();
+    huidigMetronetObject = metronet->FirstChildElement();
+    while (metronet != 0){
+        while (huidigMetronetObject != 0){
+            string x = huidigMetronetObject->Value();
+            if (x == "STATION"){
+                // Station waarover het gaat opslaan
+                TiXmlElement * attribuut = huidigMetronetObject->FirstChildElement();
+                Station* stationHuidig = findStation(attribuut->GetText(), systeem->getStations());
+
+                // Naam en type hebben we al gedaan vorige loop
+                attribuut = attribuut->NextSiblingElement();
+                attribuut = attribuut->NextSiblingElement();
+
+                // Volgende station zoeken en ingeven.
+                string naamAttribuut = attribuut->Value();
+                REQUIRE(naamAttribuut == "volgende", "Bij readFile van XMLParser had een station geen volgende station");
+                stationHuidig->setVolgende(findStation(attribuut->GetText() ,systeem->getStations()));
+
+                attribuut = attribuut->NextSiblingElement();
+
+                // Vorige station zoeken en ingeven.
+                naamAttribuut = attribuut->Value();
+                REQUIRE(naamAttribuut == "vorige", "Bij readFile van XMLParser had een station geen vorig station");
+                stationHuidig->setVorige(findStation(attribuut->GetText() ,systeem->getStations()));
+
+                attribuut = attribuut->NextSiblingElement();
+
+                // Spoornummer ingeven.
+                naamAttribuut = attribuut->Value();
+                REQUIRE(naamAttribuut == "spoor", "Bij readFile van XMLParser had een station geen spoornummer");
+                stationHuidig->setSpoorNr(stringToInt(attribuut->GetText()));
+            }
+            huidigMetronetObject = huidigMetronetObject->NextSiblingElement();
+        }
+        metronet = metronet->NextSiblingElement();
+    }
+
     ENSURE(!systeem->getTrams().empty(), "Bij readFile zijn er geen trams aangemaakt in het systeem.");
     ENSURE(!systeem->getStations().empty(), "Bij readFile zijn er geen stations aangemaakt in het systeem.");
     ENSURE(systeem->isConsistent(), "Bij readFile is het systeem niet consistent.");
-
-if (systeem->getTrams().empty() or systeem->getStations().empty()) {
-    return 0;
-}
     tramsystemen.push_back(systeem);
     return systeem;
 }

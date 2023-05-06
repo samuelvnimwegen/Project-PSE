@@ -23,6 +23,7 @@
 	<TRAM>
 		<lijnNr>15</lijnNr>
 		<type>Stadslijner</type>
+		<voertuigNr>1</voertuigNr>
 		<beginStation>C</beginStation>
 	</TRAM>
 </METRONET>

@@ -983,7 +983,7 @@ void TiXmlElement::StreamIn (std::istream * in, TIXML_STRING * tag)
 				*tag += (char) c;
 				in->get();
 
-				// Early out if we find the CDATA id.
+				// Early out if we findStation the CDATA id.
 				if ( c == '[' && tag->size() >= 9 )
 				{
 					size_t len = tag->size();
@@ -1114,7 +1114,7 @@ const char* TiXmlElement::Parse( const char* p, TiXmlParsingData* data, TiXmlEnc
 				return 0;
 			}
 
-			// We should find the end tag now
+			// We should findStation the end tag now
 			// note that:
 			// </foo > and
 			// </foo> 
@@ -1572,7 +1572,7 @@ void TiXmlDeclaration::StreamIn( std::istream * in, TIXML_STRING * tag )
 const char* TiXmlDeclaration::Parse( const char* p, TiXmlParsingData* data, TiXmlEncoding _encoding )
 {
 	p = SkipWhiteSpace( p, _encoding );
-	// Find the beginning, find the end, and look for
+	// Find the beginning, findStation the end, and look for
 	// the stuff in-between.
 	TiXmlDocument* document = GetDocument();
 	if ( !p || !*p || !StringEqual( p, "<?xml", true, _encoding ) )

@@ -12,6 +12,11 @@
 #include "DesignByContract.h"
 #include "TramSysteemOut.h"
 #include "algorithm"
+#include "PCC.h"
+#include "Albatros.h"
+#include "Stadslijner.h"
+#include "Halte.h"
+#include "Metrostation.h"
 
 // Bevat het volledige tramsysteem en bevat alle andere classes.
 class TramSysteem {
@@ -88,5 +93,6 @@ public:
 
 };
 
+Station* findStation(const string &naam, const vector<Station*> &stations);
 
 #endif //TREIN_TRAMSYSTEEM_H

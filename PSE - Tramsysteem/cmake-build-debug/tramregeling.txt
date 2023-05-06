@@ -1,5 +1,9 @@
 ----- Tramregeling ----- 
 
+Lijn 15:
+=A===B===C=
+         T 
+
 --== STATIONS ==--
 = Station A =
 * Spoor 15:
@@ -17,7 +21,7 @@
 -> Station A
 
 --== TRAMS ==--
-Tram 15 nr 0
+Tram 15 nr 1
 	type: Stadslijner
 	snelheid: 70
 	huidig station: C

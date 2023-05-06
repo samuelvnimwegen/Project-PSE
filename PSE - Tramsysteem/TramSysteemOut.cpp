@@ -26,10 +26,8 @@ void TramSysteemOut::tram_summary() {
     for (int i = 0; i < size; ++i){
         Tram* tram = tramSysteem->getTrams()[i];
         outfile << "Tram "<<tram->getLijnNr() << " nr " << tram->getVoertuigNummer() << endl ;
-        outfile << "\t" << "type: " << tram->getType() << endl;
-        if (tram->getSnelheid() > 0){
-            outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
-        }
+        outfile << "\t" << "type: " << tram->getTypeString() << endl;
+        outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
         outfile << "\t" << "huidig station: " << tram->getStation()->getNaam() << endl;
         outfile << "\t" << "reparatiekosten: " << tram->getReparatieKosten() << " euro" << endl << endl;
     }
@@ -65,6 +63,7 @@ void TramSysteemOut::advanced_summary() {
     int tramSize = tramSysteem->getTrams().size();
 
     for (int i = 0; i < lijnenSize; ++i){
+        outfile << "Lijn " << tramSysteem->getLijnen()[i] << ":" << endl;
         int huidigeLijn = tramSysteem->getLijnen()[i];
 
         vector<Station*> stationsInLijn;
@@ -99,7 +98,7 @@ void TramSysteemOut::advanced_summary() {
                 lijn2 += "T   ";
             }
             else{
-                lijn2 += "   ";
+                lijn2 += "    ";
             }
         }
         lijn1 = lijn1.substr(0, lijn1.size() - 2);

@@ -177,3 +177,16 @@ void TramSysteem::addLijn(int lijn) {
 }
 
 
+Station *findStation(const string &naam, const vector<Station *> &stations) {
+    REQUIRE(!stations.empty(), "Bij hulpfunctie findStation van tramSysteem bevatte de vector geen stations");
+    int size = stations.size();
+    Station* returnElement = 0;
+    for (int i = 0; i < size; ++i){
+        if (stations[i]->getNaam() == naam){
+            returnElement = stations[i];
+        }
+    }
+    ENSURE(returnElement != 0, "Bij hulpfunctie findStation van tramSysteem bevatte de vector niet het gevraagde station");
+    return returnElement;
+}
+

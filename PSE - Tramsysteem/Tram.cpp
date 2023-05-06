@@ -23,13 +23,13 @@ Station *Tram::getBeginStation() const {
 }
 
 void Tram::setBeginStation(Station *stat) {
-    REQUIRE();
+    REQUIRE(stat != 0, "bij setBeginStatino van Tram was er geen geldige pointer gegeven.");
     Tram::beginStation = stat;
     // Als de tram nog niet bij een station staat, wordt deze op het beginstation gezet.
     if (Tram::station == 0){
         Tram::station = stat;
     }
-    ENSURE();
+    ENSURE(station == stat, "Bij setBeginStation van Tram de aanpassing niet correct doorgevoerd.");
 }
 
 double Tram::getSnelheid() const {
@@ -59,18 +59,18 @@ void Tram::setStation(Station *stat) {
 }
 
 int Tram::getVoertuigNummer() const {
-    REQUIRE(voertuigNummer != 0 , "Bij getVoertuigNummer van tram was de input 0");
+    REQUIRE(voertuigNummer >= 0 , "Bij getVoertuigNummer van tram was de input 0");
     return voertuigNummer;
 }
 
 void Tram::setVoertuigNummer(int nr) {
-    REQUIRE(voertuigNummer != 0, "Bij setVoertuigNummer van tram was de naam leeg");
+    REQUIRE(nr > 0, "Bij setVoertuigNummer het nummer <= 0");
     Tram::voertuigNummer = nr;
     ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
 }
 
 double Tram::getReparatieKosten() const {
-    REQUIRE(reparatieKosten != 0 , "Bij getReparatieKosten van tram was de input 0");
+    REQUIRE(reparatieKosten >= 0 , "Bij getReparatieKosten van tram was de input 0");
     return reparatieKosten;
 }
 
@@ -78,14 +78,14 @@ void Tram::setReparatieKosten(double rk) {
     Tram::reparatieKosten = rk;
 }
 
-const string &Tram::getType() const {
-    REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
-    return type;
+const string &Tram::getTypeString() const {
+    REQUIRE(!typeString.empty() , "Bij getType van tram was de input 0");
+    return typeString;
 }
 
-void Tram::setType(const string &tp) {
-    REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
-    Tram::type = tp;
-    ENSURE(type == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
-
+void Tram::setTypeString(const string &tp) {
+    REQUIRE(!tp.empty() , "Bij getType van tram was de input 0");
+    typeString = tp;
+    ENSURE(typeString == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
 }
+

@@ -58,7 +58,7 @@ class TiXmlString
 	// The size type used
   	typedef size_t size_type;
 
-	// Error value for find primitive
+	// Error value for findStation primitive
 	static const size_type npos; // = -1;
 
 
@@ -157,13 +157,13 @@ class TiXmlString
 		return rep_->str[ index ];
 	}
 
-	// find a char in a string. Return TiXmlString::npos if not found
+	// findStation a char in a string. Return TiXmlString::npos if not found
 	size_type find (char lookup) const
 	{
 		return find(lookup, 0);
 	}
 
-	// find a char in a string from an offset. Return TiXmlString::npos if not found
+	// findStation a char in a string from an offset. Return TiXmlString::npos if not found
 	size_type find (char tofind, size_type offset) const
 	{
 		if (offset >= length()) return npos;

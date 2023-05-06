@@ -16,7 +16,7 @@ Station::Station() {
 }
 
 const string &Station::getNaam() const {
-    REQUIRE(naam.empty(), "Bij getNaam van station was de naam leeg");
+    REQUIRE(!naam.empty(), "Bij getNaam van station was de naam leeg");
     return naam;
 }
 

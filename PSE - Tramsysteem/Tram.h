@@ -12,18 +12,18 @@ class Tram {
     double snelheid;
     Station* station;
     int voertuigNummer;
-    string type;
     double reparatieKosten;
+    string typeString;
 public:
-    const string &getType() const;
+    const string &getTypeString() const;
     /**
      * REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
      */
 
-    void setType(const string &tp);
+    void setTypeString(const string &tp);
     /**
-     * REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
-     * ENSURE(type == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
+     * REQUIRE(!tp.empty() , "Bij getType van tram was de input 0");
+     * ENSURE(typeString == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
      */
 
 
@@ -81,7 +81,7 @@ public:
 
     void setVoertuigNummer(int nr);
     /**
-     * REQUIRE(voertuigNummer != 0, "Bij setVoertuigNummer van tram was de naam leeg");
+     * REQUIRE(voertuigNummer <= 0, "Bij setVoertuigNummer het nummer <= 0");
      * ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
      */
 };

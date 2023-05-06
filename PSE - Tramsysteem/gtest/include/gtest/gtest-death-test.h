@@ -105,7 +105,7 @@ GTEST_API_ bool InDeathTestChild();
 //   On other platforms (e.g. Windows), we only support a simple regex
 //   syntax implemented as part of Google Test.  This limited
 //   implementation should be enough most of the time when writing
-//   death tests; though it lacks many features you can find in PCRE
+//   death tests; though it lacks many features you can findStation in PCRE
 //   or POSIX extended regex syntax.  For example, we don't support
 //   union ("x|y"), grouping ("(xy)"), brackets ("[xy]"), and
 //   repetition count ("x{5,7}"), among others.
