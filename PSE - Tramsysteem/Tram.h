@@ -12,7 +12,6 @@ class Tram {
     double snelheid;
     Station* station;
     int voertuigNummer;
-    double reparatieKosten;
     string typeString;
 public:
     virtual ~Tram();
@@ -29,12 +28,6 @@ public:
      */
 
 
-    double getReparatieKosten() const;
-    /**
-     * REQUIRE(reparatieKosten != 0 , "Bij getReparatieKosten van tram was de input 0");
-     */
-
-    void setReparatieKosten(double rk);
 
     int getLijnNr() const;
     /**

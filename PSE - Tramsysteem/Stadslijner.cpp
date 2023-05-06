@@ -11,5 +11,5 @@ Stadslijner::Stadslijner() {
 
 bool Stadslijner::kanNaar(Station * stat) {
     REQUIRE(stat != 0, "Bij kanNaar van Stadslijner was de input 0.");
-    return (stat->getTypeString() == "metrostation");
+    return (stat->getTypeString() == "Metrostation");
 }

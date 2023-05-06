@@ -122,6 +122,37 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 REQUIRE(attribuutNaam == "beginStation", "Bij readFile van XMLParser had een tram geen beginstation.");
                 tram->setBeginStation(findStation(attribuut->GetText(), metroSysteem->getStations()));
 
+
+                // Als het een PCC-tram is: Nog 3 attributen inlezen.
+                if (tram->getTypeString() == "PCC"){
+                    PCC* huidigeTram = dynamic_cast<PCC *>(tram);
+                    attribuut = attribuut->NextSiblingElement();
+                    attribuutNaam = attribuut->Value();
+
+
+                    // Aantal defecten:
+                    REQUIRE(attribuutNaam == "aantalDefecten", "Bij readFile van XMLParser had een PCC geen aantal defecten");
+                    string aantalDefecten = attribuut->GetText();
+                    huidigeTram->setAantalDefecten(stringToInt(aantalDefecten));
+
+                    attribuut = attribuut->NextSiblingElement();
+                    attribuutNaam = attribuut->Value();
+
+                    // Reparatie tijd:
+                    REQUIRE(attribuutNaam == "reparatieTijd", "Bij readFile van XMLParser had een PCC geen reparatieTijd");
+                    string reparatieTijd = attribuut->GetText();
+                    huidigeTram->setReparatieTijd(stringToInt(reparatieTijd));
+
+                    attribuut = attribuut->NextSiblingElement();
+                    attribuutNaam = attribuut->Value();
+
+                    // Reparatie kost:
+                    REQUIRE(attribuutNaam == "reparatieKost", "Bij readFile van XMLParser had een PCC geen reparatieKost");
+                    string reparatieKost = attribuut->GetText();
+                    huidigeTram->setReparatieKost(stringToInt(reparatieKost));
+                }
+
+
                 // Tram in metroSysteem zetten
                 metroSysteem->addTram(tram);
             }

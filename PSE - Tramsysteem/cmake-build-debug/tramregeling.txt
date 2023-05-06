@@ -1,6 +1,6 @@
 ----- Tramregeling ----- 
 
-Lijn 0x8217b0:
+Lijn 0x7817b0:
 =A===B===C=
          T 
 
@@ -25,11 +25,11 @@ Tram 15 nr 1
 	type: PCC
 	snelheid: 40
 	huidig station: C
-	reparatiekosten: 0 euro
+	reparatiekosten: 200 euro
 
 Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
 
-Tram 1 (PCC) reed van Metrostation A naar Halte B via lijn 15.
+Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
 
-Tram 1 (PCC) reed van Halte B naar Metrostation C via lijn 15.
+Tram 1 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
 

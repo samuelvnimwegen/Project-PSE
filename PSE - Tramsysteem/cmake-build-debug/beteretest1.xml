@@ -8,7 +8,7 @@
 	</STATION>
 	<STATION>
 		<naam>B</naam>
-		<type>Halte</type>
+		<type>Metrostation</type>
 		<volgende>C</volgende>
 		<vorige>A</vorige>
 		<spoor>15</spoor>
@@ -25,5 +25,8 @@
 		<type>PCC</type>
 		<voertuigNr>1</voertuigNr>
 		<beginStation>C</beginStation>
+		<aantalDefecten>2</aantalDefecten>
+		<reparatieTijd>2</reparatieTijd>
+		<reparatieKost>200</reparatieKost>
 	</TRAM>
 </METRONET>

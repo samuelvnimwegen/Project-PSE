@@ -69,15 +69,6 @@ void Tram::setVoertuigNummer(int nr) {
     ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
 }
 
-double Tram::getReparatieKosten() const {
-    REQUIRE(reparatieKosten >= 0 , "Bij getReparatieKosten van tram was de input 0");
-    return reparatieKosten;
-}
-
-void Tram::setReparatieKosten(double rk) {
-    Tram::reparatieKosten = rk;
-}
-
 const string &Tram::getTypeString() const {
     REQUIRE(!typeString.empty() , "Bij getType van tram was de input 0");
     return typeString;

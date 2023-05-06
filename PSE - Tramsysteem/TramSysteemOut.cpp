@@ -29,7 +29,12 @@ void TramSysteemOut::tram_summary() {
         outfile << "\t" << "type: " << tram->getTypeString() << endl;
         outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
         outfile << "\t" << "huidig station: " << tram->getStation()->getNaam() << endl;
-        outfile << "\t" << "reparatiekosten: " << tram->getReparatieKosten() << " euro" << endl << endl;
+
+        if (tram->getTypeString() == "PCC"){
+            PCC* pccTram = dynamic_cast<PCC *>(tram);
+            outfile << "\t" << "reparatiekosten: " << pccTram->getReparatieKost() << " euro" << endl;
+        }
+        outfile << endl;
     }
 }
 
