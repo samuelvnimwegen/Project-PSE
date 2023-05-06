@@ -89,3 +89,7 @@ void Tram::setTypeString(const string &tp) {
     ENSURE(typeString == tp ,"Bij getType van tram is het niet correct uitgevoerd" );
 }
 
+Tram::~Tram() {
+
+}
+

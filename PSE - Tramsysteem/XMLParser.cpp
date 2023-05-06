@@ -14,7 +14,7 @@ int stringToInt(const string& s){
 
 
 TramSysteem* XMLParser::readFile(const string &name) {
-    TramSysteem* systeem = new TramSysteem;
+    TramSysteem* metroSysteem = new TramSysteem;
     //  XML document
     TiXmlDocument doc;
     REQUIRE(doc.LoadFile(name.c_str()), "Bij readFile in XML_Parser.cc is de file niet correct geladen.");
@@ -59,7 +59,7 @@ TramSysteem* XMLParser::readFile(const string &name) {
 
                 // Naam geven en station pushen.
                 station->setNaam(naam);
-                systeem->add_station(station);
+                metroSysteem->add_station(station);
 
             }
             else if (x == "TRAM") {
@@ -69,9 +69,9 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 string attribuutNaam = attribuut->Value();
 
                 // Leest het lijnnummer in en slaat deze op.
-                REQUIRE(attribuutNaam == "lijnNr", "Bij readFile van XMLParser heeft de ingelezen tram geen lijn");
+                REQUIRE(attribuutNaam == "lijnNr", "Bij readFile van XMLParser heeft de ingelezen tram geen lijnNr");
                 string lijnString = attribuut->GetText();
-                int lijn = stringToInt(lijnString);
+                int lijnNr = stringToInt(lijnString);
 
 
                 attribuut = attribuut->NextSiblingElement();
@@ -92,12 +92,21 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 }
 
                 // Lijnnummer ingeven
-                tram->setLijnNr(lijn);
+                tram->setLijnNr(lijnNr);
 
-                // Als lijn nog niet in systeem zit, er in zetten.
-                if (!count(systeem->getLijnen().begin(), systeem->getLijnen().end(), lijn)){
-                    systeem->addLijn(lijn);
+                // Als lijnNr nog niet in metroSysteem zit, er in zetten.
+                Lijn* huidigeLijn;
+                if (metroSysteem->findLijn(lijnNr) == 0){
+                    huidigeLijn = new Lijn(lijnNr);
+                    metroSysteem->addLijn(huidigeLijn);
                 }
+                // Anders de lijn zoeken en opslaan.
+                else{
+                    huidigeLijn = metroSysteem->findLijn(lijnNr);
+                }
+
+                // Tram aan lijn toevoegen:
+                huidigeLijn->addTram(tram);
 
                 attribuut = attribuut->NextSiblingElement();
                 attribuutNaam = attribuut->Value();
@@ -111,10 +120,10 @@ TramSysteem* XMLParser::readFile(const string &name) {
 
                 // Beginstation van tram ingeven.
                 REQUIRE(attribuutNaam == "beginStation", "Bij readFile van XMLParser had een tram geen beginstation.");
-                tram->setBeginStation(findStation(attribuut->GetText(), systeem->getStations()));
+                tram->setBeginStation(findStation(attribuut->GetText(), metroSysteem->getStations()));
 
-                // Tram in systeem zetten
-                systeem->addTram(tram);
+                // Tram in metroSysteem zetten
+                metroSysteem->addTram(tram);
             }
             huidigMetronetObject = huidigMetronetObject->NextSiblingElement();
         }
@@ -130,7 +139,7 @@ TramSysteem* XMLParser::readFile(const string &name) {
             if (x == "STATION"){
                 // Station waarover het gaat opslaan
                 TiXmlElement * attribuut = huidigMetronetObject->FirstChildElement();
-                Station* stationHuidig = findStation(attribuut->GetText(), systeem->getStations());
+                Station* stationHuidig = findStation(attribuut->GetText(), metroSysteem->getStations());
 
                 // Naam en type hebben we al gedaan vorige loop
                 attribuut = attribuut->NextSiblingElement();
@@ -139,14 +148,14 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 // Volgende station zoeken en ingeven.
                 string naamAttribuut = attribuut->Value();
                 REQUIRE(naamAttribuut == "volgende", "Bij readFile van XMLParser had een station geen volgende station");
-                stationHuidig->setVolgende(findStation(attribuut->GetText() ,systeem->getStations()));
+                stationHuidig->setVolgende(findStation(attribuut->GetText() , metroSysteem->getStations()));
 
                 attribuut = attribuut->NextSiblingElement();
 
                 // Vorige station zoeken en ingeven.
                 naamAttribuut = attribuut->Value();
                 REQUIRE(naamAttribuut == "vorige", "Bij readFile van XMLParser had een station geen vorig station");
-                stationHuidig->setVorige(findStation(attribuut->GetText() ,systeem->getStations()));
+                stationHuidig->setVorige(findStation(attribuut->GetText() , metroSysteem->getStations()));
 
                 attribuut = attribuut->NextSiblingElement();
 
@@ -160,9 +169,28 @@ TramSysteem* XMLParser::readFile(const string &name) {
         metronet = metronet->NextSiblingElement();
     }
 
-    ENSURE(!systeem->getTrams().empty(), "Bij readFile zijn er geen trams aangemaakt in het systeem.");
-    ENSURE(!systeem->getStations().empty(), "Bij readFile zijn er geen stations aangemaakt in het systeem.");
-    ENSURE(systeem->isConsistent(), "Bij readFile is het systeem niet consistent.");
-    tramsystemen.push_back(systeem);
-    return systeem;
+    // Alle trams en Stations aan de juiste lijnen toevoegen:
+    int lijnenSize = metroSysteem->getLijnen().size();
+    int stationSize = metroSysteem->getStations().size();
+
+    // Eerst alle stations
+    for (int i = 0; i < lijnenSize; ++i){
+        Lijn* huidigeLijn = metroSysteem->getLijnen()[i];
+        int lijnNr = huidigeLijn->getLijnnummer();
+
+        // Alle stations afgaan:
+        for (int j = 0; j < stationSize; ++j){
+            Station* huidigStation = metroSysteem->getStations()[j];
+            if (huidigStation->getSpoorNr() == lijnNr){
+                huidigeLijn->addStation(huidigStation);
+            }
+        }
+    }
+
+
+    ENSURE(!metroSysteem->getTrams().empty(), "Bij readFile zijn er geen trams aangemaakt in het metroSysteem.");
+    ENSURE(!metroSysteem->getStations().empty(), "Bij readFile zijn er geen stations aangemaakt in het metroSysteem.");
+    ENSURE(metroSysteem->isConsistent(), "Bij readFile is het metroSysteem niet consistent.");
+    tramsystemen.push_back(metroSysteem);
+    return metroSysteem;
 }

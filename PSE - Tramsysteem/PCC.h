@@ -10,6 +10,11 @@
 class PCC: public Tram{
 public:
     PCC();
+
+    bool kanNaar(Station*);
+    /**
+     * REQUIRE(stat != 0, "Bij kanNaar van PCC was de input 0.");
+     */
 };
 
 

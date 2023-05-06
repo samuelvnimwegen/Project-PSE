@@ -22,7 +22,7 @@
 	</STATION>
 	<TRAM>
 		<lijnNr>15</lijnNr>
-		<type>Stadslijner</type>
+		<type>PCC</type>
 		<voertuigNr>1</voertuigNr>
 		<beginStation>C</beginStation>
 	</TRAM>

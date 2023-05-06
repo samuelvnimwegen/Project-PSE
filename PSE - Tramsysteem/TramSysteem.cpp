@@ -136,6 +136,7 @@ bool TramSysteem::isConsistent() {
             }
         }
     }
+    checkLijnen();
     return true;
 }
 
@@ -155,18 +156,6 @@ bool TramSysteem::properlyInitialized() {
     return initCheck == this;
 }
 
-const vector<int> &TramSysteem::getLijnen() const {
-    return lijnen;
-}
-
-void TramSysteem::setLijnen(const vector<int> &ln) {
-    TramSysteem::lijnen = ln;
-}
-
-void TramSysteem::addLijn(int lijn) {
-    lijnen.push_back(lijn);
-}
-
 TramSysteemOut *TramSysteem::getOutput() const {
     REQUIRE(output != 0, "Bij getOutput van TramSysteemOut was er geen output gemaakt");
     return output;
@@ -176,6 +165,66 @@ void TramSysteem::setOutput(TramSysteemOut *out) {
     REQUIRE(out != 0, "Bij setOutput van TramSysteemOut was geen geldige output opgegeven");
     TramSysteem::output = out;
     ENSURE(output == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
+}
+
+vector<Station *> TramSysteem::getStationsVanLijn(const int &spoorNummer) {
+    REQUIRE(spoorNummer > 0, "Bij getStationsVanLijn van TramSysteem was het spoornummer <= 0");
+    vector<Station*> lijnStations;
+    int size = stations.size();
+    for (int i = 0; i < size; ++i){
+        if (stations[i]->getSpoorNr() == spoorNummer){
+            lijnStations.push_back(stations[i]);
+        }
+    }
+    ENSURE(!lijnStations.empty(), "Bij getStationsVanLijn van TramSysteem waren er geen stations met het spoornummer");
+    return lijnStations;
+}
+
+void TramSysteem::checkLijnen() {
+    REQUIRE(!lijnen.empty(), "Bij checkLijnen van TramSysteem waren er geen lijnen om te bekijken");
+    int lijnenSize = lijnen.size();
+    bool tramKanOpLijn = true;
+    for (int i = 0; i < lijnenSize; ++i){
+        Lijn* huidigeLijn = lijnen[i];
+        int stationSize = huidigeLijn->getStations().size();
+        int tramsSize = huidigeLijn->getTrams().size();
+        for (int j = 0; j < tramsSize; ++j){
+            for (int k = 0; k < stationSize; ++k){
+                if (!trams[j]->kanNaar(stations[k])){
+                    tramKanOpLijn = false;
+                }
+            }
+        }
+    }
+    ENSURE(tramKanOpLijn, "Bij checkLijnen van TramSysteem is er een tram die niet naar elk station op de lijn kan");
+
+}
+
+const vector<Lijn *> &TramSysteem::getLijnen() const {
+    REQUIRE(!lijnen.empty(), "Bij getLijnen van TramSysteem was de vector leeg.");
+    return lijnen;
+}
+
+void TramSysteem::setLijnen(const vector<Lijn *> &lines) {
+    REQUIRE(!lines.empty(), "Bij setLijnen van TramSysteem was de vector leeg.");
+    TramSysteem::lijnen = lines;
+    ENSURE(lijnen == lines, "Bij setLijnen van TramSysteem is de operatie fout uitgevoerd.");
+}
+
+void TramSysteem::addLijn(Lijn *ln) {
+    REQUIRE(ln != 0, "Bij addLijn van TramSysteem was de lijn == 0");
+    lijnen.push_back(ln);
+}
+
+Lijn *TramSysteem::findLijn(int ln) {
+    REQUIRE(ln > 0, "Bij findLijn van TramSysteem was het lijnNr <= 0");
+    int lijnenSize = lijnen.size();
+    for (int i = 0; i < lijnenSize; ++i){
+        if (lijnen[i]->getLijnnummer() == ln){
+            return lijnen[i];
+        }
+    }
+    return 0;
 }
 
 

@@ -1,6 +1,6 @@
 ----- Tramregeling ----- 
 
-Lijn 15:
+Lijn 0x8217b0:
 =A===B===C=
          T 
 
@@ -22,14 +22,14 @@ Lijn 15:
 
 --== TRAMS ==--
 Tram 15 nr 1
-	type: Stadslijner
-	snelheid: 70
+	type: PCC
+	snelheid: 40
 	huidig station: C
 	reparatiekosten: 0 euro
 
-Tram 1 (Stadslijner) reed van Metrostation C naar Metrostation A via lijn 15.
+Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
 
-Tram 1 (Stadslijner) reed van Metrostation A naar Halte B via lijn 15.
+Tram 1 (PCC) reed van Metrostation A naar Halte B via lijn 15.
 
-Tram 1 (Stadslijner) reed van Halte B naar Metrostation C via lijn 15.
+Tram 1 (PCC) reed van Halte B naar Metrostation C via lijn 15.
 

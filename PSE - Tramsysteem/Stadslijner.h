@@ -10,6 +10,11 @@
 class Stadslijner: public Tram{
 public:
     Stadslijner();
+
+    bool kanNaar(Station *);
+    /**
+     * REQUIRE(stat != 0, "Bij kanNaar van Stadslijner was de input 0.");
+     */
 };
 
 

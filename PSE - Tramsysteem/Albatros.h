@@ -10,6 +10,10 @@
 class Albatros: public Tram{
 public:
     Albatros();
+    bool kanNaar(Station * stat);
+    /**
+     * REQUIRE(stat != 0, "Bij kanNaar van Albatros was de input 0.");
+     */
 };
 
 

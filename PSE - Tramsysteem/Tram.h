@@ -15,6 +15,8 @@ class Tram {
     double reparatieKosten;
     string typeString;
 public:
+    virtual ~Tram();
+
     const string &getTypeString() const;
     /**
      * REQUIRE(!type.empty() , "Bij getType van tram was de input 0");
@@ -84,6 +86,8 @@ public:
      * REQUIRE(voertuigNummer <= 0, "Bij setVoertuigNummer het nummer <= 0");
      * ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
      */
+
+    virtual bool kanNaar(Station*) = 0;
 };
 
 

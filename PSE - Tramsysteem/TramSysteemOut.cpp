@@ -64,13 +64,13 @@ void TramSysteemOut::advanced_summary() {
 
     for (int i = 0; i < lijnenSize; ++i){
         outfile << "Lijn " << tramSysteem->getLijnen()[i] << ":" << endl;
-        int huidigeLijn = tramSysteem->getLijnen()[i];
+        Lijn* huidigeLijn = tramSysteem->getLijnen()[i];
 
         vector<Station*> stationsInLijn;
         Station* beginStation = 0;
         for (int j = 0; j < stationSize; ++j){
             Station* huidigStation = tramSysteem->getStations()[j];
-            if (huidigStation->getSpoorNr() == huidigeLijn){
+            if (huidigStation->getSpoorNr() == huidigeLijn->getLijnnummer()){
                 beginStation = huidigStation;
                 j = stationSize;
             }
