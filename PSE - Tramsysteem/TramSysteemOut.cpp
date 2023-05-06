@@ -107,3 +107,12 @@ void TramSysteemOut::advanced_summary() {
     }
 }
 
+void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
+    ofstream outfile;
+    outfile.open(filename.c_str(), ios_base::app);
+
+    outfile << "Tram " << tram->getVoertuigNummer() << " (" << tram->getTypeString() << ") reed van "
+    << begin->getTypeString() <<" " << begin->getNaam() << " naar " << eind->getTypeString() << " "
+    << eind->getNaam() << " via lijn " << tram->getLijnNr() << "."<< endl << endl;
+}
+

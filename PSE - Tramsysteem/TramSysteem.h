@@ -18,13 +18,26 @@
 #include "Halte.h"
 #include "Metrostation.h"
 
+
 // Bevat het volledige tramsysteem en bevat alle andere classes.
 class TramSysteem {
     TramSysteem* initCheck;
     vector<Station*> stations;
     vector<Tram*> trams;
     vector<int> lijnen;
+    TramSysteemOut* output;
 public:
+    TramSysteemOut *getOutput() const;
+    /**
+     * REQUIRE(output != 0, "Bij getOutput van TramSysteemOut was er geen output gemaakt");
+     */
+
+    void setOutput(TramSysteemOut *output);
+    /**
+     * REQUIRE(out != 0, "Bij setOutput van TramSysteemOut was geen geldige output opgegeven");
+     * ENSURE(output == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
+     */
+
     const vector<int> &getLijnen() const;
 
     void setLijnen(const vector<int> &ln);
@@ -70,16 +83,17 @@ public:
      * ENSURE(getTrams() == trams, "Postconditie fout bij setTrams");
      */
 
-    void move(Tram*, Station*);
+    void move(Tram*, Station*, bool forcedMove);
     /**
      * REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
      * REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
      * ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
      */
 
+
     bool simulate(int tijd);
     /**
-     * REQUIRE(!filename.empty(), "Bij simulate is er nog geen filenaam aangemaakt");
+     * REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0.");
      * REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
      */
 

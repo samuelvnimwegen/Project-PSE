@@ -60,13 +60,15 @@ void Station::setSpoorNr(int nr) {
     ENSURE(spoorNr = nr, "Bij setSpoorNr van station was het nummer niet correct aangepast");
 }
 
-const string &Station::getType() const {
-    REQUIRE(!type.empty() , "Bij getType van station was de naam leeg");
-    return type;
+const string &Station::getTypeString() const {
+    REQUIRE(!typeString.empty(), "Bij getTypeString van Station was de string leeg");
+    return typeString;
 }
 
-void Station::setType(const string &tp) {
-    REQUIRE(!tp.empty(), "Bij setType van station was de naam leeg");
-    Station::type = tp;
-    ENSURE(type == tp, "Bij setType van station was de naam niet correct aangepast");
+void Station::setTypeString(const string &tpString) {
+    REQUIRE(!tpString.empty(), "Bij setTypeString van Station was de string leeg");
+    Station::typeString = tpString;
+    ENSURE(typeString == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
 }
+
+

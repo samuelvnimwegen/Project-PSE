@@ -4,4 +4,6 @@
 
 #include "Halte.h"
 
-Halte::Halte() {}
+Halte::Halte() {
+    setTypeString("Halte");
+}

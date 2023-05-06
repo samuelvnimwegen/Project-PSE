@@ -10,23 +10,22 @@ using namespace std;
 // Alle eigenschappen / waarden station
 class Station {
     string naam;
-    string type;
+    string typeString;
     Station* volgende;
     Station* vorige;
     int spoorNr;
 
 public:
-    const string &getType() const;
+    const string &getTypeString() const;
     /**
-     * REQUIRE(!type.empty() , "Bij getType van station was de naam leeg");
+     * REQUIRE(!typeString.empty(), "Bij getTypeString van Station was de string leeg");
      */
 
-    void setType(const string &tp);
+    void setTypeString(const string &typeString);
     /**
-     * REQUIRE(!tp.empty(), "Bij setType van station was de naam leeg");
-     * ENSURE(type == tp, "Bij setType van station was de naam niet correct aangepast");
+     * REQUIRE(!tpString.empty(), "Bij setTypeString van Station was de string leeg");
+     * ENSURE(typeString == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
      */
-
 
     const string &getNaam() const;
     /**

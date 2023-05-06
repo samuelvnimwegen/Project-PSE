@@ -27,3 +27,9 @@ Tram 15 nr 1
 	huidig station: C
 	reparatiekosten: 0 euro
 
+Tram 1 (Stadslijner) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 1 (Stadslijner) reed van Metrostation A naar Halte B via lijn 15.
+
+Tram 1 (Stadslijner) reed van Halte B naar Metrostation C via lijn 15.
+

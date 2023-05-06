@@ -8,8 +8,6 @@
 
 class Metrostation: public Station{
 public:
-    Metrostation(const string &naam, Station *volgende, Station *vorige, int spoorNr);
-
     Metrostation();
 };
 

@@ -8,7 +8,8 @@
 #include "DesignByContract.h"
 #include "fstream"
 #include "ostream"
-
+#include "Station.h"
+#include "Tram.h"
 
 using namespace std;
 class TramSysteem;
@@ -28,6 +29,8 @@ public:
     void complete_summary();
 
     void advanced_summary();
+
+    void move(Tram* tram, Station* begin, Station* eind);
 
 
 

@@ -56,24 +56,29 @@ void TramSysteem::addTram(Tram * tr) {
 
 
 
-void TramSysteem::move(Tram* tram, Station* station) {
-    REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
-    REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
+void TramSysteem::move(Tram* tram, Station* station, bool forcedMove) {
+    REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move van TramSysteem zijn tram en station niet op zelfde lijn");
+    REQUIRE(tram->getStation() != station, "Bij move van TramSysteem zijn beginstation en eindstation hetzelfde");
     while (tram->getStation() != station){
         Station* vorig_station = tram->getStation();
         Station* volgend_station = vorig_station->getVolgende();
         int size = trams.size();
+        bool volgendeBezet = false;
         for (int i = 0; i < size; ++i){
-            if (tram->getStation() == volgend_station){
-                return;
+            if (tram->getStation() == volgend_station and !forcedMove){
+                volgendeBezet = true;
             }
         }
+        output->move(tram, vorig_station, volgend_station);
+        ENSURE(!volgendeBezet, "Bij move van TramSysteem was het volgende station bezet op de lijn.");
         tram->setStation(vorig_station->getVolgende());
+
     }
     ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
 }
 
 bool TramSysteem::simulate(int tijd) {
+    REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0.");
     REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
     int aantalTrams = trams.size();
     int counter = 0;
@@ -81,21 +86,7 @@ bool TramSysteem::simulate(int tijd) {
     if (tijd > 0){
         while (counter < tijd){
             for (int i = 0; i < aantalTrams; ++i){
-                if (trams[i]->getStation()->getVolgende() != 0){
-                    move(trams[i], trams[i]->getStation()->getVolgende());
-                }
-            }
-            counter += 1;
-        }
-    }
-    // Om terug in de tijd te gaan (tijd < 0)
-    else if (tijd < 0){
-        int negatieve_tijd = -tijd;
-        while (counter < negatieve_tijd){
-            for (int i = 0; i < aantalTrams; ++i){
-                if (trams[i]->getStation()->getVorige() != 0){
-                    move(trams[i], trams[i]->getStation()->getVorige());
-                }
+                move(trams[i], trams[i]->getStation()->getVolgende(), true);
             }
             counter += 1;
         }
@@ -174,6 +165,17 @@ void TramSysteem::setLijnen(const vector<int> &ln) {
 
 void TramSysteem::addLijn(int lijn) {
     lijnen.push_back(lijn);
+}
+
+TramSysteemOut *TramSysteem::getOutput() const {
+    REQUIRE(output != 0, "Bij getOutput van TramSysteemOut was er geen output gemaakt");
+    return output;
+}
+
+void TramSysteem::setOutput(TramSysteemOut *out) {
+    REQUIRE(out != 0, "Bij setOutput van TramSysteemOut was geen geldige output opgegeven");
+    TramSysteem::output = out;
+    ENSURE(output == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
 }
 
 
