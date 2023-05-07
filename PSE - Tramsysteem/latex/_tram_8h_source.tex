@@ -1,0 +1,46 @@
+\hypertarget{_tram_8h_source}{}\doxysection{Tram.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Samuel\ van\ Nimwegen\ on\ 02/03/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Station.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ TREIN\_TRAM\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TREIN\_TRAM\_H}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tram_systeem_out}{TramSysteemOut}};}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Alle\ waarden\ /\ eigenschappen\ Tram}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tram}{Tram}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ lijnNr;}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}*\ beginStation;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{double}\ snelheid;}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}*\ huidigStation;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ voertuigNummer;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{string}\ typeString;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tram}{\string~Tram}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ isKapot();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ moveNaarVolgende(\mbox{\hyperlink{class_tram_systeem_out}{TramSysteemOut}}*\ tramSysteemOut);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&\mbox{\hyperlink{class_tram_abf5c835f83a225688ab5bd097d1cf341}{getTypeString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_ab8a185aa63d5fd44f0b2370da86705fa}{setTypeString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&tp);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tram_ad2404fa7837b41287feab05f6a1b52bf}{getLijnNr}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_abd085e8f7295fa25c5f52cee51155b6c}{setLijnNr}}(\textcolor{keywordtype}{int}\ nr);}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}\ *\mbox{\hyperlink{class_tram_abe386592de6a7930df75ea184b945403}{getBeginStation}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_a3c2311e85ee636e21f96ae7dfa71ad50}{setBeginStation}}(\mbox{\hyperlink{class_station}{Station}}\ *beginStation);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_tram_a46f2d45724ea921ee2b952cbf060f983}{getSnelheid}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_a26df866c72a6cff2f93481dc93900ca3}{setSnelheid}}(\textcolor{keywordtype}{double}\ snelh);}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_tram_aad83b2e7e79d57528691bf317ab0e1ef}{Tram}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Constructor\ van\ de\ tramklasse}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}\ *getHuidigStation()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_a2cf37ea758b4fb6883a497c0862f851b}{setHuidigStation}}(\mbox{\hyperlink{class_station}{Station}}\ *stat);}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tram_a6e9f78befa2850add25925559ed98bc1}{getVoertuigNummer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_ab0b598eedbc7461d2bfcdad2cad8fca0}{setVoertuigNummer}}(\textcolor{keywordtype}{int}\ nr);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tram_ade9d523238c492c4b7adcfa15354e46d}{kanNaarType}}(\mbox{\hyperlink{class_station}{Station}}*)\ =\ 0;}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TREIN\_TRAM\_H}}
+
+\end{DoxyCode}

@@ -64,6 +64,7 @@ public:
 
     bool add_station(Station* station);
     /**
+     * REQUIRE(this->properlyInitialized(), "Tramsysteem niet juist geïnitialiseerd");
      * REQUIRE((huidigStation != 0), "Station moet bestaan bij add_station");
      * ENSURE(stations[size - 1] == huidigStation, "Laatste huidigStation in de stations-vector moet het nieuwe huidigStation zijn bij addStation");
     */
@@ -71,6 +72,7 @@ public:
 
     void addTram(Tram* tram);
     /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer addTram was gebruikt");
      * REQUIRE(tr != 0, "tram moet bestaan bij addTram");
      * ENSURE(trams[size - 1] == tr, "tram moet laatste element in trams-vector zijn bij addTram");
      */
@@ -101,21 +103,28 @@ public:
 
     bool simulate(int tijd);
     /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer simulate was gebruikt");
      * REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0.");
      * REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
      */
 
     bool isConsistent();
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer isConsistent was gebruikt");
+     */
+
     // Checkt of het tramsysteem consistent is
 
     vector<Station*> getStationsVanLijn(const int &lijn);
     /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStationsVanLijn was gebruikt");
      * REQUIRE(spoorNummer > 0, "Bij getStationsVanLijn van TramSysteem was het spoornummer <= 0");
      * ENSURE(!lijnStations.empty(), "Bij getStationsVanLijn van TramSysteem waren er geen stations met het spoornummer");
      */
 
     void checkLijnen();
     /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStationsVanLijn was gebruikt");
      * REQUIRE(!lijnen.empty(), "Bij checkLijnen van TramSysteem waren er geen lijnen om te bekijken");
      * ENSURE(tramKanOpLijn, "Bij checkLijnen van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
      */

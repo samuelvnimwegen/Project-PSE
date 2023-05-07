@@ -9,7 +9,7 @@ Stadslijner::Stadslijner() {
     setTypeString("Stadslijner");
 }
 
-bool Stadslijner::kanNaar(Station * stat) {
-    REQUIRE(stat != 0, "Bij kanNaar van Stadslijner was de input 0.");
+bool Stadslijner::kanNaarType(Station * stat) {
+    REQUIRE(stat != 0, "Bij kanNaarType van Stadslijner was de input 0.");
     return (stat->getTypeString() == "Metrostation");
 }

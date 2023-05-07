@@ -16,7 +16,7 @@ link_directories(./gtest/lib)
 
 # Set source files for RELEASE target
 set(RELEASE_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp  main.cpp
-        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp XMLParser.cpp XMLParser.h TramSysteemOut.cpp TramSysteemOut.h PCC.cpp PCC.h Albatros.cpp Albatros.h Stadslijner.cpp Stadslijner.h Metrostation.cpp Metrostation.h Halte.cpp Halte.h Lijn.cpp Lijn.h)
+        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp XMLParser.cpp XMLParser.h TramSysteemOut.cpp TramSysteemOut.h PCC.cpp PCC.h Albatros.cpp Albatros.h Stadslijner.cpp Stadslijner.h Metrostation.cpp Metrostation.h Halte.cpp Halte.h Lijn.cpp Lijn.h )
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp tests.cpp

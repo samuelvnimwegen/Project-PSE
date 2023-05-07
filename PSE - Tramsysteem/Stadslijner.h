@@ -11,9 +11,9 @@ class Stadslijner: public Tram{
 public:
     Stadslijner();
 
-    bool kanNaar(Station *);
+    bool kanNaarType(Station *);
     /**
-     * REQUIRE(stat != 0, "Bij kanNaar van Stadslijner was de input 0.");
+     * REQUIRE(stat != 0, "Bij kanNaarType van Stadslijner was de input 0.");
      */
 };
 

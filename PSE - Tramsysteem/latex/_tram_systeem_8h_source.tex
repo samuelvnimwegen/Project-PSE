@@ -1,0 +1,72 @@
+\hypertarget{_tram_systeem_8h_source}{}\doxysection{Tram\+Systeem.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Space\ Movie\ 1992\ on\ 02/03/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ TREIN\_TRAMSYSTEEM\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ TREIN\_TRAMSYSTEEM\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Tram.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Station.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}XML/tinyxml.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}vector"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}sstream"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}fstream"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}DesignByContract.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TramSysteemOut.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}algorithm"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}PCC.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Albatros.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Stadslijner.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Halte.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Metrostation.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}Lijn.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Bevat\ het\ volledige\ tramsysteem\ en\ bevat\ alle\ andere\ classes.}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tram_systeem}{TramSysteem}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_tram_systeem}{TramSysteem}}*\ initCheck;}
+\DoxyCodeLine{00026\ \ \ \ \ vector<Station*>\ stations;}
+\DoxyCodeLine{00027\ \ \ \ \ vector<Tram*>\ trams;}
+\DoxyCodeLine{00028\ \ \ \ \ vector<Lijn*>\ lijnen;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_tram_systeem_out}{TramSysteemOut}}*\ output;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ vector<Lijn\ *>\ \&getLijnen()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setLijnen(\textcolor{keyword}{const}\ vector<Lijn\ *>\ \&lines);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ addLijn(\mbox{\hyperlink{class_lijn}{Lijn}}*\ ln);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ \ *\ REQUIRE(ln\ !=\ 0,\ "{}Bij\ addLijn\ van\ TramSysteem\ was\ de\ lijn\ ==\ 0"{});}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_lijn}{Lijn}}*\ findLijn(\textcolor{keywordtype}{int}\ ln);}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_tram_systeem_out}{TramSysteemOut}}\ *\mbox{\hyperlink{class_tram_systeem_ab6e4a5ca76c0912f763b75ecbde0746d}{getOutput}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_systeem_adadc45e98b06c9f791fbb9c2d63f89c8}{setOutput}}(\mbox{\hyperlink{class_tram_systeem_out}{TramSysteemOut}}\ *output);}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_tram_systeem_aaf8dd47584bc14f37707e1300522492e}{TramSysteem}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tram_systeem_a43083ac8c53627e5788cde80bca1218f}{properlyInitialized}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ add\_station(\mbox{\hyperlink{class_station}{Station}}*\ station);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_systeem_a87999d42d5854639395cf47ae1d4f366}{addTram}}(\mbox{\hyperlink{class_tram}{Tram}}*\ tram);}
+\DoxyCodeLine{00078\ \ \ \ \ vector<Station\ *>\ \&\mbox{\hyperlink{class_tram_systeem_a2adf00773d90bc54837efd3a81c7c1ad}{getStations}}();}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_systeem_a57f10d73f1218510c977dc6e43da6a13}{setStations}}(\textcolor{keyword}{const}\ vector<Station\ *>\ \&stat);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{const}\ vector<Tram\ *>\ \&\ \mbox{\hyperlink{class_tram_systeem_ab442331060a0f422daab82c40724b99b}{getTrams}}();}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_systeem_ad518205d9e4a806389c0da321634aeea}{setTrams}}(\textcolor{keyword}{const}\ vector<Tram\ *>\ \&trams);}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tram_systeem_a5ac25a0bb0699d6ad4e682e7b4c3896d}{simulate}}(\textcolor{keywordtype}{int}\ tijd);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tram_systeem_acaddd46c3f038b1d159c56e7ca314ffb}{isConsistent}}();}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Checkt\ of\ het\ tramsysteem\ consistent\ is}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ vector<Station*>\ getStationsVanLijn(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&lijn);}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tram_systeem_ab97adc120c2e5edde91ac18a90f6baad}{checkLijnen}}();}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tram_systeem_a43839b886116db4e6984cd44f0e1a388}{\string~TramSysteem}}();}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Destructor\ die\ alle\ stations\ en\ trams\ verwijderd}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \mbox{\hyperlink{class_station}{Station}}*\ findStation(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&naam,\ \textcolor{keyword}{const}\ vector<Station*>\ \&stations);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TREIN\_TRAMSYSTEEM\_H}}
+
+\end{DoxyCode}

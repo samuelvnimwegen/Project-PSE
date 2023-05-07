@@ -1,0 +1,189 @@
+\hypertarget{class_p_c_c}{}\doxysection{PCC Class Reference}
+\label{class_p_c_c}\index{PCC@{PCC}}
+Inheritance diagram for PCC\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_p_c_c}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_p_c_c_a4f9b0bb89b468887098a894c69c07ceb}\label{class_p_c_c_a4f9b0bb89b468887098a894c69c07ceb}} 
+int {\bfseries get\+Resterende\+Kosten} () const
+\item 
+int \mbox{\hyperlink{class_p_c_c_a65595e510411ecbc56ce832b9c4aac6c}{get\+Totale\+Kosten}} () const
+\item 
+bool \mbox{\hyperlink{class_p_c_c_a4607e4699940705e95c7854db83804fe}{is\+Kapot}} ()
+\item 
+\mbox{\Hypertarget{class_p_c_c_a84b3676ffcdaf3f16834c50ddb685fd7}\label{class_p_c_c_a84b3676ffcdaf3f16834c50ddb685fd7}} 
+void {\bfseries set\+Kapot} (bool kapot)
+\item 
+void \mbox{\hyperlink{class_p_c_c_a9b098e80bbdb410512218ff11131c024}{set\+Counter}} (int count)
+\item 
+void \mbox{\hyperlink{class_p_c_c_aceb03248d53f6d1d1f3bc58f4b1de42a}{move\+Naar\+Volgende}} (\mbox{\hyperlink{class_tram_systeem_out}{Tram\+Systeem\+Out}} $\ast$tram\+Systeem\+Out)
+\item 
+void \mbox{\hyperlink{class_p_c_c_a7399e6a688f8de56cba10e09b62e97f9}{set\+Resterende\+Kosten}} (int resterende\+Kosten)
+\item 
+void \mbox{\hyperlink{class_p_c_c_a56ad8b2c1923eb1c107d210096a283ee}{set\+Totale\+Kosten}} (int totale\+Kosten)
+\item 
+int \mbox{\hyperlink{class_p_c_c_a850319ad22f40e2002a57d2939a8ce32}{get\+Aantal\+Defecten}} () const
+\item 
+void \mbox{\hyperlink{class_p_c_c_a2d70540a0310976a2a84d5d5fa9f452b}{set\+Aantal\+Defecten}} (int defecten)
+\item 
+int \mbox{\hyperlink{class_p_c_c_a7b39039b183b18e2400c3ee6ca64fabb}{get\+Reparatie\+Tijd}} () const
+\item 
+void \mbox{\hyperlink{class_p_c_c_afe01ffe1961095a8b0d642b78d6a10e9}{set\+Reparatie\+Tijd}} (int tijd)
+\item 
+int \mbox{\hyperlink{class_p_c_c_ae1ed0e8030a2ac7dd786a36377f6b4fd}{get\+Reparatie\+Kost}} () const
+\item 
+void \mbox{\hyperlink{class_p_c_c_ab8232d5983ec724512a4b7f3c86bd377}{set\+Reparatie\+Kost}} (int kost)
+\item 
+\mbox{\hyperlink{class_p_c_c_a942d36135d139dcecffe2bc438847491}{PCC}} ()
+\item 
+bool \mbox{\hyperlink{class_p_c_c_a9d3a75a959a5d6c4c278d737d43b1a15}{kan\+Naar}} (\mbox{\hyperlink{class_station}{Station}} $\ast$)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_tram}{Tram}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_tram_a206c82bd1e69380b129720c2bb60cf7a}{is\+Kapot}} ()
+\item 
+virtual void \mbox{\hyperlink{class_tram_acdabe7db4d7c3868fe7642d0adb6d7d1}{move\+Naar\+Volgende}} (\mbox{\hyperlink{class_tram_systeem_out}{Tram\+Systeem\+Out}} $\ast$tram\+Systeem\+Out)
+\item 
+const string \& \mbox{\hyperlink{class_tram_abf5c835f83a225688ab5bd097d1cf341}{get\+Type\+String}} () const
+\item 
+void \mbox{\hyperlink{class_tram_ab8a185aa63d5fd44f0b2370da86705fa}{set\+Type\+String}} (const string \&tp)
+\item 
+int \mbox{\hyperlink{class_tram_ad2404fa7837b41287feab05f6a1b52bf}{get\+Lijn\+Nr}} () const
+\item 
+void \mbox{\hyperlink{class_tram_abd085e8f7295fa25c5f52cee51155b6c}{set\+Lijn\+Nr}} (int nr)
+\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_tram_abe386592de6a7930df75ea184b945403}{get\+Begin\+Station}} () const
+\item 
+void \mbox{\hyperlink{class_tram_a3c2311e85ee636e21f96ae7dfa71ad50}{set\+Begin\+Station}} (\mbox{\hyperlink{class_station}{Station}} $\ast$begin\+Station)
+\item 
+double \mbox{\hyperlink{class_tram_a46f2d45724ea921ee2b952cbf060f983}{get\+Snelheid}} () const
+\item 
+void \mbox{\hyperlink{class_tram_a26df866c72a6cff2f93481dc93900ca3}{set\+Snelheid}} (double snelh)
+\item 
+\mbox{\hyperlink{class_tram_aad83b2e7e79d57528691bf317ab0e1ef}{Tram}} ()
+\item 
+\mbox{\Hypertarget{class_tram_ad04f5905ffec6ef4069b27f08c63f4b9}\label{class_tram_ad04f5905ffec6ef4069b27f08c63f4b9}} 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ {\bfseries get\+Huidig\+Station} () const
+\item 
+void \mbox{\hyperlink{class_tram_a2cf37ea758b4fb6883a497c0862f851b}{set\+Huidig\+Station}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stat)
+\item 
+int \mbox{\hyperlink{class_tram_a6e9f78befa2850add25925559ed98bc1}{get\+Voertuig\+Nummer}} () const
+\item 
+void \mbox{\hyperlink{class_tram_ab0b598eedbc7461d2bfcdad2cad8fca0}{set\+Voertuig\+Nummer}} (int nr)
+\item 
+virtual bool \mbox{\hyperlink{class_tram_ade9d523238c492c4b7adcfa15354e46d}{kan\+Naar}} (\mbox{\hyperlink{class_station}{Station}} $\ast$)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_p_c_c_a942d36135d139dcecffe2bc438847491}\label{class_p_c_c_a942d36135d139dcecffe2bc438847491}} 
+\index{PCC@{PCC}!PCC@{PCC}}
+\index{PCC@{PCC}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{PCC()}{PCC()}}
+{\footnotesize\ttfamily PCC\+::\+PCC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+REQUIRE(kost \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Reparatie\+Kost van PCC is de kost $<$ 0\char`\"{}); ENSURE(reparatie\+Kost == kost, \char`\"{}\+Bij set\+Reparatie\+Kost van PCC is het niet correct uitgevoerd.\char`\"{}); 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_p_c_c_a850319ad22f40e2002a57d2939a8ce32}\label{class_p_c_c_a850319ad22f40e2002a57d2939a8ce32}} 
+\index{PCC@{PCC}!getAantalDefecten@{getAantalDefecten}}
+\index{getAantalDefecten@{getAantalDefecten}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{getAantalDefecten()}{getAantalDefecten()}}
+{\footnotesize\ttfamily int PCC\+::get\+Aantal\+Defecten (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+REQUIRE(totaal \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Totale\+Kosten van PCC was dit $<$ 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_ae1ed0e8030a2ac7dd786a36377f6b4fd}\label{class_p_c_c_ae1ed0e8030a2ac7dd786a36377f6b4fd}} 
+\index{PCC@{PCC}!getReparatieKost@{getReparatieKost}}
+\index{getReparatieKost@{getReparatieKost}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{getReparatieKost()}{getReparatieKost()}}
+{\footnotesize\ttfamily int PCC\+::get\+Reparatie\+Kost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+REQUIRE(tijd \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Reparatie\+Tijd van PCC is de tijd $<$ 0\char`\"{}); ENSURE(reparatie\+Tijd == tijd, \char`\"{}\+Bij set\+Reparatie\+Tijd van PCC is het niet correct uitgevoerd.\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a7b39039b183b18e2400c3ee6ca64fabb}\label{class_p_c_c_a7b39039b183b18e2400c3ee6ca64fabb}} 
+\index{PCC@{PCC}!getReparatieTijd@{getReparatieTijd}}
+\index{getReparatieTijd@{getReparatieTijd}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{getReparatieTijd()}{getReparatieTijd()}}
+{\footnotesize\ttfamily int PCC\+::get\+Reparatie\+Tijd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+REQUIRE(defecten \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Aantal\+Defecten van PCC is het aantal defecten $<$ 0\char`\"{}); ENSURE(aantal\+Defecten == defecten, \char`\"{}\+Bij set\+Aantal\+Defecten van PCC is het niet correct uitgevoerd.\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a65595e510411ecbc56ce832b9c4aac6c}\label{class_p_c_c_a65595e510411ecbc56ce832b9c4aac6c}} 
+\index{PCC@{PCC}!getTotaleKosten@{getTotaleKosten}}
+\index{getTotaleKosten@{getTotaleKosten}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{getTotaleKosten()}{getTotaleKosten()}}
+{\footnotesize\ttfamily int PCC\+::get\+Totale\+Kosten (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+REQUIRE(resterende\+Kosten \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij get\+Resterende\+Kosten van PCC waren de resterende\+Kosten kleiner dan 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a4607e4699940705e95c7854db83804fe}\label{class_p_c_c_a4607e4699940705e95c7854db83804fe}} 
+\index{PCC@{PCC}!isKapot@{isKapot}}
+\index{isKapot@{isKapot}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{isKapot()}{isKapot()}}
+{\footnotesize\ttfamily bool PCC\+::is\+Kapot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+REQUIRE(resterende\+Kosten \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij get\+Totale\+Kosten van PCC waren de totale\+Kosten kleiner dan 0\char`\"{}); 
+
+Reimplemented from \mbox{\hyperlink{class_tram}{Tram}}.
+
+\mbox{\Hypertarget{class_p_c_c_a9d3a75a959a5d6c4c278d737d43b1a15}\label{class_p_c_c_a9d3a75a959a5d6c4c278d737d43b1a15}} 
+\index{PCC@{PCC}!kanNaar@{kanNaar}}
+\index{kanNaar@{kanNaar}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{kanNaar()}{kanNaarType()}}
+{\footnotesize\ttfamily bool PCC\+::kan\+Naar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+REQUIRE(voertuig\+Nummer \texorpdfstring{$<$}{<}= 0, \char`\"{}\+Bij set\+Voertuig\+Nummer het nummer $<$= 0\char`\"{}); ENSURE(voertuig\+Nummer = nr, \char`\"{}\+Bij set\+Voertuig\+Nummer van tram was het nummer niet correct aangepast\char`\"{} ); 
+
+Implements \mbox{\hyperlink{class_tram_ade9d523238c492c4b7adcfa15354e46d}{Tram}}.
+
+\mbox{\Hypertarget{class_p_c_c_aceb03248d53f6d1d1f3bc58f4b1de42a}\label{class_p_c_c_aceb03248d53f6d1d1f3bc58f4b1de42a}} 
+\index{PCC@{PCC}!moveNaarVolgende@{moveNaarVolgende}}
+\index{moveNaarVolgende@{moveNaarVolgende}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{moveNaarVolgende()}{moveNaarVolgende()}}
+{\footnotesize\ttfamily void PCC\+::move\+Naar\+Volgende (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tram_systeem_out}{Tram\+Systeem\+Out}} $\ast$}]{tram\+Systeem\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+REQUIRE(count \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Counter van PCC was de counter kleiner dan 0\char`\"{}); ENSURE(counter == count, \char`\"{}\+Bij set\+Counter van PCC was het fout uitgevoerd\char`\"{}); 
+
+Reimplemented from \mbox{\hyperlink{class_tram}{Tram}}.
+
+\mbox{\Hypertarget{class_p_c_c_a2d70540a0310976a2a84d5d5fa9f452b}\label{class_p_c_c_a2d70540a0310976a2a84d5d5fa9f452b}} 
+\index{PCC@{PCC}!setAantalDefecten@{setAantalDefecten}}
+\index{setAantalDefecten@{setAantalDefecten}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setAantalDefecten()}{setAantalDefecten()}}
+{\footnotesize\ttfamily void PCC\+::set\+Aantal\+Defecten (\begin{DoxyParamCaption}\item[{int}]{defecten }\end{DoxyParamCaption})}
+
+REQUIRE(aantal\+Defecten \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij get\+Aantal\+Defecten van PCC is het aantal defecten $<$ 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a9b098e80bbdb410512218ff11131c024}\label{class_p_c_c_a9b098e80bbdb410512218ff11131c024}} 
+\index{PCC@{PCC}!setCounter@{setCounter}}
+\index{setCounter@{setCounter}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setCounter()}{setCounter()}}
+{\footnotesize\ttfamily void PCC\+::set\+Counter (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})}
+
+ENSURE(kapot == status, \char`\"{}\+Bij set\+Kapot van PCC was het fout uitgevoerd\char`\"{}); \mbox{\Hypertarget{class_p_c_c_ab8232d5983ec724512a4b7f3c86bd377}\label{class_p_c_c_ab8232d5983ec724512a4b7f3c86bd377}} 
+\index{PCC@{PCC}!setReparatieKost@{setReparatieKost}}
+\index{setReparatieKost@{setReparatieKost}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setReparatieKost()}{setReparatieKost()}}
+{\footnotesize\ttfamily void PCC\+::set\+Reparatie\+Kost (\begin{DoxyParamCaption}\item[{int}]{kost }\end{DoxyParamCaption})}
+
+REQUIRE(reparatie\+Tijd \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij get\+Reparatie\+Kost van PCC is de reparatie\+Kost $<$ 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_afe01ffe1961095a8b0d642b78d6a10e9}\label{class_p_c_c_afe01ffe1961095a8b0d642b78d6a10e9}} 
+\index{PCC@{PCC}!setReparatieTijd@{setReparatieTijd}}
+\index{setReparatieTijd@{setReparatieTijd}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setReparatieTijd()}{setReparatieTijd()}}
+{\footnotesize\ttfamily void PCC\+::set\+Reparatie\+Tijd (\begin{DoxyParamCaption}\item[{int}]{tijd }\end{DoxyParamCaption})}
+
+REQUIRE(reparatie\+Tijd \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij get\+Reparatie\+Tijd van PCC is de reparatie\+Tijd $<$ 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a7399e6a688f8de56cba10e09b62e97f9}\label{class_p_c_c_a7399e6a688f8de56cba10e09b62e97f9}} 
+\index{PCC@{PCC}!setResterendeKosten@{setResterendeKosten}}
+\index{setResterendeKosten@{setResterendeKosten}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setResterendeKosten()}{setResterendeKosten()}}
+{\footnotesize\ttfamily void PCC\+::set\+Resterende\+Kosten (\begin{DoxyParamCaption}\item[{int}]{resterende\+Kosten }\end{DoxyParamCaption})}
+
+REQUIRE(tram\+Systeem\+Out != 0, \char`\"{}\+Bij move\+Naar\+Volgende van PCC was tram\+Systeem\+Out == 0\char`\"{}); \mbox{\Hypertarget{class_p_c_c_a56ad8b2c1923eb1c107d210096a283ee}\label{class_p_c_c_a56ad8b2c1923eb1c107d210096a283ee}} 
+\index{PCC@{PCC}!setTotaleKosten@{setTotaleKosten}}
+\index{setTotaleKosten@{setTotaleKosten}!PCC@{PCC}}
+\doxysubsubsection{\texorpdfstring{setTotaleKosten()}{setTotaleKosten()}}
+{\footnotesize\ttfamily void PCC\+::set\+Totale\+Kosten (\begin{DoxyParamCaption}\item[{int}]{totale\+Kosten }\end{DoxyParamCaption})}
+
+REQUIRE(resterend \texorpdfstring{$>$}{>}= 0, \char`\"{}\+Bij set\+Resterende\+Kosten van PCC was dit $<$ 0\char`\"{}); ENSURE(resterende\+Kosten == resterend, \char`\"{}ij set\+Resterende\+Kosten van PCC was dit niet correct uitgevoerd\char`\"{}); 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+PCC.\+h\item 
+PCC.\+cpp\end{DoxyCompactItemize}

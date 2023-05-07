@@ -13,6 +13,7 @@ TramSysteem::TramSysteem() {
 
 bool TramSysteem::add_station(Station *station) {
     REQUIRE((station != 0), "Station moet bestaan bij add_station");
+    REQUIRE(this->properlyInitialized(), "Tramsysteem niet juist geïnitialiseerd");
     if (station == 0){
         return false;
     }
@@ -46,6 +47,7 @@ void TramSysteem::setTrams(const vector<Tram *> &tr) {
 }
 
 void TramSysteem::addTram(Tram * tr) {
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer addTram was gebruikt");
     REQUIRE(tr != 0, "tram moet bestaan bij addTram");
     trams.push_back(tr);
     int size = trams.size();
@@ -59,7 +61,7 @@ void TramSysteem::addTram(Tram * tr) {
 
 
 bool TramSysteem::simulate(int tijd) {
-    REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0.");
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer simulate was gebruikt");
     REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
     int aantalTrams = trams.size();
     int counter = 0;
@@ -78,6 +80,7 @@ bool TramSysteem::simulate(int tijd) {
 
 bool TramSysteem::isConsistent() {
     // checkt of elk huidigStation een volgend en vorig heeft
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer isConsistent was gebruikt");
     bool volgendEnVorigeCheck = true;
     int size = stations.size();
     for (int i = 0; i < size; ++i){
@@ -141,6 +144,11 @@ TramSysteem::~TramSysteem() {
     for (int i = 0; i < size; ++i){
         delete trams[i];
     }
+    size = lijnen.size();
+    for (int i = 0; i < size; ++i){
+        delete lijnen[i];
+    }
+    delete output;
 }
 
 bool TramSysteem::properlyInitialized() {
@@ -159,6 +167,7 @@ void TramSysteem::setOutput(TramSysteemOut *out) {
 }
 
 vector<Station *> TramSysteem::getStationsVanLijn(const int &spoorNummer) {
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStationsVanLijn was gebruikt");
     REQUIRE(spoorNummer > 0, "Bij getStationsVanLijn van TramSysteem was het spoornummer <= 0");
     vector<Station*> lijnStations;
     int size = stations.size();
@@ -181,7 +190,7 @@ void TramSysteem::checkLijnen() {
         int tramsSize = huidigeLijn->getTrams().size();
         for (int j = 0; j < tramsSize; ++j){
             for (int k = 0; k < stationSize; ++k){
-                if (!trams[j]->kanNaar(stations[k])){
+                if (!trams[j]->kanNaarType(stations[k])){
                     tramKanOpLijn = false;
                 }
             }

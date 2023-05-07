@@ -9,8 +9,8 @@ PCC::PCC() {
     setTypeString("PCC");
 }
 
-bool PCC::kanNaar(Station * stat) {
-    REQUIRE(stat != 0, "Bij kanNaar van PCC was de input 0.");
+bool PCC::kanNaarType(Station * stat) {
+    REQUIRE(stat != 0, "Bij kanNaarType van PCC was de input 0.");
     return true;
 }
 

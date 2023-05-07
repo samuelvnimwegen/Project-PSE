@@ -9,7 +9,7 @@ Albatros::Albatros() {
     setTypeString("Albatros");
 }
 
-bool Albatros::kanNaar(Station *stat) {
-    REQUIRE(stat != 0, "Bij kanNaar van Albatros was de input 0.");
+bool Albatros::kanNaarType(Station *stat) {
+    REQUIRE(stat != 0, "Bij kanNaarType van Albatros was de input 0.");
     return (stat->getTypeString() == "Metrostation");
 }

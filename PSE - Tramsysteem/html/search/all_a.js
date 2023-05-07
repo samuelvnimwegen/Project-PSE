@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['setaantaldefecten_0',['setAantalDefecten',['../class_p_c_c.html#a2d70540a0310976a2a84d5d5fa9f452b',1,'PCC']]],
+  ['setbeginstation_1',['setBeginStation',['../class_tram.html#a3c2311e85ee636e21f96ae7dfa71ad50',1,'Tram']]],
+  ['setcounter_2',['setCounter',['../class_p_c_c.html#a9b098e80bbdb410512218ff11131c024',1,'PCC']]],
+  ['sethuidigstation_3',['setHuidigStation',['../class_tram.html#a2cf37ea758b4fb6883a497c0862f851b',1,'Tram']]],
+  ['setlijnnr_4',['setLijnNr',['../class_tram.html#abd085e8f7295fa25c5f52cee51155b6c',1,'Tram']]],
+  ['setnaam_5',['setNaam',['../class_station.html#ad861c069455ad64939b0221a42cbac96',1,'Station']]],
+  ['setoutput_6',['setOutput',['../class_tram_systeem.html#adadc45e98b06c9f791fbb9c2d63f89c8',1,'TramSysteem']]],
+  ['setreparatiekost_7',['setReparatieKost',['../class_p_c_c.html#ab8232d5983ec724512a4b7f3c86bd377',1,'PCC']]],
+  ['setreparatietijd_8',['setReparatieTijd',['../class_p_c_c.html#afe01ffe1961095a8b0d642b78d6a10e9',1,'PCC']]],
+  ['setresterendekosten_9',['setResterendeKosten',['../class_p_c_c.html#a7399e6a688f8de56cba10e09b62e97f9',1,'PCC']]],
+  ['setsnelheid_10',['setSnelheid',['../class_tram.html#a26df866c72a6cff2f93481dc93900ca3',1,'Tram']]],
+  ['setspoornr_11',['setSpoorNr',['../class_station.html#ae3d542567afdf054ea0b2e127af65bc6',1,'Station']]],
+  ['setstations_12',['setStations',['../class_tram_systeem.html#a57f10d73f1218510c977dc6e43da6a13',1,'TramSysteem']]],
+  ['settotalekosten_13',['setTotaleKosten',['../class_p_c_c.html#a56ad8b2c1923eb1c107d210096a283ee',1,'PCC']]],
+  ['settrams_14',['setTrams',['../class_tram_systeem.html#ad518205d9e4a806389c0da321634aeea',1,'TramSysteem']]],
+  ['settypestring_15',['setTypeString',['../class_station.html#af90473fb79dfb6f8b6f1183562ad1551',1,'Station::setTypeString()'],['../class_tram.html#ab8a185aa63d5fd44f0b2370da86705fa',1,'Tram::setTypeString(const string &amp;tp)']]],
+  ['setvoertuignummer_16',['setVoertuigNummer',['../class_tram.html#ab0b598eedbc7461d2bfcdad2cad8fca0',1,'Tram']]],
+  ['setvolgende_17',['setVolgende',['../class_station.html#a70956b1b3f627e330de7e7daa9d71d2d',1,'Station']]],
+  ['setvorige_18',['setVorige',['../class_station.html#a0509cf7ee2403b728d042e83d0de5d10',1,'Station']]],
+  ['simulate_19',['simulate',['../class_tram_systeem.html#a5ac25a0bb0699d6ad4e682e7b4c3896d',1,'TramSysteem']]],
+  ['stadslijner_20',['Stadslijner',['../class_stadslijner.html',1,'']]],
+  ['station_21',['Station',['../class_station.html',1,'Station'],['../class_station.html#a73d335726aad1d844d81cda6d9fd74e6',1,'Station::Station()']]],
+  ['station_5fsummary_22',['station_summary',['../class_tram_systeem_out.html#a5157e6e4d9ad0b798524de7116905acb',1,'TramSysteemOut']]]
+];

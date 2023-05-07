@@ -97,7 +97,7 @@ public:
      * ENSURE(voertuigNummer = nr, "Bij setVoertuigNummer van tram was het nummer niet correct aangepast" );
      */
 
-    virtual bool kanNaar(Station*) = 0;
+    virtual bool kanNaarType(Station*) = 0;
 };
 
 

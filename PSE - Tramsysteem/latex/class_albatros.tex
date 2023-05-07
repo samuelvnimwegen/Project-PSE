@@ -1,0 +1,68 @@
+\hypertarget{class_albatros}{}\doxysection{Albatros Class Reference}
+\label{class_albatros}\index{Albatros@{Albatros}}
+Inheritance diagram for Albatros\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_albatros}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_albatros_a5ee10c6e342ab481b44d3656619db24f}{kan\+Naar}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stat)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_tram}{Tram}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_tram_a206c82bd1e69380b129720c2bb60cf7a}{is\+Kapot}} ()
+\item 
+virtual void \mbox{\hyperlink{class_tram_acdabe7db4d7c3868fe7642d0adb6d7d1}{move\+Naar\+Volgende}} (\mbox{\hyperlink{class_tram_systeem_out}{Tram\+Systeem\+Out}} $\ast$tram\+Systeem\+Out)
+\item 
+const string \& \mbox{\hyperlink{class_tram_abf5c835f83a225688ab5bd097d1cf341}{get\+Type\+String}} () const
+\item 
+void \mbox{\hyperlink{class_tram_ab8a185aa63d5fd44f0b2370da86705fa}{set\+Type\+String}} (const string \&tp)
+\item 
+int \mbox{\hyperlink{class_tram_ad2404fa7837b41287feab05f6a1b52bf}{get\+Lijn\+Nr}} () const
+\item 
+void \mbox{\hyperlink{class_tram_abd085e8f7295fa25c5f52cee51155b6c}{set\+Lijn\+Nr}} (int nr)
+\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_tram_abe386592de6a7930df75ea184b945403}{get\+Begin\+Station}} () const
+\item 
+void \mbox{\hyperlink{class_tram_a3c2311e85ee636e21f96ae7dfa71ad50}{set\+Begin\+Station}} (\mbox{\hyperlink{class_station}{Station}} $\ast$begin\+Station)
+\item 
+double \mbox{\hyperlink{class_tram_a46f2d45724ea921ee2b952cbf060f983}{get\+Snelheid}} () const
+\item 
+void \mbox{\hyperlink{class_tram_a26df866c72a6cff2f93481dc93900ca3}{set\+Snelheid}} (double snelh)
+\item 
+\mbox{\hyperlink{class_tram_aad83b2e7e79d57528691bf317ab0e1ef}{Tram}} ()
+\item 
+\mbox{\Hypertarget{class_tram_ad04f5905ffec6ef4069b27f08c63f4b9}\label{class_tram_ad04f5905ffec6ef4069b27f08c63f4b9}} 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ {\bfseries get\+Huidig\+Station} () const
+\item 
+void \mbox{\hyperlink{class_tram_a2cf37ea758b4fb6883a497c0862f851b}{set\+Huidig\+Station}} (\mbox{\hyperlink{class_station}{Station}} $\ast$stat)
+\item 
+int \mbox{\hyperlink{class_tram_a6e9f78befa2850add25925559ed98bc1}{get\+Voertuig\+Nummer}} () const
+\item 
+void \mbox{\hyperlink{class_tram_ab0b598eedbc7461d2bfcdad2cad8fca0}{set\+Voertuig\+Nummer}} (int nr)
+\item 
+virtual bool \mbox{\hyperlink{class_tram_ade9d523238c492c4b7adcfa15354e46d}{kan\+Naar}} (\mbox{\hyperlink{class_station}{Station}} $\ast$)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_albatros_a5ee10c6e342ab481b44d3656619db24f}\label{class_albatros_a5ee10c6e342ab481b44d3656619db24f}} 
+\index{Albatros@{Albatros}!kanNaar@{kanNaar}}
+\index{kanNaar@{kanNaar}!Albatros@{Albatros}}
+\doxysubsubsection{\texorpdfstring{kanNaar()}{kanNaarType()}}
+{\footnotesize\ttfamily bool Albatros\+::kan\+Naar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+REQUIRE(voertuig\+Nummer \texorpdfstring{$<$}{<}= 0, \char`\"{}\+Bij set\+Voertuig\+Nummer het nummer $<$= 0\char`\"{}); ENSURE(voertuig\+Nummer = nr, \char`\"{}\+Bij set\+Voertuig\+Nummer van tram was het nummer niet correct aangepast\char`\"{} ); 
+
+Implements \mbox{\hyperlink{class_tram_ade9d523238c492c4b7adcfa15354e46d}{Tram}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Albatros.\+h\item 
+Albatros.\+cpp\end{DoxyCompactItemize}
