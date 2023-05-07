@@ -17,12 +17,21 @@ class PCC: public Tram{
     int totaleKosten;
 public:
     int getResterendeKosten() const;
+    /**
+     * REQUIRE(resterendeKosten >= 0, "Bij getResterendeKosten van PCC waren de resterendeKosten kleiner dan 0");
+     */
 
     int getTotaleKosten() const;
+    /**
+     * REQUIRE(resterendeKosten >= 0, "Bij getTotaleKosten van PCC waren de totaleKosten kleiner dan 0");
+     */
 
     bool isKapot();
 
     void setKapot(bool kapot);
+    /**
+     * ENSURE(kapot == status, "Bij setKapot van PCC was het fout uitgevoerd");
+     */
 
     void setCounter(int count);
     /**
@@ -31,6 +40,9 @@ public:
      */
 
     void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
+    /**
+     * REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
+     */
 
     void setResterendeKosten(int resterendeKosten);
     /**

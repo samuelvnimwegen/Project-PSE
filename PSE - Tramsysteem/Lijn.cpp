@@ -5,28 +5,21 @@
 #include "Lijn.h"
 
 int Lijn::getLijnnummer() const {
+    REQUIRE(lijnnummer >= 0, "Bij getLijnnummer van Lijn was dit < 0");
     return lijnnummer;
 }
 
-void Lijn::setLijnnummer(int ln) {
-    Lijn::lijnnummer = ln;
-}
 
 const vector<Station *> &Lijn::getStations() const {
+    REQUIRE(!stations.empty(), "Bij getStations van Lijn was deze vector leeg");
     return stations;
 }
 
-void Lijn::setStations(const vector<Station *> &stats) {
-    Lijn::stations = stats;
-}
-
 const vector<Tram *> &Lijn::getTrams() const {
+    REQUIRE(!stations.empty(), "Bij getTrams van Lijn was deze vector leeg");
     return trams;
 }
 
-void Lijn::setTrams(const vector<Tram *> &trms) {
-    Lijn::trams = trms;
-}
 
 Lijn::Lijn(int lijnnummer) : lijnnummer(lijnnummer) {}
 

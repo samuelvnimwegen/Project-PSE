@@ -76,7 +76,9 @@ public:
      */
 
     vector<Station *> &getStations();
-
+    /**
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
+     */
 
     void setStations(const vector<Station *> &stat);
     /**
@@ -113,7 +115,10 @@ public:
      */
 
     void checkLijnen();
-
+    /**
+     * REQUIRE(!lijnen.empty(), "Bij checkLijnen van TramSysteem waren er geen lijnen om te bekijken");
+     * ENSURE(tramKanOpLijn, "Bij checkLijnen van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
+     */
     virtual ~TramSysteem();
     // Destructor die alle stations en trams verwijderd
 

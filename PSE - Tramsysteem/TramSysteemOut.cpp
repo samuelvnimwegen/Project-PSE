@@ -56,6 +56,7 @@ void TramSysteemOut::station_summary() {
 }
 
 void TramSysteemOut::complete_summary() {
+    REQUIRE(!filename.empty(), "Bij complete_summary is er nog geen filenaam aangemaakt");
     station_summary();
     tram_summary();
 }
@@ -101,6 +102,7 @@ void TramSysteemOut::advanced_summary() {
 }
 
 void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
+    REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
@@ -110,6 +112,7 @@ void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
 }
 
 void TramSysteemOut::herstel(Tram *tram, Station *halte) {
+    REQUIRE(!filename.empty(), "Bij herstel is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
@@ -118,6 +121,7 @@ void TramSysteemOut::herstel(Tram *tram, Station *halte) {
 }
 
 void TramSysteemOut::botsing(Tram *tram1, Tram *tram2) {
+    REQUIRE(!filename.empty(), "Bij botsing is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 

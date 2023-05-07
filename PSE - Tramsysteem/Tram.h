@@ -19,6 +19,11 @@ public:
     virtual bool isKapot();
 
     virtual void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
+    /**
+     * REQUIRE(lijnNr == huidigStation->getSpoorNr(), "Bij moveNaarVolgende van Tram zijn tram en huidigStation niet op zelfde lijn");
+     * REQUIRE(huidigStation != huidigStation->getVolgende(), "Bij moveNaarVolgende van Tram zijn beginstation en eindstation hetzelfde");
+     * ENSURE(!(volgendeBezet and !isKapot()), "Bij moveNaarVolgende van Tram was het volgende station bezet op de lijn wat in een botsing resulteert.");
+     */
 
     const string &getTypeString() const;
     /**
@@ -50,13 +55,21 @@ public:
      */
 
     void setBeginStation(Station *beginStation);
-    // Setter van het beginstation
+    /**
+     * REQUIRE(stat != 0, "bij setBeginStatino van Tram was er geen geldige pointer gegeven.");
+     * ENSURE(huidigStation == stat, "Bij setBeginStation van Tram de aanpassing niet correct doorgevoerd.");
+     */
 
     double getSnelheid() const;
-    // Getter van de snelheid
+    /**
+     * REQUIRE(snelheid >= 0, "Bij getSnelheid van Tram was de snelheid < 0");
+     */
 
     void setSnelheid(double snelh);
-    // Setter van de snelheid
+    /**
+     * REQUIRE(snelh >= 0, "Bij setSnelheid van Tram was de snelheid < 0");
+     * ENSURE(snelheid == snelh, "Bij setSnelheid van Tram is de aanpassing niet correct doorgevoerd.");
+     */
 
     Tram();
     // Constructor van de tramklasse

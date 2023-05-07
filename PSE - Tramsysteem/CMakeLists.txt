@@ -20,7 +20,7 @@ set(RELEASE_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp  main.cpp
 
 # Set source files for DEBUG target
 set(DEBUG_SOURCE_FILES Station.cpp Tram.cpp TramSysteem.cpp tests.cpp
-        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp)
+        XML/tinyxmlparser.cpp XML/tinystr.cpp XML/tinyxml.cpp XML/tinyxmlerror.cpp XMLParser.cpp XMLParser.h TramSysteemOut.cpp TramSysteemOut.h PCC.cpp PCC.h Albatros.cpp Albatros.h Stadslijner.cpp Stadslijner.h Metrostation.cpp Metrostation.h Halte.cpp Halte.h Lijn.cpp Lijn.h)
 
 # Create RELEASE target
 add_executable(ttt ${RELEASE_SOURCE_FILES})

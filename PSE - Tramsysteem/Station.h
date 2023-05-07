@@ -20,11 +20,12 @@ class Station {
 
 public:
     Tram *getTramInStation() const;
-    /*
-     *
-     */
 
     void removeTramVanStation();
+    /**
+     * REQUIRE(!tramInStation.empty(), "Bij removeTramVanStation van Station was er geen tram aanwezig");
+     * ENSURE(tramInStation.empty(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd");
+     */
 
     void addTramAanStation(Tram *tram);
     /**

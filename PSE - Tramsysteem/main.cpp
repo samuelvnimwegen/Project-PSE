@@ -3,7 +3,7 @@
 
 int main(int argc, const char * argv[]) {
     XMLParser parser = XMLParser();
-    TramSysteem* tramsysteem = parser.readFile("beteretest1.xml");
+    TramSysteem* tramsysteem = parser.readFile("Inconsistentie.xml");
     TramSysteemOut* output = new TramSysteemOut("tramregeling.txt", tramsysteem);
     tramsysteem->setOutput(output);
 

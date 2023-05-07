@@ -34,11 +34,14 @@ void Tram::setBeginStation(Station *stat) {
 }
 
 double Tram::getSnelheid() const {
+    REQUIRE(snelheid >= 0, "Bij getSnelheid van Tram was de snelheid < 0");
     return snelheid;
 }
 
 void Tram::setSnelheid(double snelh) {
+    REQUIRE(snelh >= 0, "Bij setSnelheid van Tram was de snelheid < 0");
     Tram::snelheid = snelh;
+    ENSURE(snelheid == snelh, "Bij setSnelheid van Tram is de aanpassing niet correct doorgevoerd.");
 }
 
 Tram::Tram() {

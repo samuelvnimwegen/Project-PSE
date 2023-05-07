@@ -16,16 +16,18 @@ public:
     explicit Lijn(int lijnnummer);
 
     int getLijnnummer() const;
-
-    void setLijnnummer(int ln);
+    /**
+     * REQUIRE(lijnnummer >= 0, "Bij getLijnnummer van Lijn was dit < 0");
+     */
 
     const vector<Station *> &getStations() const;
-
-    void setStations(const vector<Station *> &stats);
-
+    /**
+     * REQUIRE(!stations.empty(), "Bij getStations van Lijn was deze vector leeg");
+     */
     const vector<Tram *> &getTrams() const;
-
-    void setTrams(const vector<Tram *> &trms);
+    /**
+     * REQUIRE(!stations.empty(), "Bij getTrams van Lijn was deze vector leeg");
+     */
 
     void addStation(Station* station);
     /**

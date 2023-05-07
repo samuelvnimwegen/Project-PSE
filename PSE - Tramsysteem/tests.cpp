@@ -2,8 +2,7 @@
 // Created by Samuel on 16/03/2023.
 //
 #include "gtest/gtest.h"
-#include "TramSysteem.h"
-
+#include "XMLParser.h"
 using namespace std;
 
 class TramsysteemTest: public  ::testing::Test{
@@ -14,56 +13,68 @@ protected:
     virtual void TearDown(){}
 };
 
-TEST_F(TramsysteemTest, test1){
-    TramSysteem ts = TramSysteem();
-    EXPECT_TRUE(ts.readFile("test1.xml"));
-    EXPECT_FALSE(ts.move(ts.getTrams()[0], ts.getTrams()[0]->getBeginStation()->getVolgende()));
-    EXPECT_FALSE(ts.complete_summary());
-    EXPECT_FALSE(ts.tram_summary());
-    EXPECT_FALSE(ts.station_summary());
-    ts.makeTxtFile("test1_out.txt");
-    EXPECT_TRUE(ts.move(ts.getTrams()[0], ts.getTrams()[0]->getBeginStation()->getVolgende()));
-    EXPECT_TRUE(ts.isConsistent());
-    EXPECT_TRUE(ts.complete_summary());
-    EXPECT_TRUE(ts.tram_summary());
-    EXPECT_TRUE(ts.station_summary());
-    EXPECT_TRUE(ts.simulate(6));
-    EXPECT_TRUE(ts.isConsistent());
-    EXPECT_EQ(ts.getTrams()[0]->getLijnNr(), 12);
-    EXPECT_EQ(ts.getStations()[0]->getSpoorNr(), 12);
-    ts.getStations()[0]->setSpoorNr(11);
-    EXPECT_FALSE(ts.isConsistent());
+// Happy day test:
+TEST_F(TramsysteemTest, happyDay){
+    XMLParser parser = XMLParser();
+    TramSysteem* tramsysteem = parser.readFile("happyDay.xml");
+    TramSysteemOut* output = new TramSysteemOut("tramregeling.txt", tramsysteem);
+    tramsysteem->setOutput(output);
+    EXPECT_TRUE(tramsysteem->getTrams().size() == 4);
+    EXPECT_TRUE(tramsysteem->getStations().size() == 6);
+    EXPECT_TRUE(tramsysteem->getLijnen().size() == 2);
 
+    Tram* tram1 = tramsysteem->getStations()[1]->getTramInStation();
+    Tram* tram2 = tramsysteem->getStations()[2]->getTramInStation();
+    EXPECT_FALSE(tram1->isKapot());
+    EXPECT_FALSE(tram2->isKapot());
+
+    EXPECT_TRUE(tramsysteem->getStations()[0]->getTramInStation() == 0);
+    EXPECT_TRUE(tramsysteem->getStations()[1]->getTramInStation() != 0);
+    EXPECT_TRUE(tramsysteem->getStations()[2]->getTramInStation() != 0);
+
+    output->complete_summary();
+    output->advanced_summary();
+    tramsysteem->simulate(1);
+
+    EXPECT_FALSE(tram1->isKapot());
+    EXPECT_FALSE(tram2->isKapot());
+
+    EXPECT_TRUE(tramsysteem->getStations()[0]->getTramInStation() != 0);
+    EXPECT_TRUE(tramsysteem->getStations()[1]->getTramInStation() == 0);
+    EXPECT_TRUE(tramsysteem->getStations()[2]->getTramInStation() != 0);
+
+    output->complete_summary();
+    output->advanced_summary();
+
+    tramsysteem->simulate(1);
+
+    EXPECT_TRUE(tram1->isKapot());
+    EXPECT_TRUE(tram2->isKapot());
+
+    output->advanced_summary();
+
+    tramsysteem->simulate(2);
+    EXPECT_FALSE(tram1->isKapot());
+    EXPECT_FALSE(tram2->isKapot());
+
+    output->complete_summary();
+    output->advanced_summary();
 }
 
-TEST_F(TramsysteemTest, test2){
-    TramSysteem ts = TramSysteem();
-    EXPECT_TRUE(ts.readFile("test2.xml"));
-    ts.makeTxtFile("test2_out.txt");
-    EXPECT_FALSE(ts.add_station(0));
-    Station* stat = new Station();
-    EXPECT_TRUE(ts.add_station(stat));
-    EXPECT_FALSE(ts.isConsistent());
-    EXPECT_FALSE(ts.move(ts.getTrams()[0], stat));
-    EXPECT_FALSE(ts.simulate(2));
-    EXPECT_TRUE(ts.complete_summary());
-}
 
-TEST_F(TramsysteemTest, test3){
-    TramSysteem ts = TramSysteem();
-    EXPECT_FALSE(ts.readFile("test3.xml"));
+// Checkt of alle vorige of volgende stations correct zijn van alle stations.
+TEST_F(TramsysteemTest, inconsistentieTest){
+    XMLParser parser = XMLParser();
+    TramSysteem* tramsysteem = parser.readFile("inconsistentie.xml");
+    TramSysteemOut* output = new TramSysteemOut("tramregeling.txt", tramsysteem);
+    tramsysteem->setOutput(output);
 }
-
-TEST_F(TramsysteemTest, test4){
-    TramSysteem ts = TramSysteem();
-    EXPECT_TRUE(ts.readFile("test4.xml"));
-    ts.makeTxtFile("test4_out.txt");
-    EXPECT_TRUE(ts.station_summary());
-    EXPECT_TRUE(ts.tram_summary());
-    EXPECT_TRUE(ts.complete_summary());
-    EXPECT_FALSE(ts.isConsistent());
-    EXPECT_FALSE(ts.simulate(3));
-    EXPECT_TRUE(ts.move(ts.getTrams()[0], ts.getStations()[1]));
+// Elke tram moet bij elk station van zijn lijn kunnen komen.
+TEST_F(TramsysteemTest, lijnCorrectheidsTest){
+    XMLParser parser = XMLParser();
+    TramSysteem* tramsysteem = parser.readFile("lijnCorrectheid.xml");
+    TramSysteemOut* output = new TramSysteemOut("tramregeling.txt", tramsysteem);
+    tramsysteem->setOutput(output);
 }
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);

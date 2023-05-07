@@ -53,6 +53,7 @@ bool PCC::isKapot() {
 }
 
 void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
+    REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
     Tram::moveNaarVolgende(tramSysteemOut);
     // Counter aanpassen:
     counter -= 1;
@@ -81,6 +82,7 @@ void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
 
 void PCC::setKapot(bool status) {
     PCC::kapot = status;
+    ENSURE(kapot == status, "Bij setKapot van PCC was het fout uitgevoerd");
 }
 
 void PCC::setCounter(int count) {
@@ -90,10 +92,12 @@ void PCC::setCounter(int count) {
 }
 
 int PCC::getResterendeKosten() const {
+    REQUIRE(resterendeKosten >= 0, "Bij getResterendeKosten van PCC waren de resterendeKosten kleiner dan 0");
     return resterendeKosten;
 }
 
 int PCC::getTotaleKosten() const {
+    REQUIRE(resterendeKosten >= 0, "Bij getTotaleKosten van PCC waren de totaleKosten kleiner dan 0");
     return totaleKosten;
 }
 

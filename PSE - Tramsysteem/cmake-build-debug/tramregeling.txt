@@ -1,8 +1,80 @@
 ----- Tramregeling ----- 
 
+--== STATIONS ==--
+= Station A =
+* Spoor 15:
+<- Station C
+-> Station B
+
+= Station B =
+* Spoor 15:
+<- Station A
+-> Station C
+
+= Station C =
+* Spoor 15:
+<- Station B
+-> Station A
+
+= Station 1 =
+* Spoor 7:
+<- Station 3
+-> Station 2
+
+= Station 2 =
+* Spoor 7:
+<- Station 1
+-> Station 3
+
+= Station 3 =
+* Spoor 7:
+<- Station 2
+-> Station 1
+
+--== TRAMS ==--
+Tram 15 nr 1
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: C
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
+Tram 15 nr 2
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: B
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
+Tram 7 nr 3
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 3
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
+Tram 7 nr 4
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 2
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
 Lijn 15:
 =A===B===C=
      T   T 
+
+Lijn 7:
+=1===2===3=
+     T   T 
+
+Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Tram 3 (PCC) reed van Metrostation 3 naar Metrostation 1 via lijn 7.
+
+Tram 4 (PCC) reed van Metrostation 2 naar Metrostation 3 via lijn 7.
 
 --== STATIONS ==--
 = Station A =
@@ -20,64 +92,89 @@ Lijn 15:
 <- Station B
 -> Station A
 
+= Station 1 =
+* Spoor 7:
+<- Station 3
+-> Station 2
+
+= Station 2 =
+* Spoor 7:
+<- Station 1
+-> Station 3
+
+= Station 3 =
+* Spoor 7:
+<- Station 2
+-> Station 1
+
 --== TRAMS ==--
 Tram 15 nr 1
 	type: PCC
 	snelheid: 40
-	huidig huidigStation: C
+	huidig huidigStation: A
 	huidige reparatiekosten: 0 euro
 	totale reparatiekosten: 0 euro
 
 Tram 15 nr 2
 	type: PCC
 	snelheid: 40
-	huidig huidigStation: B
+	huidig huidigStation: C
 	huidige reparatiekosten: 0 euro
 	totale reparatiekosten: 0 euro
 
-Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+Tram 7 nr 3
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 1
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
 
-Tram 2 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
-
-Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
-
-Tram 2 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
-
-Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
-
-Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
-
-Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
-
-Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
-
-Tram 1 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
-
-Tram 2 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
-
-Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
-
-Tram 2 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
-
-Tram 1 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
-
-Tram 2 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
-
-Tram 1 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
-
-Tram 2 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
-
-Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
-
-Tram 2 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
-
-Tram 1 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
-
-Tram 2 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+Tram 7 nr 4
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 3
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
 
 Lijn 15:
 =A===B===C=
-     T   T 
+ T       T 
+
+Lijn 7:
+=1===2===3=
+ T       T 
+
+Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 3 (PCC) reed van Metrostation 1 naar Metrostation 2 via lijn 7.
+
+Tram 4 (PCC) reed van Metrostation 3 naar Metrostation 1 via lijn 7.
+
+Lijn 15:
+=A===B===C=
+ T   T     
+
+Lijn 7:
+=1===2===3=
+ T   T     
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
+Tram 3 (PCC) is bezig met herstel bij Metrostation 2 op lijn 7.
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation 1 op lijn 7.
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
+Tram 3 (PCC) is bezig met herstel bij Metrostation 2 op lijn 7.
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation 1 op lijn 7.
 
 --== STATIONS ==--
 = Station A =
@@ -95,18 +192,55 @@ Lijn 15:
 <- Station B
 -> Station A
 
+= Station 1 =
+* Spoor 7:
+<- Station 3
+-> Station 2
+
+= Station 2 =
+* Spoor 7:
+<- Station 1
+-> Station 3
+
+= Station 3 =
+* Spoor 7:
+<- Station 2
+-> Station 1
+
 --== TRAMS ==--
 Tram 15 nr 1
 	type: PCC
 	snelheid: 40
-	huidig huidigStation: C
-	huidige reparatiekosten: 200 euro
-	totale reparatiekosten: 400 euro
+	huidig huidigStation: B
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 200 euro
 
 Tram 15 nr 2
 	type: PCC
 	snelheid: 40
-	huidig huidigStation: B
-	huidige reparatiekosten: 200 euro
-	totale reparatiekosten: 400 euro
+	huidig huidigStation: A
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 200 euro
+
+Tram 7 nr 3
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 2
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 200 euro
+
+Tram 7 nr 4
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: 1
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 200 euro
+
+Lijn 15:
+=A===B===C=
+ T   T     
+
+Lijn 7:
+=1===2===3=
+ T   T     
 

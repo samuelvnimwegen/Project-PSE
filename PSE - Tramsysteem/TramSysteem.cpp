@@ -84,8 +84,11 @@ bool TramSysteem::isConsistent() {
         if (stations[i]->getVorige() == 0 or stations[i]->getVolgende() == 0){
             volgendEnVorigeCheck = false;
         }
+        else if (stations[i]->getVorige() == stations[i] or stations[i]->getVolgende() == stations[i]){
+            volgendEnVorigeCheck = false;
+        }
     }
-    ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een volgende of vorig huidigStation");
+    ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
 
     // Vector om de voertuigNummers bij te houden.
     vector<int> voertuigNummers;
