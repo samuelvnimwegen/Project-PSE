@@ -4,17 +4,21 @@
 #include "Station.h"
 #ifndef TREIN_TRAM_H
 #define TREIN_TRAM_H
-
+class TramSysteemOut;
 // Alle waarden / eigenschappen Tram
 class Tram {
     int lijnNr;
     Station* beginStation;
     double snelheid;
-    Station* station;
+    Station* huidigStation;
     int voertuigNummer;
     string typeString;
 public:
     virtual ~Tram();
+
+    virtual bool isKapot();
+
+    virtual void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
 
     const string &getTypeString() const;
     /**
@@ -36,8 +40,8 @@ public:
 
     void setLijnNr(int nr);
     /**
-     * REQUIRE(lijnNr != 0, "Bij setLijnNr van station was de naam leeg");
-     * ENSURE(lijnNr = nr, "Bij setLijnNr van station was het nummer niet correct aangepast");
+     * REQUIRE(lijnNr != 0, "Bij setLijnNr van huidigStation was de naam leeg");
+     * ENSURE(lijnNr = nr, "Bij setLijnNr van huidigStation was het nummer niet correct aangepast");
      */
 
     Station *getBeginStation() const;
@@ -57,15 +61,15 @@ public:
     Tram();
     // Constructor van de tramklasse
 
-    Station *getStation() const;
+    Station *getHuidigStation() const;
     /**
-     * REQUIRE(station != 0 , "Bij getStation van tram was de input 0");
+     * REQUIRE(huidigStation != 0 , "Bij getHuidigStation van tram was de input 0");
      */
 
-    void setStation(Station *stat);
+    void setHuidigStation(Station *stat);
     /**
-     * REQUIRE(stat != 0, "Bij setStation tram was de input 0");
-     * ENSURE(station = stat, "Bij setStation van tram is het niet correct uitgevoerd");
+     * REQUIRE(stat != 0, "Bij setHuidigStation tram was de input 0");
+     * ENSURE(huidigStation = stat, "Bij setHuidigStation van tram is het niet correct uitgevoerd");
      */
 
     int getVoertuigNummer() const;

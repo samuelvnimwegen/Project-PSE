@@ -28,11 +28,12 @@ void TramSysteemOut::tram_summary() {
         outfile << "Tram "<<tram->getLijnNr() << " nr " << tram->getVoertuigNummer() << endl ;
         outfile << "\t" << "type: " << tram->getTypeString() << endl;
         outfile << "\t" << "snelheid: " << tram->getSnelheid() << endl;
-        outfile << "\t" << "huidig station: " << tram->getStation()->getNaam() << endl;
+        outfile << "\t" << "huidig huidigStation: " << tram->getHuidigStation()->getNaam() << endl;
 
         if (tram->getTypeString() == "PCC"){
             PCC* pccTram = dynamic_cast<PCC *>(tram);
-            outfile << "\t" << "reparatiekosten: " << pccTram->getReparatieKost() << " euro" << endl;
+            outfile << "\t" << "huidige reparatiekosten: " << pccTram->getResterendeKosten() << " euro" << endl;
+            outfile << "\t" << "totale reparatiekosten: " << pccTram->getTotaleKosten() << " euro" << endl;
         }
         outfile << endl;
     }
@@ -64,30 +65,17 @@ void TramSysteemOut::advanced_summary() {
     outfile.open(filename.c_str(), ios_base::app);
 
     int lijnenSize = tramSysteem->getLijnen().size();
-    int stationSize = tramSysteem->getStations().size();
     int tramSize = tramSysteem->getTrams().size();
 
+    // Voor alle lijnen in het metronet:
     for (int i = 0; i < lijnenSize; ++i){
-        outfile << "Lijn " << tramSysteem->getLijnen()[i] << ":" << endl;
-        Lijn* huidigeLijn = tramSysteem->getLijnen()[i];
+        outfile << "Lijn " << tramSysteem->getLijnen()[i]->getLijnnummer() << ":" << endl;
 
-        vector<Station*> stationsInLijn;
-        Station* beginStation = 0;
-        for (int j = 0; j < stationSize; ++j){
-            Station* huidigStation = tramSysteem->getStations()[j];
-            if (huidigStation->getSpoorNr() == huidigeLijn->getLijnnummer()){
-                beginStation = huidigStation;
-                j = stationSize;
-            }
-        }
-        stationsInLijn.push_back(beginStation);
-        Station* huidigStation = beginStation->getVolgende();
-        int aantalStationsInLijn = 1;
-        while (huidigStation != beginStation){
-            stationsInLijn.push_back(huidigStation);
-            huidigStation = huidigStation->getVolgende();
-            aantalStationsInLijn += 1;
-        }
+        // De lijn, de vector van alle stations en het beginstation worden opgeslagen.
+        Lijn* huidigeLijn = tramSysteem->getLijnen()[i];
+        vector<Station*> stationsInLijn = huidigeLijn->getStations();
+
+        int aantalStationsInLijn = stationsInLijn.size();
         string lijn1 = "=";
         string lijn2 = " ";
         for (int j = 0; j < aantalStationsInLijn; ++j){
@@ -95,7 +83,7 @@ void TramSysteemOut::advanced_summary() {
             lijn1 += huidigStationInLijn->getNaam() + "===";
             bool bevatStation = false;
             for (int k = 0; k < tramSize; ++k){
-                if (tramSysteem->getTrams()[i]->getStation() == huidigStationInLijn){
+                if (tramSysteem->getTrams()[k]->getHuidigStation() == huidigStationInLijn){
                     bevatStation = true;
                 }
             }
@@ -119,5 +107,21 @@ void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
     outfile << "Tram " << tram->getVoertuigNummer() << " (" << tram->getTypeString() << ") reed van "
     << begin->getTypeString() <<" " << begin->getNaam() << " naar " << eind->getTypeString() << " "
     << eind->getNaam() << " via lijn " << tram->getLijnNr() << "."<< endl << endl;
+}
+
+void TramSysteemOut::herstel(Tram *tram, Station *halte) {
+    ofstream outfile;
+    outfile.open(filename.c_str(), ios_base::app);
+
+    outfile << "Tram " << tram->getVoertuigNummer() << " (" << tram->getTypeString() << ") is bezig met herstel bij "
+    << halte->getTypeString() << " " << halte->getNaam() << " op lijn " << tram->getLijnNr() <<"." << endl << endl;
+}
+
+void TramSysteemOut::botsing(Tram *tram1, Tram *tram2) {
+    ofstream outfile;
+    outfile.open(filename.c_str(), ios_base::app);
+
+    outfile << "!!! Botsing van Tram " << tram1->getVoertuigNummer() << " (" << tram1->getTypeString() << ") en Tram "
+            << tram2->getVoertuigNummer() << " (" << tram2->getTypeString() << ") bij Station " << tram2->getHuidigStation()->getNaam() <<". !!! " << endl << endl;
 }
 

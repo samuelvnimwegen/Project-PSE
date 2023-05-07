@@ -64,8 +64,8 @@ public:
 
     bool add_station(Station* station);
     /**
-     * REQUIRE((station != 0), "Station moet bestaan bij add_station");
-     * ENSURE(stations[size - 1] == station, "Laatste station in de stations-vector moet het nieuwe station zijn bij addStation");
+     * REQUIRE((huidigStation != 0), "Station moet bestaan bij add_station");
+     * ENSURE(stations[size - 1] == huidigStation, "Laatste huidigStation in de stations-vector moet het nieuwe huidigStation zijn bij addStation");
     */
 
 
@@ -81,7 +81,7 @@ public:
     void setStations(const vector<Station *> &stat);
     /**
      * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setStations was gebruikt");
-     * ENSURE(getStations() == stat, "Postconditie fout bij setStation");
+     * ENSURE(getStations() == stat, "Postconditie fout bij setHuidigStation");
      */
 
     const vector<Tram *> & getTrams();
@@ -94,13 +94,6 @@ public:
     /**
      * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setTrams was gebruikt");
      * ENSURE(getTrams() == trams, "Postconditie fout bij setTrams");
-     */
-
-    void move(Tram*, Station*, bool forcedMove);
-    /**
-     * REQUIRE(tram->getLijnNr() == station->getSpoorNr(), "Bij move tram en station niet op zelfde lijn");
-     * REQUIRE(tram->getStation() != station, "Bij move zijn beginstation en eindstation hetzelfde");
-     * ENSURE(tram->getStation() == station, "Bij move tram niet op het juiste station uitgekomen");
      */
 
 

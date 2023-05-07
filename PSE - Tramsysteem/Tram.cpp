@@ -3,6 +3,7 @@
 //
 
 #include "Tram.h"
+#include "TramSysteemOut.h"
 
 int Tram::getLijnNr() const {
     REQUIRE(lijnNr != 0 , "Bij getLijnNr van tram was de input 0");
@@ -11,9 +12,9 @@ int Tram::getLijnNr() const {
 }
 
 void Tram::setLijnNr(int nr) {
-    REQUIRE(lijnNr != 0, "Bij setLijnNr van station was de naam leeg");
+    REQUIRE(lijnNr != 0, "Bij setLijnNr van huidigStation was de naam leeg");
     Tram::lijnNr = nr;
-    ENSURE(lijnNr = nr, "Bij setLijnNr van station was het nummer niet correct aangepast");
+    ENSURE(lijnNr = nr, "Bij setLijnNr van huidigStation was het nummer niet correct aangepast");
 
 }
 
@@ -25,11 +26,11 @@ Station *Tram::getBeginStation() const {
 void Tram::setBeginStation(Station *stat) {
     REQUIRE(stat != 0, "bij setBeginStatino van Tram was er geen geldige pointer gegeven.");
     Tram::beginStation = stat;
-    // Als de tram nog niet bij een station staat, wordt deze op het beginstation gezet.
-    if (Tram::station == 0){
-        Tram::station = stat;
+    // Als de tram nog niet bij een huidigStation staat, wordt deze op het beginstation gezet.
+    if (Tram::huidigStation == 0){
+        setHuidigStation(stat);
     }
-    ENSURE(station == stat, "Bij setBeginStation van Tram de aanpassing niet correct doorgevoerd.");
+    ENSURE(huidigStation == stat, "Bij setBeginStation van Tram de aanpassing niet correct doorgevoerd.");
 }
 
 double Tram::getSnelheid() const {
@@ -42,20 +43,26 @@ void Tram::setSnelheid(double snelh) {
 
 Tram::Tram() {
     beginStation = 0;
-    station = 0;
+    huidigStation = 0;
     snelheid = -1;
     lijnNr = -1;
 }
 
-Station *Tram::getStation() const {
-    REQUIRE(station != 0 , "Bij getStation van tram was de input 0");
-    return station;
+Station *Tram::getHuidigStation() const {
+    REQUIRE(huidigStation != 0 , "Bij getHuidigStation van tram was de input 0");
+    return huidigStation;
 }
 
-void Tram::setStation(Station *stat) {
-    REQUIRE(stat != 0, "Bij setStation tram was de input 0");
-    Tram::station = stat;
-    ENSURE(station = stat, "Bij setStation van tram is het niet correct uitgevoerd");
+void Tram::setHuidigStation(Station *stat) {
+    REQUIRE(stat != 0, "Bij setHuidigStation tram was de input 0");
+    // In deze functie wordt de huidige tram van het station ook aangepast.
+    if(huidigStation != 0){
+        huidigStation->removeTramVanStation();
+    }
+
+    Tram::huidigStation = stat;
+    stat->addTramAanStation(this);
+    ENSURE(huidigStation = stat, "Bij setHuidigStation van tram is het niet correct uitgevoerd");
 }
 
 int Tram::getVoertuigNummer() const {
@@ -82,5 +89,40 @@ void Tram::setTypeString(const string &tp) {
 
 Tram::~Tram() {
 
+}
+
+void Tram::moveNaarVolgende(TramSysteemOut* tramSysteemOut) {
+        REQUIRE(lijnNr == huidigStation->getSpoorNr(), "Bij moveNaarVolgende van Tram zijn tram en huidigStation niet op zelfde lijn");
+        REQUIRE(huidigStation != huidigStation->getVolgende(), "Bij moveNaarVolgende van Tram zijn beginstation en eindstation hetzelfde");
+        Station* vorige = huidigStation;
+
+        // Als het volgende station bezet is En als deze kapot is:
+        bool volgendeBezet = false;
+        if (huidigStation->getVolgende()->getTramInStation() != 0){
+            if( huidigStation->getVolgende()->getTramInStation()->isKapot()){
+                volgendeBezet = true;
+            }
+        }
+
+        // Als de tram zelf niet kapot is en de volgende plaats vrij is kan deze bewegen:
+        if (!isKapot() and !volgendeBezet){
+            setHuidigStation(huidigStation->getVolgende());
+            tramSysteemOut->move(this, vorige, huidigStation);
+        }
+        // Als ze kapot is, moet ze herstellen
+        else if (isKapot()){
+            tramSysteemOut->herstel(this, huidigStation);
+        }
+
+        // Als ze kan bewegen en de volgende bezet is is er een botsing.
+        else if (volgendeBezet and !isKapot()){
+            tramSysteemOut->botsing(this, huidigStation->getVolgende()->getTramInStation());
+        }
+
+        ENSURE(!(volgendeBezet and !isKapot()), "Bij moveNaarVolgende van Tram was het volgende station bezet op de lijn wat in een botsing resulteert.");
+}
+
+bool Tram::isKapot() {
+    return false;
 }
 

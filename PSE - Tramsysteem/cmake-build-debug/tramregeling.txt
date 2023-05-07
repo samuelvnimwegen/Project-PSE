@@ -1,8 +1,8 @@
 ----- Tramregeling ----- 
 
-Lijn 0x7817b0:
+Lijn 15:
 =A===B===C=
-         T 
+     T   T 
 
 --== STATIONS ==--
 = Station A =
@@ -24,12 +24,89 @@ Lijn 0x7817b0:
 Tram 15 nr 1
 	type: PCC
 	snelheid: 40
-	huidig station: C
-	reparatiekosten: 200 euro
+	huidig huidigStation: C
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
+Tram 15 nr 2
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: B
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
 
 Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
 
+Tram 2 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
 Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
 
+Tram 2 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation B op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
 Tram 1 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Tram 1 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation A op lijn 15.
+
+Tram 2 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
+
+Tram 1 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Tram 1 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Tram 2 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Lijn 15:
+=A===B===C=
+     T   T 
+
+--== STATIONS ==--
+= Station A =
+* Spoor 15:
+<- Station C
+-> Station B
+
+= Station B =
+* Spoor 15:
+<- Station A
+-> Station C
+
+= Station C =
+* Spoor 15:
+<- Station B
+-> Station A
+
+--== TRAMS ==--
+Tram 15 nr 1
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: C
+	huidige reparatiekosten: 200 euro
+	totale reparatiekosten: 400 euro
+
+Tram 15 nr 2
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: B
+	huidige reparatiekosten: 200 euro
+	totale reparatiekosten: 400 euro
 

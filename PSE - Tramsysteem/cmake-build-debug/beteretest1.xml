@@ -29,4 +29,13 @@
 		<reparatieTijd>2</reparatieTijd>
 		<reparatieKost>200</reparatieKost>
 	</TRAM>
+	<TRAM>
+		<lijnNr>15</lijnNr>
+		<type>PCC</type>
+		<voertuigNr>2</voertuigNr>
+		<beginStation>B</beginStation>
+		<aantalDefecten>2</aantalDefecten>
+		<reparatieTijd>2</reparatieTijd>
+		<reparatieKost>200</reparatieKost>
+	</TRAM>
 </METRONET>

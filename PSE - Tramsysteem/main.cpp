@@ -9,7 +9,10 @@ int main(int argc, const char * argv[]) {
 
     output->advanced_summary();
     output->complete_summary();
-    tramsysteem->simulate(3);
+    tramsysteem->simulate(10);
+
+    output->advanced_summary();
+    output->complete_summary();
     return 0;
 }
 

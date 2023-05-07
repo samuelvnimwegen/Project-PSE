@@ -22,6 +22,7 @@ int PCC::getAantalDefecten() const {
 void PCC::setAantalDefecten(int defecten) {
     REQUIRE(defecten >= 0, "Bij setAantalDefecten van PCC is het aantal defecten < 0");
     PCC::aantalDefecten = defecten;
+    counter = defecten;
     ENSURE(aantalDefecten == defecten, "Bij setAantalDefecten van PCC is het niet correct uitgevoerd.");
 }
 
@@ -45,4 +46,64 @@ void PCC::setReparatieKost(int kost) {
     REQUIRE(kost >= 0, "Bij setReparatieKost van PCC is de kost < 0");
     PCC::reparatieKost = kost;
     ENSURE(reparatieKost == kost, "Bij setReparatieKost van PCC is het niet correct uitgevoerd.");
+}
+
+bool PCC::isKapot() {
+    return kapot;
+}
+
+void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
+    Tram::moveNaarVolgende(tramSysteemOut);
+    // Counter aanpassen:
+    counter -= 1;
+    // Als de counter 0 is:
+    if (counter == 0){
+        // Als hij kapot is: dan is hij nu hersteld.
+        if (kapot){
+            kapot = false;
+            counter = aantalDefecten;
+            totaleKosten += resterendeKosten;
+            resterendeKosten = 0;
+        }
+        // Als hij niet kapot is: dan is hij nu kapot
+        else{
+            kapot = true;
+            counter = reparatieTijd;
+            resterendeKosten = reparatieKost;
+        }
+    }
+    // Als hij kapot is en de counter niet 0 is: gedeeltelijk de reparatiekosten er al vanaf halen.
+    else if (kapot){
+        resterendeKosten -= reparatieKost / reparatieTijd;
+        totaleKosten += reparatieKost / reparatieTijd;
+    }
+}
+
+void PCC::setKapot(bool status) {
+    PCC::kapot = status;
+}
+
+void PCC::setCounter(int count) {
+    REQUIRE(count >= 0, "Bij setCounter van PCC was de counter kleiner dan 0");
+    PCC::counter = count;
+    ENSURE(counter == count, "Bij setCounter van PCC was het fout uitgevoerd");
+}
+
+int PCC::getResterendeKosten() const {
+    return resterendeKosten;
+}
+
+int PCC::getTotaleKosten() const {
+    return totaleKosten;
+}
+
+void PCC::setResterendeKosten(int resterend) {
+    REQUIRE(resterend >= 0, "Bij setResterendeKosten van PCC was dit < 0");
+    PCC::resterendeKosten = resterend;
+    ENSURE(resterendeKosten == resterend, "ij setResterendeKosten van PCC was dit niet correct uitgevoerd");
+}
+
+void PCC::setTotaleKosten(int totaal) {
+    REQUIRE(totaal >= 0, "Bij setTotaleKosten van PCC was dit < 0");
+    PCC::totaleKosten = totaal;
 }

@@ -11,7 +11,38 @@ class PCC: public Tram{
     int aantalDefecten;
     int reparatieTijd;
     int reparatieKost;
+    bool kapot;
+    int counter;
+    int resterendeKosten;
+    int totaleKosten;
 public:
+    int getResterendeKosten() const;
+
+    int getTotaleKosten() const;
+
+    bool isKapot();
+
+    void setKapot(bool kapot);
+
+    void setCounter(int count);
+    /**
+     * REQUIRE(count >= 0, "Bij setCounter van PCC was de counter kleiner dan 0");
+     * ENSURE(counter == count, "Bij setCounter van PCC was het fout uitgevoerd");
+     */
+
+    void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
+
+    void setResterendeKosten(int resterendeKosten);
+    /**
+     * REQUIRE(resterend >= 0, "Bij setResterendeKosten van PCC was dit < 0");
+     * ENSURE(resterendeKosten == resterend, "ij setResterendeKosten van PCC was dit niet correct uitgevoerd");
+     */
+
+    void setTotaleKosten(int totaleKosten);
+    /**
+     * REQUIRE(totaal >= 0, "Bij setTotaleKosten van PCC was dit < 0");
+     */
+
     int getAantalDefecten() const;
     /**
      * REQUIRE(aantalDefecten >= 0, "Bij getAantalDefecten van PCC is het aantal defecten < 0");

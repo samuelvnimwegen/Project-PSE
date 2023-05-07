@@ -32,6 +32,9 @@ public:
 
     void move(Tram* tram, Station* begin, Station* eind);
 
+    void herstel(Tram* tram, Station* halte);
+
+    void botsing(Tram* tram1, Tram* tram2);
 
 
 };

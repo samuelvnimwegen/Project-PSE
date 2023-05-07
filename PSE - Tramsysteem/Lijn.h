@@ -29,7 +29,7 @@ public:
 
     void addStation(Station* station);
     /**
-     * REQUIRE(station != 0, "Bij addStation van Lijn was de pointer == 0");
+     * REQUIRE(huidigStation != 0, "Bij addStation van Lijn was de pointer == 0");
      */
 
     void addTram(Tram* tram);
