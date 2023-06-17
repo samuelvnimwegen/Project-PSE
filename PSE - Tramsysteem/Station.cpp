@@ -4,93 +4,121 @@
 
 #include "Station.h"
 
-Station::Station(const string &naam, Station *volgende, Station *vorige, int spoorNr) : naam(naam), volgende(volgende),
-                                                                                        vorige(vorige),
-                                                                                        spoorNr(spoorNr) {}
-
-Station::Station() {
-    volgende = 0;
-    vorige = 0;
-    spoorNr = -1;
-    // Deze waarde is -1 zodat duidelijk is dat deze nog niet gekozen is.
+Station::Station(const string &naam, Station *volgende, Station *vorige, int spoorNr) :
+        naam(naam), volgende(volgende), vorige(vorige), huidigeTram(0), spoorNr(spoorNr) {
+    REQUIRE(!naam.empty(), "Bij Station was de naam leeg");
+    REQUIRE(volgende != 0, "Bij Station was het volgende station niet bestaand");
+    REQUIRE(vorige != 0, "Bij Station was het vorige station niet bestaand");
+    REQUIRE(spoorNr < 0, "Bij Station was het spoorNr kleiner dan 0");
+    initCheck = this;
+    ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
 }
 
-const string &Station::getNaam() const {
-    REQUIRE(!naam.empty(), "Bij getNaam van huidigStation was de naam leeg");
-    return naam;
+string Station::getNaam() {
+    REQUIRE(this->properlyInitialised(), "Station bij getNaam niet correct geïnitialiseerd");
+    string result = naam;
+    ENSURE(!result.empty(), "Bij getNaam van Station was de naam leeg");
+    return result;
 }
 
 void Station::setNaam(const string &nm) {
-    REQUIRE(!nm.empty(), "Bij setNaam van huidigStation was de naam leeg");
-    Station::naam = nm;
-    ENSURE(naam == nm, "Bij setNaam van huidigStation was de naam niet correct aangepast");
+    REQUIRE(this->properlyInitialised(), "Station bij getNaam niet correct geïnitialiseerd");
+    REQUIRE(!nm.empty(), "Bij setNaam van Station was de naam leeg");
+    naam = nm;
+    ENSURE(this->getNaam() == nm, "Bij setNaam van Station was de naam niet correct aangepast");
 }
 
-Station *Station::getVolgende() const {
-    REQUIRE(volgende != 0 , "Bij getVolgende van huidigStation was de input 0");
-    return volgende;
+Station *Station::getVolgende() {
+    REQUIRE(this->properlyInitialised(), "Station bij getVolgende niet correct geïnitialiseerd");
+    Station* result = volgende;
+    ENSURE(result != 0 , "Bij getVolgende van Station was er geen volgend station");
+    return result;
 }
 
-void Station::setVolgende(Station *vlgd) {
-    REQUIRE(vlgd != 0, "Bij setVolgende van huidigStation was de input 0");
-    Station::volgende = vlgd;
-    ENSURE(volgende == vlgd, "Bij setVolgende van huidigStation is het niet correct uitgevoerd");
+void Station::setVolgende(Station *next) {
+    REQUIRE(this->properlyInitialised(), "Station bij getVolgende niet correct geïnitialiseerd");
+    REQUIRE(next != 0, "Bij setVolgende van Station was de input 0");
+    Station::volgende = next;
+    ENSURE(this->getVolgende() == next, "Bij setVolgende van Station is het niet correct uitgevoerd");
 }
 
-Station *Station::getVorige() const {
-    REQUIRE (vorige != 0,"Bij getVorige van huidigStation was de input 0");
-    return vorige;
+Station *Station::getVorige() {
+    REQUIRE(this->properlyInitialised(), "Station bij getVorige niet correct geïnitialiseerd");
+    Station* result = vorige;
+    ENSURE(result != 0, "Bij getVorige van Station postconditie fout");
+    return result;
 }
 
-void Station::setVorige(Station *vrg) {
-    REQUIRE(vrg != 0, "Bij setVorige van huidigStation was de input 0");
-    Station::vorige = vrg;
-    ENSURE(vorige == vrg, "Bij setVorige van huidigStation is het niet correct uitgevoerd");
+void Station::setVorige(Station *previous) {
+    REQUIRE(this->properlyInitialised(), "Station bij setVorige niet correct geïnitialiseerd");
+    REQUIRE(previous != 0, "Bij setVorige van Station was de input 0");
+    Station::vorige = previous;
+    ENSURE(this->getVorige() == previous, "Bij setVorige van Station is het niet correct uitgevoerd");
 
 }
 
-int Station::getSpoorNr() const {
-    REQUIRE(spoorNr !=0, "Bij getSpoorNr van huidigStation was de naam leeg");
-    return spoorNr;
+int Station::getSpoorNr() {
+    REQUIRE(this->properlyInitialised(), "Station bij getSpoorNr niet correct geïnitialiseerd");
+    int result = spoorNr;
+    ENSURE(result >= 0, "Bij getSpoorNr van Station was het nummer kleiner dan 0");
+    return result;
 }
 
 void Station::setSpoorNr(int nr) {
-    REQUIRE(spoorNr != 0, "Bij setSpoorNr van huidigStation was de naam leeg");
-    Station::spoorNr = nr;
-    ENSURE(spoorNr = nr, "Bij setSpoorNr van huidigStation was het nummer niet correct aangepast");
+    REQUIRE(this->properlyInitialised(), "Station bij setSpoorNr niet correct geïnitialiseerd");
+    REQUIRE(nr != 0, "Bij setSpoorNr van Station was de naam leeg");
+    spoorNr = nr;
+    ENSURE(this->getSpoorNr() == nr, "Bij setSpoorNr van Station was het nummer niet correct aangepast");
 }
 
-const string &Station::getTypeString() const {
-    REQUIRE(!typeString.empty(), "Bij getTypeString van Station was de string leeg");
-    return typeString;
+string Station::getTypeString(){
+    REQUIRE(this->properlyInitialised(), "Station bij getTypeString niet correct geïnitialiseerd");
+    string result = typeString;
+    ENSURE(!result.empty(), "Bij getTypeString van Station was de string leeg");
+    return result;
 }
 
 void Station::setTypeString(const string &tpString) {
+    REQUIRE(this->properlyInitialised(), "Station bij setTypeString niet correct geïnitialiseerd");
     REQUIRE(!tpString.empty(), "Bij setTypeString van Station was de string leeg");
     Station::typeString = tpString;
-    ENSURE(typeString == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
+    ENSURE(this->getTypeString() == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
 }
 
-Tram *Station::getTramInStation() const {
-    if (!tramInStation.empty()){
-        return tramInStation[0];
-    }
-    else {
-        return 0;
-    }
-
+Tram *Station::getTramInStation() {
+    REQUIRE(this->properlyInitialised(), "Station bij getTramInStation niet correct geïnitialiseerd");
+    REQUIRE(this->tramInStation(), "Bij getTramInStation van Station was geen tram in het station");
+    Tram* result = huidigeTram;
+    ENSURE(result != 0, "Bij getTramInStation van Station postconditie fout");
+    return result;
 }
 
-void Station::addTramAanStation(Tram *tram) {
-    REQUIRE(tram != 0, "Bij addTramAanStation van Station was de tram == 0");
-    tramInStation.push_back(tram);
-    ENSURE(tramInStation[0] == tram, "Bij addTramAanStation van Station was het niet correct uitgevoerd");
+void Station::setTramInStation(Tram *tram) {
+    REQUIRE(this->properlyInitialised(), "Station bij setTramInStation niet correct geïnitialiseerd");
+    REQUIRE(tram != 0, "Bij setTramInStation van Station bestond de tram niet");
+    huidigeTram = tram;
+    ENSURE(getTramInStation() == tram, "Bij setTramInStation van Station postconditie fout");
 }
 
 void Station::removeTramVanStation() {
-    REQUIRE(!tramInStation.empty(), "Bij removeTramVanStation van Station was er geen tram aanwezig");
-    tramInStation.clear();
-    ENSURE(tramInStation.empty(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd");
+    REQUIRE(this->properlyInitialised(), "Station bij removeTramVanStation niet correct geïnitialiseerd");
+    REQUIRE(this->tramInStation(), "Bij removeTramVanStation van Station was er geen tram aanwezig");
+    huidigeTram = 0;
+    ENSURE(!this->tramInStation(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd");
+}
+
+bool Station::properlyInitialised() {
+    return initCheck == this;
+}
+
+Station::Station() : initCheck(), volgende(), vorige(), huidigeTram(), spoorNr() {
+    initCheck = this;
+    ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
+}
+
+bool Station::tramInStation() {
+    REQUIRE(this->properlyInitialised(), "Station bij tramInStation niet correct geïnitialiseerd");
+    return huidigeTram != 0;
 }
 
 

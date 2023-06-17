@@ -94,7 +94,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afb2ca2abddabc6ee3ec1a628cc8beac3"><td class="memItemLeft" align="right" valign="top"><a id="afb2ca2abddabc6ee3ec1a628cc8beac3" name="afb2ca2abddabc6ee3ec1a628cc8beac3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeTramVanStation</b> ()</td></tr>
 <tr class="separator:afb2ca2abddabc6ee3ec1a628cc8beac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0636f13902691a2fb538c61524f266d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_station.html#ae0636f13902691a2fb538c61524f266d">addTramAanStation</a> (<a class="el" href="class_tram.html">Tram</a> *tram)</td></tr>
+<tr class="memitem:ae0636f13902691a2fb538c61524f266d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_station.html#ae0636f13902691a2fb538c61524f266d">setTramInStation</a> (<a class="el" href="class_tram.html">Tram</a> *tram)</td></tr>
 <tr class="separator:ae0636f13902691a2fb538c61524f266d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a878c449015cd8b044c6534fbbca7e144"><td class="memItemLeft" align="right" valign="top">const string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_station.html#a878c449015cd8b044c6534fbbca7e144">getTypeString</a> () const</td></tr>
 <tr class="separator:a878c449015cd8b044c6534fbbca7e144"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,13 +143,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>removeTramVanStation<
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae0636f13902691a2fb538c61524f266d" name="ae0636f13902691a2fb538c61524f266d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0636f13902691a2fb538c61524f266d">&#9670;&#160;</a></span>addTramAanStation()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0636f13902691a2fb538c61524f266d">&#9670;&#160;</a></span>setTramInStation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Station::addTramAanStation </td>
+          <td class="memname">void Station::setTramInStation </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_tram.html">Tram</a> *&#160;</td>
           <td class="paramname"><em>tram</em></td><td>)</td>
@@ -157,7 +157,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>removeTramVanStation<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>REQUIRE(!tramInStation.empty(), "Bij removeTramVanStation van Station was er geen tram aanwezig"); ENSURE(tramInStation.empty(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd"); </p>
+<p>REQUIRE(!huidigeTram.empty(), "Bij removeTramVanStation van Station was er geen tram aanwezig"); ENSURE(huidigeTram.empty(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd"); </p>
 
 </div>
 </div>
@@ -211,7 +211,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>removeTramVanStation<
         </tr>
       </table>
 </div><div class="memdoc">
-<p>ENSURE(tramInStation == tram, "Bij addTramAanStation van Station was het niet correct uitgevoerd"); </p>
+<p>ENSURE(huidigeTram == tram, "Bij setTramInStation van Station was het niet correct uitgevoerd"); </p>
 
 </div>
 </div>

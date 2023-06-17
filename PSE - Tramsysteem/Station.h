@@ -11,86 +11,158 @@ using namespace std;
 class Tram;
 // Alle eigenschappen / waarden huidigStation
 class Station {
+    Station* initCheck;
     string naam;
     string typeString;
     Station* volgende;
     Station* vorige;
-    vector<Tram*> tramInStation;
+    Tram* huidigeTram;
     int spoorNr;
 
 public:
-    Tram *getTramInStation() const;
+    Station();
+    /**
+     * Lege constructor van Station.
+     *
+     * ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
+     */
+
+    Station(const string &naam, Station *volgende, Station *vorige, int spoorNr);
+    /**
+     * Constructor met argumenten van Station.
+     *
+     * REQUIRE(!naam.empty(), "Bij Station was de naam leeg");
+     * REQUIRE(volgende != 0, "Bij Station was het volgende station niet bestaand");
+     * REQUIRE(vorige != 0, "Bij Station was het vorige station niet bestaand");
+     * REQUIRE(spoorNr < 0, "Bij Station was het spoorNr kleiner dan 0");
+     * ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
+     */
+
+    bool properlyInitialised();
+    /*
+     * Checkt of het station correct geïnitialiseerd is.
+     */
+
+    bool tramInStation();
+    /**
+     * Checkt of er een tram in het station is.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij tramInStation niet correct geïnitialiseerd");
+     */
+
+    Tram *getTramInStation();
+    /**
+     * Getter voor huidige tram in het station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getTramInStation niet correct geïnitialiseerd");
+     * REQUIRE(this->tramInStation(), "Bij getTramInStation van Station was geen tram in het station");
+     * ENSURE(result != 0, "Bij getTramInStation van Station postconditie fout");
+     */
 
     void removeTramVanStation();
-    /**
-     * REQUIRE(!tramInStation.empty(), "Bij removeTramVanStation van Station was er geen tram aanwezig");
-     * ENSURE(tramInStation.empty(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd");
+    /*
+     * Verwijdert tram van het station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij removeTramVanStation niet correct geïnitialiseerd");
+     * REQUIRE(this->tramInStation(), "Bij removeTramVanStation van Station was er geen tram aanwezig");
+     * ENSURE(!this->tramInStation(), "Bij removeTramVanStation van Station was het niet correct uitgevoerd");
      */
 
-    void addTramAanStation(Tram *tram);
+    void setTramInStation(Tram *tram);
     /**
-     * ENSURE(tramInStation == tram, "Bij addTramAanStation van Station was het niet correct uitgevoerd");
+     * Setter van de tram in het station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij setTramInStation niet correct geïnitialiseerd");
+     * REQUIRE(tram != 0, "Bij setTramInStation van Station bestond de tram niet");
+     * ENSURE(getTramInStation() == tram, "Bij setTramInStation van Station postconditie fout");
      */
 
-    const string &getTypeString() const;
+    string getTypeString();
     /**
-     * REQUIRE(!typeString.empty(), "Bij getTypeString van Station was de string leeg");
+     * Getter voor de typeString.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getTypeString niet correct geïnitialiseerd");
+     * ENSURE(!result.empty(), "Bij getTypeString van Station was de string leeg");
      */
 
     void setTypeString(const string &typeString);
     /**
+     * Setter voor de typeString.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij setTypeString niet correct geïnitialiseerd");
      * REQUIRE(!tpString.empty(), "Bij setTypeString van Station was de string leeg");
-     * ENSURE(typeString == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
+     * ENSURE(this->getTypeString() == tpString, "Bij setTypeString van Station is de wijziging niet correct uitgevoerd.");
      */
 
-    const string &getNaam() const;
+    string getNaam();
     /**
-     * REQUIRE(naam.empty(), "Bij getNaam van huidigStation was de naam leeg");
+     * Getter voor de naam.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getNaam niet correct geïnitialiseerd");
+     * ENSURE(!result.empty(), "Bij getNaam van Station was de naam leeg");
      */
 
     void setNaam(const string &nm);
     /**
-     * REQUIRE(!nm.empty(), "Bij setNaam van huidigStation was de naam leeg");
-     * ENSURE(naam == nm, "Bij setNaam van huidigStation was de naam niet correct aangepast");
+     * Setter voor de naam
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getNaam niet correct geïnitialiseerd");
+     * REQUIRE(!nm.empty(), "Bij setNaam van Station was de naam leeg");
+     * ENSURE(this->getNaam() == nm, "Bij setNaam van Station was de naam niet correct aangepast");
      */
 
-    Station *getVolgende() const;
+    Station *getVolgende();
     /**
-     * REQUIRE(volgende != 0 , "Bij getVolgende van huidigStation was de input 0");
+     * Getter van het volgende station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getVolgende niet correct geïnitialiseerd");
+     * ENSURE(result != 0 , "Bij getVolgende van Station was er geen volgend station");
      */
 
-    void setVolgende(Station *vlgd);
+    void setVolgende(Station *next);
     /**
-     * REQUIRE(vlgd != 0, "Bij setVolgende van huidigStation was de input 0");
-     * ENSURE(volgende == vlgd, "Bij setVolgende van huidigStation is het niet correct uitgevoerd");
+     * Setter van het volgende station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij setVolgende niet correct geïnitialiseerd");
+     * REQUIRE(next != 0, "Bij setVolgende van Station was de input 0");
+     * ENSURE(this->getVolgende() == next, "Bij setVolgende van Station is het niet correct uitgevoerd");
      */
 
-    Station *getVorige() const;
+    Station *getVorige();
     /**
-     * REQUIRE (vorige != 0,"Bij getVorige van huidigStation was de input 0");
+     * Getter van het vorige station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getVorige niet correct geïnitialiseerd");
+     * ENSURE(result != 0, "Bij getVorige van Station postconditie fout");
      */
 
-    void setVorige(Station *vrg);
+    void setVorige(Station *previous);
     /**
-     * REQUIRE(vrg != 0, "Bij setVorige van huidigStation was de input 0");
-     * ENSURE(vorige == vrg, "Bij setVorige van huidigStation is het niet correct uitgevoerd");
+     * Setter van het vorige station.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij setVorige niet correct geïnitialiseerd");
+     * REQUIRE(previous != 0, "Bij setVorige van Station was de input 0");
+     * ENSURE(this->getVorige() == previous, "Bij setVorige van Station is het niet correct uitgevoerd");
      */
 
-    int getSpoorNr() const;
+    int getSpoorNr();
     /**
-     * REQUIRE(spoorNr !=0, "Bij getSpoorNr van huidigStation was de naam leeg");
+     * Getter voor spoornummer.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij getSpoorNr niet correct geïnitialiseerd");
+     * ENSURE(result >= 0, "Bij getSpoorNr van Station was het nummer kleiner dan 0");
      */
 
     void setSpoorNr(int nr);
     /**
-     * REQUIRE(spoorNr != 0, "Bij setSpoorNr van huidigStation was de naam leeg");
-     * ENSURE(spoorNr = nr, "Bij setSpoorNr van huidigStation was het nummer niet correct aangepast");
+     * Setter voor spoornummer.
+     *
+     * REQUIRE(this->properlyInitialised(), "Station bij setSpoorNr niet correct geïnitialiseerd");
+     * REQUIRE(spoorNr != 0, "Bij setSpoorNr van Station was de naam leeg");
+     * ENSURE(this->getSpoorNr() == nr, "Bij setSpoorNr van Station was het nummer niet correct aangepast");
      */
 
-    Station();
-    // constructor
 
-    Station(const string &naam, Station *volgende, Station *vorige, int spoorNr);
 
 };
 

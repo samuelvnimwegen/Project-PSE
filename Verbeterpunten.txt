@@ -5,4 +5,5 @@ Dingen die verbeterd moeten worden:
 - This->ini moet bij alle functies
 - Defect bool mag alleen aanwezig zijn in PCC.
 - Bij alle REQUIRE en ENSURE moeten alle properties public zijn: trams -> getTrams()
+- Errors opdelen in types: bv. Syntax wat de input checkt.
 

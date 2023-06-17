@@ -11,27 +11,23 @@ TramSysteem::TramSysteem() {
     ENSURE(properlyInitialized(), "constructor moet in juiste staat eindigen bij initialisatie bij TramSysteem");
 }
 
-bool TramSysteem::add_station(Station *station) {
-    REQUIRE((station != 0), "Station moet bestaan bij add_station");
-    REQUIRE(this->properlyInitialized(), "Tramsysteem niet juist geïnitialiseerd");
-    if (station == 0){
-        return false;
-    }
+void TramSysteem::add_station(Station *station) {
+    REQUIRE(this->properlyInitialized(), "Bij add_station is Tramsysteem niet juist geïnitialiseerd");
+    REQUIRE(station != 0, "Station moet bestaan bij add_station");
     stations.push_back(station);
-
     int size = stations.size();
-
-    ENSURE(stations[size - 1] == station, "Laatste huidigStation in de stations-vector moet het nieuwe huidigStation zijn bij addStation");
-    return false;
+    ENSURE(getStations()[size - 1] == station, "Laatste huidigStation in de stations-vector moet het nieuwe huidigStation zijn bij addStation");
 }
  vector<Station *> & TramSysteem::getStations(){
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStations was gebruikt");
-
+    REQUIRE(this->properlyInitialized(), "TramSysteem niet geïnitialiseerd wanneer getStations was gebruikt");
+    vector<Station*> result = stations;
+    ENSURE(int(result.size()) > 0, "Bij getStations van TramSysteem waren er geen trams");
     return stations;
 }
 
 void TramSysteem::setStations(const vector<Station *> &stat) {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setStations was gebruikt");
+    REQUIRE(this->properlyInitialized(), "Tramsysteem niet geïnitialiseerd wanneer setStations was gebruikt");
+    REQUIRE(int(stat.size()) > 0, "Bij setStations van TramSysteem was de input leeg");
     stations = stat;
     ENSURE(getStations() == stat, "Postconditie fout bij setHuidigStation");
 }
@@ -41,17 +37,18 @@ const vector<Tram *> & TramSysteem::getTrams() {
 }
 
 void TramSysteem::setTrams(const vector<Tram *> &tr) {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer setTrams was gebruikt");
+    REQUIRE(this->properlyInitialized(), "Tramsysteem niet geïnitialiseerd wanneer setTrams was gebruikt");
+    REQUIRE(int(tr.size()) > 0, "Bij setTrams van TramSysteem was de input leeg");
     trams = tr;
     ENSURE(getTrams() == trams, "Postconditie fout bij setTrams");
 }
 
 void TramSysteem::addTram(Tram * tr) {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer addTram was gebruikt");
+    REQUIRE(this->properlyInitialized(), "TramSysteem niet geïnitialiseerd wanneer addTram was gebruikt");
     REQUIRE(tr != 0, "tram moet bestaan bij addTram");
     trams.push_back(tr);
     int size = trams.size();
-    ENSURE(trams[size - 1] == tr, "tram moet laatste element in trams-vector zijn bij addTram");
+    ENSURE(getTrams()[size - 1] == tr, "tram moet laatste element in trams-vector zijn bij addTram");
 }
 
 
@@ -60,27 +57,29 @@ void TramSysteem::addTram(Tram * tr) {
 
 
 
-bool TramSysteem::simulate(int tijd) {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer simulate was gebruikt");
-    REQUIRE(isConsistent(), "Systeem niet consistent bij simulate");
-    int aantalTrams = trams.size();
+void TramSysteem::simulate(int tijd) {
+    REQUIRE(this->properlyInitialized(), "TramSysteem niet geïnitialiseerd wanneer simulate was gebruikt");
+    REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0");
+    int aantalTrams = getTrams().size();
     int counter = 0;
     // Verplaatst telkens de tram 1 plaats per tijdseenheid.
     if (tijd > 0){
         while (counter < tijd){
             for (int i = 0; i < aantalTrams; ++i){
-                trams[i]->moveNaarVolgende(output);
+                getTrams()[i]->moveNaarVolgende(output);
             }
             counter += 1;
         }
     }
-    return true;
 }
 
 
 bool TramSysteem::isConsistent() {
     // checkt of elk huidigStation een volgend en vorig heeft
     REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer isConsistent was gebruikt");
+    REQUIRE(!getLijnen().empty(), "Bij isConsistent van TramSysteem waren er geen lijnen om te bekijken");
+    REQUIRE(!getStations().empty(), "Bij isConsistent van TramSysteem waren er geen stations om te bekijken");
+
     bool volgendEnVorigeCheck = true;
     int size = stations.size();
     for (int i = 0; i < size; ++i){
@@ -91,7 +90,6 @@ bool TramSysteem::isConsistent() {
             volgendEnVorigeCheck = false;
         }
     }
-    ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
 
     // Vector om de voertuigNummers bij te houden.
     vector<int> voertuigNummers;
@@ -127,10 +125,24 @@ bool TramSysteem::isConsistent() {
             }
         }
     }
+
+    int lijnenSize = lijnen.size();
+    bool tramKanOpLijn = true;
+    for (int i = 0; i < lijnenSize; ++i){
+        Lijn* huidigeLijn = lijnen[i];
+        int stationSize = huidigeLijn->getStations().size();
+        int tramsSize = huidigeLijn->getTrams().size();
+        for (int j = 0; j < tramsSize; ++j){
+            for (int k = 0; k < stationSize; ++k){
+                if (!trams[j]->kanNaarType(stations[k])){
+                    tramKanOpLijn = false;
+                }
+            }
+        }
+    }
+    ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
     ENSURE(voertuigNummerDuplicates, "Bij isConsistent van TramSysteem waren er duplicate voertuignummers");
-
-
-    checkLijnen();
+    ENSURE(tramKanOpLijn, "Bij isConsistent van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
     return true;
 }
 
@@ -155,89 +167,82 @@ bool TramSysteem::properlyInitialized() {
     return initCheck == this;
 }
 
-TramSysteemOut *TramSysteem::getOutput() const {
-    REQUIRE(output != 0, "Bij getOutput van TramSysteemOut was er geen output gemaakt");
+TramSysteemOut *TramSysteem::getOutput() {
+    REQUIRE(this->properlyInitialized(), "Bij getOutput was TramSysteem niet correct geïnitialiseerd");
+    TramSysteemOut* result = output;
+    ENSURE(result != 0, "Bij getOutput van TramSysteemOut was er geen output gemaakt");
     return output;
 }
 
 void TramSysteem::setOutput(TramSysteemOut *out) {
+    REQUIRE(this->properlyInitialized(), "Bij setOutput was TramSysteem niet correct geïnitialiseerd");
     REQUIRE(out != 0, "Bij setOutput van TramSysteemOut was geen geldige output opgegeven");
-    TramSysteem::output = out;
-    ENSURE(output == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
+    output = out;
+    ENSURE(getOutput() == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
 }
 
 vector<Station *> TramSysteem::getStationsVanLijn(const int &spoorNummer) {
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer getStationsVanLijn was gebruikt");
+    REQUIRE(this->properlyInitialized(), "TramSysteem niet geïnitialiseerd wanneer getStationsVanLijn was gebruikt");
     REQUIRE(spoorNummer > 0, "Bij getStationsVanLijn van TramSysteem was het spoornummer <= 0");
-    vector<Station*> lijnStations;
+    vector<Station*> result;
     int size = stations.size();
     for (int i = 0; i < size; ++i){
         if (stations[i]->getSpoorNr() == spoorNummer){
-            lijnStations.push_back(stations[i]);
+            result.push_back(stations[i]);
         }
     }
-    ENSURE(!lijnStations.empty(), "Bij getStationsVanLijn van TramSysteem waren er geen stations met het spoornummer");
-    return lijnStations;
+    ENSURE(!result.empty(), "Bij getStationsVanLijn van TramSysteem waren er geen stations met het spoornummer");
+    return result;
 }
 
-void TramSysteem::checkLijnen() {
-    REQUIRE(!lijnen.empty(), "Bij checkLijnen van TramSysteem waren er geen lijnen om te bekijken");
-    int lijnenSize = lijnen.size();
-    bool tramKanOpLijn = true;
-    for (int i = 0; i < lijnenSize; ++i){
-        Lijn* huidigeLijn = lijnen[i];
-        int stationSize = huidigeLijn->getStations().size();
-        int tramsSize = huidigeLijn->getTrams().size();
-        for (int j = 0; j < tramsSize; ++j){
-            for (int k = 0; k < stationSize; ++k){
-                if (!trams[j]->kanNaarType(stations[k])){
-                    tramKanOpLijn = false;
-                }
-            }
-        }
-    }
-    ENSURE(tramKanOpLijn, "Bij checkLijnen van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
-
-}
-
-const vector<Lijn *> &TramSysteem::getLijnen() const {
+vector<Lijn *> TramSysteem::getLijnen(){
+    REQUIRE(this->properlyInitialized(), "Bij getLijnen was TramSysteem niet correct geïnitialiseerd");
     REQUIRE(!lijnen.empty(), "Bij getLijnen van TramSysteem was de vector leeg.");
-    return lijnen;
+    vector<Lijn*> &result = lijnen;
+    ENSURE(!result.empty(), "Postconditie fout van getLijnen van TramSysteem");
+    return result;
 }
 
 void TramSysteem::setLijnen(const vector<Lijn *> &lines) {
-    REQUIRE(!lines.empty(), "Bij setLijnen van TramSysteem was de vector leeg.");
-    TramSysteem::lijnen = lines;
-    ENSURE(lijnen == lines, "Bij setLijnen van TramSysteem is de operatie fout uitgevoerd.");
+    REQUIRE(this->properlyInitialized(), "Bij setLijnen was TramSysteem niet correct geïnitialiseerd");
+    REQUIRE(!lines.empty(), "Bij setLijnen van TramSysteem was de vector leeg");
+    lijnen = lines;
+    ENSURE(getLijnen() == lines, "Bij setLijnen van TramSysteem is de operatie fout uitgevoerd");
 }
 
 void TramSysteem::addLijn(Lijn *ln) {
+    REQUIRE(this->properlyInitialized(), "Bij addLijn was TramSysteem niet correct geïnitialiseerd");
     REQUIRE(ln != 0, "Bij addLijn van TramSysteem was de lijn == 0");
     lijnen.push_back(ln);
+    ENSURE(getLijnen()[int(lijnen.size()) - 1] == ln, "Bij addLijn van TramSysteem was de lijn niet correct toegevoegd");
 }
 
 Lijn *TramSysteem::findLijn(int ln) {
+    REQUIRE(this->properlyInitialized(), "Bij getOutput was TramSysteem niet correct geïnitialiseerd");
     REQUIRE(ln > 0, "Bij findLijn van TramSysteem was het lijnNr <= 0");
     int lijnenSize = lijnen.size();
+    Lijn* result = 0;
     for (int i = 0; i < lijnenSize; ++i){
         if (lijnen[i]->getLijnnummer() == ln){
-            return lijnen[i];
+            result = lijnen[i];
+            break;
         }
     }
-    return 0;
+    ENSURE(result != 0, "Bij findLijn is de gevraagde lijn niet gevonden");
+    return result;
 }
 
 
 Station *findStation(const string &naam, const vector<Station *> &stations) {
     REQUIRE(!stations.empty(), "Bij hulpfunctie findStation van tramSysteem bevatte de vector geen stations");
     int size = stations.size();
-    Station* returnElement = 0;
+    Station* result = 0;
     for (int i = 0; i < size; ++i){
         if (stations[i]->getNaam() == naam){
-            returnElement = stations[i];
+            result = stations[i];
         }
     }
-    ENSURE(returnElement != 0, "Bij hulpfunctie findStation van tramSysteem bevatte de vector niet het gevraagde huidigStation");
-    return returnElement;
+    ENSURE(result != 0, "Bij hulpfunctie findStation van tramSysteem bevatte de vector niet het gevraagde huidigStation");
+    return result;
 }
 

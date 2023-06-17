@@ -64,7 +64,7 @@ void Tram::setHuidigStation(Station *stat) {
     }
 
     Tram::huidigStation = stat;
-    stat->addTramAanStation(this);
+    stat->setTramInStation(this);
     ENSURE(huidigStation = stat, "Bij setHuidigStation van tram is het niet correct uitgevoerd");
 }
 

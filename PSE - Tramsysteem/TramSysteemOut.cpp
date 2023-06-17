@@ -7,18 +7,24 @@
 
 
 TramSysteemOut::TramSysteemOut(const string &name, TramSysteem* ts) : filename(name), tramSysteem(ts) {
-    REQUIRE(name.substr(name.length() - 4) == ".txt", "moet een .txt file zijn");
+    REQUIRE(name.substr(name.length() - 4) == ".txt", "Bij TramSysteemOut was het de filename geen .txt file");
+    REQUIRE(ts != 0, "Bij TramSysteemOut was het tramsysteem leeg");
+    initCheck = this;
     ofstream outfile(name.c_str());
     filename = name;
     outfile << "----- Tramregeling ----- " << endl << endl;
 
     ifstream file;
     file.open(filename.c_str());
-    ENSURE(file, "file moet aangemaakt zijn");
+    ENSURE(this->properlyInitialized(), "TramSysteemOut bij TramSysteemOut() niet correct initialised");
+    ENSURE(file, "Bij TramSysteemOut moet er een output file aangemaakt zijn");
+    ENSURE(getFilename() == name, "Bij TramSysteemOut is de filename niet correct opgeslagen");
+    ENSURE(getTramSysteem() == ts, "Bij TramSysteemOut is de het tramsysteem niet correct aangepast");
 }
 
 void TramSysteemOut::tram_summary() {
-    REQUIRE(!filename.empty(), "Bij tram_summary is er nog geen filenaam aangemaakt");
+    REQUIRE(!filename.empty(), "Bij tram_summary van TramSysteemOut is er nog geen filenaam aangemaakt");
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij tram_summary niet correct initialised");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
     outfile << "--== TRAMS ==--" << endl;
@@ -40,6 +46,7 @@ void TramSysteemOut::tram_summary() {
 }
 
 void TramSysteemOut::station_summary() {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij station_summary niet correct initialised");
     REQUIRE(!filename.empty(), "Bij station_summary is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -56,12 +63,14 @@ void TramSysteemOut::station_summary() {
 }
 
 void TramSysteemOut::complete_summary() {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij complete_summary niet correct initialised");
     REQUIRE(!filename.empty(), "Bij complete_summary is er nog geen filenaam aangemaakt");
     station_summary();
     tram_summary();
 }
 
 void TramSysteemOut::advanced_summary() {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij advanced_summary niet correct initialised");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
@@ -102,6 +111,7 @@ void TramSysteemOut::advanced_summary() {
 }
 
 void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij move niet correct initialised");
     REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -112,6 +122,7 @@ void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
 }
 
 void TramSysteemOut::herstel(Tram *tram, Station *halte) {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij herstel niet correct initialised");
     REQUIRE(!filename.empty(), "Bij herstel is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -121,11 +132,30 @@ void TramSysteemOut::herstel(Tram *tram, Station *halte) {
 }
 
 void TramSysteemOut::botsing(Tram *tram1, Tram *tram2) {
+    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij botsing niet correct initialised");
     REQUIRE(!filename.empty(), "Bij botsing is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
     outfile << "!!! Botsing van Tram " << tram1->getVoertuigNummer() << " (" << tram1->getTypeString() << ") en Tram "
             << tram2->getVoertuigNummer() << " (" << tram2->getTypeString() << ") bij Station " << tram2->getHuidigStation()->getNaam() <<". !!! " << endl << endl;
+}
+
+bool TramSysteemOut::properlyInitialized() {
+    return initCheck == this;
+}
+
+string TramSysteemOut::getFilename(){
+    REQUIRE(this->properlyInitialized(), "Bij getFilename is TramSysteemOut niet correct initialised");
+    string result = filename;
+    ENSURE(result.substr(result.length() - 4) == ".txt", "Bij getFilename van TramSysteemOut was de filename geen .txt file");
+    return result;
+}
+
+TramSysteem *TramSysteemOut::getTramSysteem() {
+    REQUIRE(this->properlyInitialized(), "Bij getTramSysteem is TramSysteemOut niet correct initialised");
+    TramSysteem* result = tramSysteem;
+    ENSURE(result != 0, "Bij getTramSysteem van TramSysteemOut was het systeem niet bestaand");
+    return result;
 }
 
