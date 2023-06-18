@@ -28,15 +28,23 @@ public:
      */
 
     bool properlyInitialised();
-    /**
+     /**
      * Checkt of systeem juist geïnitieerd is.
      */
 
-    bool kanBewegen();
+     virtual bool kanBewegen();
     /**
      * Checkt of de tram kan bewegen
      *
      * REQUIRE(this->properlyInitialised(), "Tram bij kanBewegen niet correct geïnitieerd");
+     */
+
+    virtual void wacht(TramSysteemOut* tramSysteemOut);
+    /**
+     * Laat een tram wachten.
+     *
+     * REQUIRE(this->properlyInitialised(), "Tram bij wacht niet correct geïnitieerd");
+     * REQUIRE(!this->kanBewegen(), "Bij wacht van Tram kon de tram nog bewegen");
      */
 
     virtual void moveNaarVolgende(TramSysteemOut* tramSysteemOut);

@@ -60,16 +60,30 @@ void TramSysteem::addTram(Tram * tr) {
 void TramSysteem::simulate(int tijd) {
     REQUIRE(this->properlyInitialized(), "TramSysteem niet geïnitialiseerd wanneer simulate was gebruikt");
     REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0");
-    int aantalTrams = getTrams().size();
     int counter = 0;
+    vector<Tram*> onbewogen = getTrams();
     // Verplaatst telkens de tram 1 plaats per tijdseenheid.
-    if (tijd > 0){
-        while (counter < tijd){
-            for (int i = 0; i < aantalTrams; ++i){
-                getTrams()[i]->moveNaarVolgende(output);
+    while (counter < tijd){
+        // Elke tram die kan bewegen verplaatsen totdat alles vaststaat.
+        bool beweging = true;
+        vector<Tram*> tramVector;
+        while (beweging){
+            beweging = false;
+            for (int i = 0; i < int(onbewogen.size()); ++i){
+                if (onbewogen[i]->kanBewegen()){
+                    onbewogen[i]->moveNaarVolgende(output);
+                    beweging = true;
+                }
+                else{
+                    tramVector.push_back(onbewogen[i]);
+                }
             }
-            counter += 1;
+            onbewogen = tramVector;
         }
+        for (int i = 0; i < int(onbewogen.size()); ++i){
+            onbewogen[i]->wacht(output);
+        }
+        counter += 1;
     }
 }
 

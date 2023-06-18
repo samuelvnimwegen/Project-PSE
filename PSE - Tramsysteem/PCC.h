@@ -26,6 +26,13 @@ public:
      * ENSURE(this->properlyInitiated(), "PCC bij constructor niet correct geïnitieerd");
      */
 
+    bool kanBewegen();
+    /*
+     * Geeft aan of de tram kan bewegen
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij kanBewegen niet correct geïnitieerd");
+     */
+
     bool properlyInitiated();
     /**
      * Checkt of class correct geïnitieerd is.
@@ -62,12 +69,15 @@ public:
      * ENSURE(this->isKapot() == status, "Bij setKapot van PCC postconditie error");
      */
 
+    void wacht(TramSysteemOut* tramSysteemOut);
+
     void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
     /**
      * Verplaatst PCC naar volgende station.
      *
      * REQUIRE(this->properlyInitiated(), "PCC bij moveNaarVolgende niet correct geïnitieerd");
      * REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
+     * REQUIRE(!this->isKapot(), "Bij moveNaarVolgende van PCC was de tram kapot");
      */
 
     void setResterendeKosten(int resterendeKosten);

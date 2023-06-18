@@ -2,8 +2,6 @@ Dingen die verbeterd moeten worden:
 - Tests moeten gemaakt worden en death testen moeten in een txt file opgeslagen worden en de outputlijn moet vergeleken worden.
 - Trams moeten wachten tot dat de volgende vertrekt -> geen foutmelding bij botsing wat nu het geval is.
 - Trams moeten ook langs stations kunnen waar ze niet kunnen stoppen.
-- This->ini moet bij alle functies
-- Defect bool mag alleen aanwezig zijn in PCC.
-- Bij alle REQUIRE en ENSURE moeten alle properties public zijn: trams -> getTrams()
+
 - Errors opdelen in types: bv. Syntax wat de input checkt.
 

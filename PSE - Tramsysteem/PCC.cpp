@@ -3,6 +3,7 @@
 //
 
 #include "PCC.h"
+#include "TramSysteemOut.h"
 
 PCC::PCC() : aantalDefecten(), reparatieTijd(), reparatieKost(), kapot(), counter(), resterendeKosten(), totaleKosten() {
     setSnelheid(40);
@@ -65,32 +66,19 @@ bool PCC::isKapot() {
     return kapot;
 }
 
+
 void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
     REQUIRE(this->properlyInitiated(), "PCC bij moveNaarVolgende niet correct geïnitieerd");
     REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
+    REQUIRE(!this->isKapot(), "Bij moveNaarVolgende van PCC was de tram kapot");
     Tram::moveNaarVolgende(tramSysteemOut);
     // Counter aanpassen:
     counter -= 1;
-    // Als de counter 0 is:
+    // Als de counter 0 is, gaat hij kapot:
     if (counter == 0){
-        // Als hij kapot is: dan is hij nu hersteld.
-        if (kapot){
-            kapot = false;
-            counter = aantalDefecten;
-            totaleKosten += resterendeKosten;
-            resterendeKosten = 0;
-        }
-        // Als hij niet kapot is: dan is hij nu kapot
-        else{
-            kapot = true;
-            counter = reparatieTijd;
-            resterendeKosten = reparatieKost;
-        }
-    }
-    // Als hij kapot is en de counter niet 0 is: gedeeltelijk de reparatiekosten er al vanaf halen.
-    else if (kapot){
-        resterendeKosten -= reparatieKost / reparatieTijd;
-        totaleKosten += reparatieKost / reparatieTijd;
+        kapot = true;
+        counter = reparatieTijd;
+        resterendeKosten = reparatieKost;
     }
 }
 
@@ -130,4 +118,38 @@ void PCC::setTotaleKosten(int totaal) {
 
 bool PCC::properlyInitiated() {
     return initCheck == this;
+}
+
+bool PCC::kanBewegen() {
+    REQUIRE(this->properlyInitiated(), "PCC bij kanBewegen niet correct geïnitieerd");
+    if (kapot){
+        return false;
+    }
+    return Tram::kanBewegen();
+}
+
+void PCC::wacht(TramSysteemOut *tramSysteemOut) {
+    REQUIRE(this->properlyInitiated(), "PCC bij wacht niet correct geïnitieerd");
+    if (isKapot()){
+        tramSysteemOut->herstel(this, getHuidigStation());
+        // Counter aanpassen:
+        counter -= 1;
+        // Als de counter 0 is:
+        if (counter == 0){
+            // Als hij kapot is: dan is hij nu hersteld.
+            kapot = false;
+            counter = aantalDefecten;
+            totaleKosten += resterendeKosten;
+            resterendeKosten = 0;
+        }
+            // Als hij kapot is en de counter niet 0 is: gedeeltelijk de reparatiekosten er al vanaf halen.
+        else {
+            resterendeKosten -= reparatieKost / reparatieTijd;
+            totaleKosten += reparatieKost / reparatieTijd;
+        }
+    }
+    else{
+        Tram::wacht(tramSysteemOut);
+    }
+
 }

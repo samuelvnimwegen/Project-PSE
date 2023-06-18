@@ -119,43 +119,16 @@ void Tram::moveNaarVolgende(TramSysteemOut* tramSysteemOut) {
         REQUIRE(this->properlyInitialised(), "Tram bij moveNaarVolgende niet correct geïnitieerd");
         REQUIRE(this->getLijnNr() == this->getHuidigStation()->getSpoorNr(), "Bij moveNaarVolgende van Tram zijn tram en huidigStation niet op zelfde lijn");
         REQUIRE(this->getHuidigStation() != this->getHuidigStation()->getVolgende(), "Bij moveNaarVolgende van Tram zijn beginstation en eindstation hetzelfde");
+        REQUIRE(this->kanBewegen(), "Bij moveNaarVolgende van Tram kan de tram niet bewegen");
+
         Station* vorige = huidigStation;
 
-        // Checkt of de tram zelf kapot is:
-        bool kapot = false;
-        if (getTypeString() == "PCC"){
-            PCC* pccTram = dynamic_cast<PCC*>(this);
-            kapot = pccTram->isKapot();
-        }
-
-        // Als het volgende station bezet is En als deze kapot is:
-        bool volgendeBezet = false;
-        if (huidigStation->getVolgende()->tramInStation() and huidigStation->getVolgende()->getTramInStation()->typeString == "PCC"){
-            Tram* tram = huidigStation->getVolgende()->getTramInStation();
-            PCC* pccTram = dynamic_cast<PCC*>(tram);
-            if (pccTram->isKapot()){
-                volgendeBezet = true;
-            }
-        }
-
         // Als de tram zelf niet kapot is en de volgende plaats vrij is kan deze bewegen:
-        if (!kapot and !volgendeBezet){
-            while (!this->kanNaarType(this->getHuidigStation()->getVolgende())){
-                setHuidigStation(getHuidigStation()->getVolgende());
-            }
+        while (!this->kanNaarType(this->getHuidigStation()->getVolgende())){
             setHuidigStation(getHuidigStation()->getVolgende());
-            tramSysteemOut->move(this, vorige, huidigStation);
         }
-        // Als ze kapot is, moet ze herstellen
-        else if (kapot){
-            tramSysteemOut->herstel(this, huidigStation);
-        }
-
-        // Als ze kan bewegen en de volgende bezet is is er een botsing.
-        else {
-            tramSysteemOut->wachten(this, huidigStation->getVolgende()->getTramInStation());
-        }
-
+        setHuidigStation(getHuidigStation()->getVolgende());
+        tramSysteemOut->move(this, vorige, huidigStation);
 }
 
 bool Tram::properlyInitialised() {
@@ -175,5 +148,11 @@ bool Tram::kanBewegen() {
         return false;
     }
     return true;
+}
+
+void Tram::wacht(TramSysteemOut *tramSysteemOut) {
+    REQUIRE(this->properlyInitialised(), "Tram bij wacht niet correct geïnitieerd");
+    REQUIRE(!this->kanBewegen(), "Bij wacht van Tram kon de tram nog bewegen");
+    tramSysteemOut->wachten(this, huidigStation->getVolgende()->getTramInStation());
 }
 
