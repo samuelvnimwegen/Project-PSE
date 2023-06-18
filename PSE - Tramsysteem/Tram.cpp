@@ -162,3 +162,18 @@ bool Tram::properlyInitialised() {
     return initCheck == this;
 }
 
+bool Tram::kanBewegen() {
+    REQUIRE(this->properlyInitialised(), "Tram bij kanBewegen niet correct geïnitieerd");
+    Station* volgendStation = getHuidigStation()->getVolgende();
+    while (!kanNaarType(volgendStation)){
+        if (volgendStation->tramInStation()){
+            return false;
+        }
+        volgendStation = volgendStation->getVolgende();
+    }
+    if (volgendStation->tramInStation()){
+        return false;
+    }
+    return true;
+}
+

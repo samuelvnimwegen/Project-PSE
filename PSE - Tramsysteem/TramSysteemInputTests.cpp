@@ -2,9 +2,6 @@
 // Created by Samuel on 18/06/2023.
 //
 
-#include "TramSysteem.h"
-#include "gtest/gtest.h"
-#include "XMLParser.h"
 
 class TramsysteemTest: public  ::testing::Test{
 protected:
@@ -42,7 +39,6 @@ EXPECT_TRUE(tramsysteem->getStations()[0]->tramInStation());
 EXPECT_FALSE(tramsysteem->getStations()[1]->tramInStation());
 EXPECT_TRUE(tramsysteem->getStations()[2]->tramInStation());
 
-output->complete_summary();
 output->advanced_summary();
 
 tramsysteem->simulate(1);
@@ -51,11 +47,15 @@ EXPECT_TRUE(pcc->isKapot());
 
 output->advanced_summary();
 
-tramsysteem->simulate(2);
-EXPECT_FALSE(pcc->isKapot());
-
-output->complete_summary();
+tramsysteem->simulate(1);
+EXPECT_TRUE(pcc->isKapot());
+output->tram_summary();
 output->advanced_summary();
+
+tramsysteem->simulate(1);
+EXPECT_FALSE(pcc->isKapot());
+output->advanced_summary();
+
 }
 
 // Deze tests halten het programma:

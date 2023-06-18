@@ -32,6 +32,13 @@ public:
      * Checkt of systeem juist geïnitieerd is.
      */
 
+    bool kanBewegen();
+    /**
+     * Checkt of de tram kan bewegen
+     *
+     * REQUIRE(this->properlyInitialised(), "Tram bij kanBewegen niet correct geïnitieerd");
+     */
+
     virtual void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
     /**
      * Beweegt een tram naar het volgende station.
