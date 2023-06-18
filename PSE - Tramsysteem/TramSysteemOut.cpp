@@ -159,3 +159,12 @@ TramSysteem *TramSysteemOut::getTramSysteem() {
     return result;
 }
 
+void TramSysteemOut::wachten(Tram* tram1, Tram* tram2) {
+    REQUIRE(this->properlyInitialized(), "Bij wachten is TramSysteemOut niet correct initialised");
+    ofstream outfile;
+    outfile.open(filename.c_str(), ios_base::app);
+
+    outfile << "Tram " << tram1->getVoertuigNummer() << " (" << tram1->getTypeString() << ") is aan het wachten bij "
+            << tram1->getHuidigStation()->getTypeString() << " " << tram1->getHuidigStation()->getNaam() << " op Tram " << tram2->getVoertuigNummer() <<"." << endl << endl;
+}
+

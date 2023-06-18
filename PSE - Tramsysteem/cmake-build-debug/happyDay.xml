@@ -52,7 +52,7 @@
 	</TRAM>
 	<TRAM>
 		<lijnNr>15</lijnNr>
-		<type>PCC</type>
+		<type>Albatros</type>
 		<voertuigNr>2</voertuigNr>
 		<beginStation>B</beginStation>
 		<aantalDefecten>2</aantalDefecten>
@@ -70,7 +70,7 @@
 	</TRAM>
 	<TRAM>
 		<lijnNr>7</lijnNr>
-		<type>PCC</type>
+		<type>Stadslijner</type>
 		<voertuigNr>4</voertuigNr>
 		<beginStation>2</beginStation>
 		<aantalDefecten>2</aantalDefecten>

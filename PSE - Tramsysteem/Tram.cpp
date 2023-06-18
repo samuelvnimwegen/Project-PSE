@@ -140,7 +140,10 @@ void Tram::moveNaarVolgende(TramSysteemOut* tramSysteemOut) {
 
         // Als de tram zelf niet kapot is en de volgende plaats vrij is kan deze bewegen:
         if (!kapot and !volgendeBezet){
-            setHuidigStation(huidigStation->getVolgende());
+            while (!this->kanNaarType(this->getHuidigStation()->getVolgende())){
+                setHuidigStation(getHuidigStation()->getVolgende());
+            }
+            setHuidigStation(getHuidigStation()->getVolgende());
             tramSysteemOut->move(this, vorige, huidigStation);
         }
         // Als ze kapot is, moet ze herstellen
@@ -150,10 +153,9 @@ void Tram::moveNaarVolgende(TramSysteemOut* tramSysteemOut) {
 
         // Als ze kan bewegen en de volgende bezet is is er een botsing.
         else {
-            tramSysteemOut->botsing(this, huidigStation->getVolgende()->getTramInStation());
+            tramSysteemOut->wachten(this, huidigStation->getVolgende()->getTramInStation());
         }
 
-        ENSURE(!(volgendeBezet and !kapot), "Bij moveNaarVolgende van Tram was het volgende station bezet op de lijn wat in een botsing resulteert.");
 }
 
 bool Tram::properlyInitialised() {

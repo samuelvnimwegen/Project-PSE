@@ -103,6 +103,11 @@ public:
      * REQUIRE(!filename.empty(), "Bij botsing is er nog geen filenaam aangemaakt");
      */
 
+    void wachten(Tram* tram1, Tram* tram2);
+    /**
+     *
+     */
+
 };
 
 
