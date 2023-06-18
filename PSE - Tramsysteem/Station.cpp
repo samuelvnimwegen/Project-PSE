@@ -111,7 +111,7 @@ bool Station::properlyInitialised() {
     return initCheck == this;
 }
 
-Station::Station() : initCheck(), volgende(), vorige(), huidigeTram(), spoorNr() {
+Station::Station() : volgende(), vorige(), huidigeTram(), spoorNr() {
     initCheck = this;
     ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
 }

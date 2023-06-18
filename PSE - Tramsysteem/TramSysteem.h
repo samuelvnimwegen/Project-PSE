@@ -28,6 +28,13 @@ class TramSysteem {
     vector<Lijn*> lijnen;
     TramSysteemOut* output;
 public:
+    TramSysteem();
+    /**
+     * Generator voor het TramSysteem.
+     *
+     * ENSURE(properlyInitialized(), "constructor moet in juiste staat eindigen bij initialisatie bij TramSysteem");
+     */
+
     vector<Lijn *> getLijnen() ;
     /*
      * Getter voor alle lijnen in het Tramsysteem.
@@ -61,7 +68,6 @@ public:
      *
      * REQUIRE(this->properlyInitialized(), "Bij getOutput was TramSysteem niet correct geïnitialiseerd");
      * REQUIRE(ln > 0, "Bij findLijn van TramSysteem was het lijnNr <= 0");
-     * ENSURE(result != 0, "Bij findLijn is de gevraagde lijn niet gevonden");
      */
 
     TramSysteemOut *getOutput();
@@ -79,14 +85,6 @@ public:
      * REQUIRE(this->properlyInitialized(), "Bij setOutput was TramSysteem niet correct geïnitialiseerd");
      * REQUIRE(out != 0, "Bij setOutput van TramSysteemOut was geen geldige output opgegeven");
      * ENSURE(getOutput() == out, "Bij setOutput van TramSysteemOut was de verandering niet correct uitgevoerd");
-     */
-
-
-    TramSysteem();
-    /**
-     * Generator voor het TramSysteem.
-     *
-     * ENSURE(properlyInitialized(), "constructor moet in juiste staat eindigen bij initialisatie bij TramSysteem");
      */
 
     bool properlyInitialized();

@@ -10,6 +10,6 @@ Albatros::Albatros() {
 }
 
 bool Albatros::kanNaarType(Station *stat) {
-    REQUIRE(stat != 0, "Bij kanNaarType van Albatros was de input 0.");
+    REQUIRE(stat != 0, "Bij kanNaarType van Albatros was de input 0");
     return (stat->getTypeString() == "Metrostation");
 }

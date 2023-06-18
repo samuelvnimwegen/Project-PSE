@@ -228,7 +228,6 @@ Lijn *TramSysteem::findLijn(int ln) {
             break;
         }
     }
-    ENSURE(result != 0, "Bij findLijn is de gevraagde lijn niet gevonden");
     return result;
 }
 

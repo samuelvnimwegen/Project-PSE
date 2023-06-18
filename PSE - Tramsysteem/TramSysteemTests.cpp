@@ -5,6 +5,8 @@
 #include "XMLParser.h"
 using namespace std;
 
+#include "TramSysteemDomainTests.cpp"
+
 class TramsysteemTest: public  ::testing::Test{
 protected:
     virtual void SetUp(){
@@ -25,37 +27,39 @@ TEST_F(TramsysteemTest, happyDay){
 
     Tram* tram1 = tramsysteem->getStations()[1]->getTramInStation();
     Tram* tram2 = tramsysteem->getStations()[2]->getTramInStation();
-    EXPECT_FALSE(tram1->isKapot());
-    EXPECT_FALSE(tram2->isKapot());
+    PCC* pcc1 = dynamic_cast<PCC*>(tram1);
+    PCC* pcc2 = dynamic_cast<PCC*>(tram2);
+    EXPECT_FALSE(pcc1->isKapot());
+    EXPECT_FALSE(pcc2->isKapot());
 
-    EXPECT_TRUE(tramsysteem->getStations()[0]->getTramInStation() == 0);
-    EXPECT_TRUE(tramsysteem->getStations()[1]->getTramInStation() != 0);
-    EXPECT_TRUE(tramsysteem->getStations()[2]->getTramInStation() != 0);
+    EXPECT_FALSE(tramsysteem->getStations()[0]->tramInStation());
+    EXPECT_TRUE(tramsysteem->getStations()[1]->tramInStation());
+    EXPECT_TRUE(tramsysteem->getStations()[2]->tramInStation());
 
     output->complete_summary();
     output->advanced_summary();
     tramsysteem->simulate(1);
 
-    EXPECT_FALSE(tram1->isKapot());
-    EXPECT_FALSE(tram2->isKapot());
+    EXPECT_FALSE(pcc1->isKapot());
+    EXPECT_FALSE(pcc2->isKapot());
 
-    EXPECT_TRUE(tramsysteem->getStations()[0]->getTramInStation() != 0);
-    EXPECT_TRUE(tramsysteem->getStations()[1]->getTramInStation() == 0);
-    EXPECT_TRUE(tramsysteem->getStations()[2]->getTramInStation() != 0);
+    EXPECT_TRUE(tramsysteem->getStations()[0]->tramInStation());
+    EXPECT_FALSE(tramsysteem->getStations()[1]->tramInStation());
+    EXPECT_TRUE(tramsysteem->getStations()[2]->tramInStation());
 
     output->complete_summary();
     output->advanced_summary();
 
     tramsysteem->simulate(1);
 
-    EXPECT_TRUE(tram1->isKapot());
-    EXPECT_TRUE(tram2->isKapot());
+    EXPECT_TRUE(pcc1->isKapot());
+    EXPECT_TRUE(pcc2->isKapot());
 
     output->advanced_summary();
 
     tramsysteem->simulate(2);
-    EXPECT_FALSE(tram1->isKapot());
-    EXPECT_FALSE(tram2->isKapot());
+    EXPECT_FALSE(pcc1->isKapot());
+    EXPECT_FALSE(pcc2->isKapot());
 
     output->complete_summary();
     output->advanced_summary();
@@ -85,20 +89,19 @@ TEST_F(TramsysteemTest, botsing){
 
     Tram* tram1 = tramsysteem->getStations()[1]->getTramInStation();
     Tram* tram2 = tramsysteem->getStations()[2]->getTramInStation();
-    EXPECT_FALSE(tram1->isKapot());
-    EXPECT_FALSE(tram2->isKapot());
+    PCC* pcc2 = dynamic_cast<PCC*>(tram2);
+    EXPECT_FALSE(pcc2->isKapot());
     EXPECT_TRUE(tram1->kanNaarType(tram1->getHuidigStation()->getVolgende()));
 
-    EXPECT_TRUE(tramsysteem->getStations()[0]->getTramInStation() == 0);
-    EXPECT_TRUE(tramsysteem->getStations()[1]->getTramInStation() != 0);
-    EXPECT_TRUE(tramsysteem->getStations()[2]->getTramInStation() != 0);
+    EXPECT_FALSE(tramsysteem->getStations()[0]->tramInStation());
+    EXPECT_TRUE(tramsysteem->getStations()[1]->tramInStation());
+    EXPECT_TRUE(tramsysteem->getStations()[2]->tramInStation());
 
     output->complete_summary();
     output->advanced_summary();
     tramsysteem->simulate(2);
 
-    EXPECT_FALSE(tram1->isKapot());
-    EXPECT_TRUE(tram2->isKapot());
+    EXPECT_TRUE(pcc2->isKapot());
 
     output->advanced_summary();
     output->complete_summary();
@@ -106,6 +109,9 @@ TEST_F(TramsysteemTest, botsing){
     EXPECT_DEATH(tramsysteem->simulate(1), "Bij moveNaarVolgende van Tram was het volgende station bezet op de lijn wat in een botsing resulteert.");
 }
 
+TEST_F(TramsysteemTest, syntax){
+
+}
 
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);

@@ -4,55 +4,69 @@
 
 #include "PCC.h"
 
-PCC::PCC() {
+PCC::PCC() : aantalDefecten(), reparatieTijd(), reparatieKost(), kapot(), counter(), resterendeKosten(), totaleKosten() {
     setSnelheid(40);
     setTypeString("PCC");
+    initCheck = this;
+    ENSURE(this->properlyInitiated(), "PCC bij constructor niet correct geïnitieerd");
 }
 
 bool PCC::kanNaarType(Station * stat) {
+    REQUIRE(this->properlyInitiated(), "PCC bij kanNaarType niet correct geïnitieerd");
     REQUIRE(stat != 0, "Bij kanNaarType van PCC was de input 0.");
     return true;
 }
 
-int PCC::getAantalDefecten() const {
-    REQUIRE(aantalDefecten >= 0, "Bij getAantalDefecten van PCC is het aantal defecten < 0");
-    return aantalDefecten;
+int PCC::getAantalDefecten() {
+    REQUIRE(this->properlyInitiated(), "PCC bij getAantalDefecten niet correct geïnitieerd");
+    int result = aantalDefecten;
+    ENSURE(result >= 0, "Bij getAantalDefecten van PCC is het aantal defecten < 0");
+    return result;
 }
 
 void PCC::setAantalDefecten(int defecten) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setAantalDefecten niet correct geïnitieerd");
     REQUIRE(defecten >= 0, "Bij setAantalDefecten van PCC is het aantal defecten < 0");
-    PCC::aantalDefecten = defecten;
+    aantalDefecten = defecten;
     counter = defecten;
-    ENSURE(aantalDefecten == defecten, "Bij setAantalDefecten van PCC is het niet correct uitgevoerd.");
+    ENSURE(this->getAantalDefecten() == defecten, "Bij setAantalDefecten van PCC postconditie fout");
 }
 
-int PCC::getReparatieTijd() const {
-    REQUIRE(reparatieTijd >= 0, "Bij getReparatieTijd van PCC is de reparatieTijd < 0");
-    return reparatieTijd;
+int PCC::getReparatieTijd() {
+    REQUIRE(this->properlyInitiated(), "PCC bij getReparatieTijd niet correct geïnitieerd");
+    int result = reparatieTijd;
+    REQUIRE(result >= 0, "Bij getReparatieTijd van PCC postconditie fout");
+    return result;
 }
 
 void PCC::setReparatieTijd(int tijd) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setReparatieTijd niet correct geïnitieerd");
     REQUIRE(tijd >= 0, "Bij setReparatieTijd van PCC is de tijd < 0");
     PCC::reparatieTijd = tijd;
-    ENSURE(reparatieTijd == tijd, "Bij setReparatieTijd van PCC is het niet correct uitgevoerd.");
+    ENSURE(this->getReparatieTijd() == tijd, "Bij setReparatieTijd van PCC is het niet correct uitgevoerd.");
 }
 
-int PCC::getReparatieKost() const {
-    REQUIRE(reparatieTijd >= 0, "Bij getReparatieKost van PCC is de reparatieKost < 0");
-    return reparatieKost;
+int PCC::getReparatieKost() {
+    REQUIRE(this->properlyInitiated(), "PCC bij getReparatieKost niet correct geïnitieerd");
+    int result = reparatieKost;
+    ENSURE(result >= 0, "Bij getReparatieKost van PCC postconditie error");
+    return result;
 }
 
 void PCC::setReparatieKost(int kost) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setReparatieKost niet correct geïnitieerd");
     REQUIRE(kost >= 0, "Bij setReparatieKost van PCC is de kost < 0");
-    PCC::reparatieKost = kost;
-    ENSURE(reparatieKost == kost, "Bij setReparatieKost van PCC is het niet correct uitgevoerd.");
+    reparatieKost = kost;
+    ENSURE(this->getReparatieKost() == kost, "Bij setReparatieKost van PCC is het niet correct uitgevoerd.");
 }
 
 bool PCC::isKapot() {
+    REQUIRE(this->properlyInitiated(), "PCC bij isKapot niet correct geïnitieerd");
     return kapot;
 }
 
 void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
+    REQUIRE(this->properlyInitiated(), "PCC bij moveNaarVolgende niet correct geïnitieerd");
     REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
     Tram::moveNaarVolgende(tramSysteemOut);
     // Counter aanpassen:
@@ -81,33 +95,39 @@ void PCC::moveNaarVolgende(TramSysteemOut *tramSysteemOut) {
 }
 
 void PCC::setKapot(bool status) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setKapot niet correct geïnitieerd");
     PCC::kapot = status;
-    ENSURE(kapot == status, "Bij setKapot van PCC was het fout uitgevoerd");
+    ENSURE(this->isKapot() == status, "Bij setKapot van PCC postconditie error");
 }
 
-void PCC::setCounter(int count) {
-    REQUIRE(count >= 0, "Bij setCounter van PCC was de counter kleiner dan 0");
-    PCC::counter = count;
-    ENSURE(counter == count, "Bij setCounter van PCC was het fout uitgevoerd");
+int PCC::getResterendeKosten() {
+    REQUIRE(this->properlyInitiated(), "PCC bij getResterendeKosten niet correct geïnitieerd");
+    int result = resterendeKosten;
+    ENSURE(result >= 0, "Bij getResterendeKosten van PCC postconditie fout");
+    return result;
 }
 
-int PCC::getResterendeKosten() const {
-    REQUIRE(resterendeKosten >= 0, "Bij getResterendeKosten van PCC waren de resterendeKosten kleiner dan 0");
-    return resterendeKosten;
-}
-
-int PCC::getTotaleKosten() const {
-    REQUIRE(resterendeKosten >= 0, "Bij getTotaleKosten van PCC waren de totaleKosten kleiner dan 0");
-    return totaleKosten;
+int PCC::getTotaleKosten() {
+    REQUIRE(this->properlyInitiated(), "PCC bij getTotaleKosten niet correct geïnitieerd");
+    int result = totaleKosten;
+    ENSURE(result >= 0, "Bij getTotaleKosten van PCC postconditie fout");
+    return result;
 }
 
 void PCC::setResterendeKosten(int resterend) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setResterendeKosten niet correct geïnitieerd");
     REQUIRE(resterend >= 0, "Bij setResterendeKosten van PCC was dit < 0");
     PCC::resterendeKosten = resterend;
-    ENSURE(resterendeKosten == resterend, "ij setResterendeKosten van PCC was dit niet correct uitgevoerd");
+    ENSURE(this->getResterendeKosten() == resterend, "Bij setResterendeKosten van PCC postconditie fout");
 }
 
 void PCC::setTotaleKosten(int totaal) {
+    REQUIRE(this->properlyInitiated(), "PCC bij setTotaleKosten niet correct geïnitieerd");
     REQUIRE(totaal >= 0, "Bij setTotaleKosten van PCC was dit < 0");
-    PCC::totaleKosten = totaal;
+    totaleKosten = totaal;
+    ENSURE(this->getTotaleKosten() == totaal, "Bij setTotaleKosten van PCC postconditie fout");
+}
+
+bool PCC::properlyInitiated() {
+    return initCheck == this;
 }

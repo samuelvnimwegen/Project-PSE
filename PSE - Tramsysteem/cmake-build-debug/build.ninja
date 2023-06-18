@@ -211,48 +211,6 @@ build CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj: CXX_COMPILER__ttt_debug_Debu
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
 
-build CMakeFiles/ttt_debug.dir/tests.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/tests.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\tests.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-
-build CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlparser.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlparser.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-
-build CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinystr.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinystr.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-
-build CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxml.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxml.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-
-build CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlerror.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlerror.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
-
-build CMakeFiles/ttt_debug.dir/XMLParser.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XMLParser.cpp || cmake_object_order_depends_target_ttt_debug
-  DEP_FILE = CMakeFiles\ttt_debug.dir\XMLParser.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt_debug.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
-
 build CMakeFiles/ttt_debug.dir/TramSysteemOut.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TramSysteemOut.cpp || cmake_object_order_depends_target_ttt_debug
   DEP_FILE = CMakeFiles\ttt_debug.dir\TramSysteemOut.cpp.obj.d
   FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
@@ -302,6 +260,48 @@ build CMakeFiles/ttt_debug.dir/Lijn.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/U
   OBJECT_DIR = CMakeFiles\ttt_debug.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
 
+build CMakeFiles/ttt_debug.dir/TramSysteemTests.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TramSysteemTests.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\TramSysteemTests.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
+
+build CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlparser.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlparser.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
+
+build CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinystr.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinystr.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
+
+build CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxml.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxml.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
+
+build CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XML/tinyxmlerror.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\XML\tinyxmlerror.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir\XML
+
+build CMakeFiles/ttt_debug.dir/XMLParser.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/XMLParser.cpp || cmake_object_order_depends_target_ttt_debug
+  DEP_FILE = CMakeFiles\ttt_debug.dir\XMLParser.cpp.obj.d
+  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
+  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
+  OBJECT_DIR = CMakeFiles\ttt_debug.dir
+  OBJECT_FILE_DIR = CMakeFiles\ttt_debug.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ttt_debug
@@ -310,7 +310,7 @@ build CMakeFiles/ttt_debug.dir/Lijn.cpp.obj: CXX_COMPILER__ttt_debug_Debug C$:/U
 #############################################
 # Link the executable ttt_debug.exe
 
-build ttt_debug.exe: CXX_EXECUTABLE_LINKER__ttt_debug_Debug CMakeFiles/ttt_debug.dir/Station.cpp.obj CMakeFiles/ttt_debug.dir/Tram.cpp.obj CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj CMakeFiles/ttt_debug.dir/tests.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/ttt_debug.dir/XMLParser.cpp.obj CMakeFiles/ttt_debug.dir/TramSysteemOut.cpp.obj CMakeFiles/ttt_debug.dir/PCC.cpp.obj CMakeFiles/ttt_debug.dir/Albatros.cpp.obj CMakeFiles/ttt_debug.dir/Stadslijner.cpp.obj CMakeFiles/ttt_debug.dir/Metrostation.cpp.obj CMakeFiles/ttt_debug.dir/Halte.cpp.obj CMakeFiles/ttt_debug.dir/Lijn.cpp.obj
+build ttt_debug.exe: CXX_EXECUTABLE_LINKER__ttt_debug_Debug CMakeFiles/ttt_debug.dir/Station.cpp.obj CMakeFiles/ttt_debug.dir/Tram.cpp.obj CMakeFiles/ttt_debug.dir/TramSysteem.cpp.obj CMakeFiles/ttt_debug.dir/TramSysteemOut.cpp.obj CMakeFiles/ttt_debug.dir/PCC.cpp.obj CMakeFiles/ttt_debug.dir/Albatros.cpp.obj CMakeFiles/ttt_debug.dir/Stadslijner.cpp.obj CMakeFiles/ttt_debug.dir/Metrostation.cpp.obj CMakeFiles/ttt_debug.dir/Halte.cpp.obj CMakeFiles/ttt_debug.dir/Lijn.cpp.obj CMakeFiles/ttt_debug.dir/TramSysteemTests.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinystr.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt_debug.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/ttt_debug.dir/XMLParser.cpp.obj
   FLAGS = -std=c++98 -Wall -Werror -O0 -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = -lgtest  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

@@ -15,84 +15,135 @@ class PCC: public Tram{
     int counter;
     int resterendeKosten;
     int totaleKosten;
+
+    PCC* initCheck;
+
 public:
-    int getResterendeKosten() const;
+    PCC();
     /**
-     * REQUIRE(resterendeKosten >= 0, "Bij getResterendeKosten van PCC waren de resterendeKosten kleiner dan 0");
+     * Constructor van PCC
+     *
+     * ENSURE(this->properlyInitiated(), "PCC bij constructor niet correct geïnitieerd");
      */
 
-    int getTotaleKosten() const;
+    bool properlyInitiated();
     /**
-     * REQUIRE(resterendeKosten >= 0, "Bij getTotaleKosten van PCC waren de totaleKosten kleiner dan 0");
+     * Checkt of class correct geïnitieerd is.
+     */
+
+    int getResterendeKosten();
+    /**
+     * Getter voor de resterende kost
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij getResterendeKosten niet correct geïnitieerd");
+     * ENSURE(result >= 0, "Bij getResterendeKosten van PCC postconditie fout");
+     */
+
+    int getTotaleKosten();
+    /**
+     * Getter voor de totale kosten.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij getTotaleKosten niet correct geïnitieerd");
+     * ENSURE(result >= 0, "Bij getTotaleKosten van PCC postconditie fout");
      */
 
     bool isKapot();
+    /**
+     * Checkt of de PCC kapot is.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij isKapot niet correct geïnitieerd");
+     */
 
     void setKapot(bool kapot);
     /**
-     * ENSURE(kapot == status, "Bij setKapot van PCC was het fout uitgevoerd");
-     */
-
-    void setCounter(int count);
-    /**
-     * REQUIRE(count >= 0, "Bij setCounter van PCC was de counter kleiner dan 0");
-     * ENSURE(counter == count, "Bij setCounter van PCC was het fout uitgevoerd");
+     * Setter voor of hij kapot is.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setKapot niet correct geïnitieerd");
+     * ENSURE(this->isKapot() == status, "Bij setKapot van PCC postconditie error");
      */
 
     void moveNaarVolgende(TramSysteemOut* tramSysteemOut);
     /**
+     * Verplaatst PCC naar volgende station.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij moveNaarVolgende niet correct geïnitieerd");
      * REQUIRE(tramSysteemOut != 0, "Bij moveNaarVolgende van PCC was tramSysteemOut == 0");
      */
 
     void setResterendeKosten(int resterendeKosten);
     /**
+     * Setter voor de resterende kosten
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setResterendeKosten niet correct geïnitieerd");
      * REQUIRE(resterend >= 0, "Bij setResterendeKosten van PCC was dit < 0");
-     * ENSURE(resterendeKosten == resterend, "ij setResterendeKosten van PCC was dit niet correct uitgevoerd");
+     * ENSURE(this->getResterendeKosten() == resterend, "ij setResterendeKosten van PCC postconditie fout");
      */
 
-    void setTotaleKosten(int totaleKosten);
+    void setTotaleKosten(int totaal);
     /**
+     * Setter voor de totale kosten
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setTotaleKosten niet correct geïnitieerd");
      * REQUIRE(totaal >= 0, "Bij setTotaleKosten van PCC was dit < 0");
+     * ENSURE(this->getTotaleKosten() == totaal, "Bij setTotaleKosten van PCC postconditie fout");
      */
 
-    int getAantalDefecten() const;
+    int getAantalDefecten();
     /**
-     * REQUIRE(aantalDefecten >= 0, "Bij getAantalDefecten van PCC is het aantal defecten < 0");
+     * Getter van het aantal defecten.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij getAantalDefecten niet correct geïnitieerd");
+     * ENSURE(result >= 0, "Bij getAantalDefecten van PCC is het aantal defecten < 0");
      */
 
     void setAantalDefecten(int defecten);
     /**
+     * Setter van het aantal defecten.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setAantalDefecten niet correct geïnitieerd");
      * REQUIRE(defecten >= 0, "Bij setAantalDefecten van PCC is het aantal defecten < 0");
-     * ENSURE(aantalDefecten == defecten, "Bij setAantalDefecten van PCC is het niet correct uitgevoerd.");
+     * ENSURE(this->getAantalDefecten() == defecten, "Bij setAantalDefecten van PCC postconditie fout");
      */
 
-    int getReparatieTijd() const;
+    int getReparatieTijd();
     /**
-     * REQUIRE(reparatieTijd >= 0, "Bij getReparatieTijd van PCC is de reparatieTijd < 0");
+     * Getter van de reparatietijd.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij getReparatieTijd niet correct geïnitieerd");
+     * REQUIRE(result >= 0, "Bij getReparatieTijd van PCC postconditie fout");
      */
 
     void setReparatieTijd(int tijd);
     /**
+     * Setter van de reparatietijd.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setReparatieTijd niet correct geïnitieerd");
      * REQUIRE(tijd >= 0, "Bij setReparatieTijd van PCC is de tijd < 0");
-     * ENSURE(reparatieTijd == tijd, "Bij setReparatieTijd van PCC is het niet correct uitgevoerd.");
+     * ENSURE(this->getReparatieTijd() == tijd, "Bij setReparatieTijd van PCC is het niet correct uitgevoerd.");
      */
 
-    int getReparatieKost() const;
+    int getReparatieKost();
     /**
-     * REQUIRE(reparatieTijd >= 0, "Bij getReparatieKost van PCC is de reparatieKost < 0");
+     * Getter van de reparatie kosten.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij getReparatieKost niet correct geïnitieerd");
+     * ENSURE(result >= 0, "Bij getReparatieKost van PCC postconditie error");
      */
 
     void setReparatieKost(int kost);
     /**
+     * Setter van de reparatie kosten.
+     *
+     * REQUIRE(this->properlyInitiated(), "PCC bij setReparatieKost niet correct geïnitieerd");
      * REQUIRE(kost >= 0, "Bij setReparatieKost van PCC is de kost < 0");
-     * ENSURE(reparatieKost == kost, "Bij setReparatieKost van PCC is het niet correct uitgevoerd.");
+     * ENSURE(this->getReparatieKost() == kost, "Bij setReparatieKost van PCC is het niet correct uitgevoerd.");
      */
 
-public:
-    PCC();
 
-    bool kanNaarType(Station*);
+
+    bool kanNaarType(Station* stat);
     /**
+     * REQUIRE(this->properlyInitiated(), "PCC bij kanNaarType niet correct geïnitieerd");
      * REQUIRE(stat != 0, "Bij kanNaarType van PCC was de input 0.");
      */
 };
