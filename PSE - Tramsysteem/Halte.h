@@ -8,7 +8,7 @@
 
 class Halte : public Station{
 public:
-    Halte();
+    Halte(const string &naam, const int &spoornummer);
 };
 
 

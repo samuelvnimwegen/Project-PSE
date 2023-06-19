@@ -9,7 +9,13 @@
 
 class Stadslijner: public Tram{
 public:
-    Stadslijner();
+    Stadslijner(const int &voertuigNr, const int &lijnNr);
+    /*
+     * Constructor voor de stadslijner
+     *
+     * REQUIRE(voertuigNr > 0, "Bij de constructor van Stadslijner was het voertuigNummer <= 0");
+     * REQUIRE(lijnNr > 0, "Bij de constructor van Stadslijner was het lijnNummer <= 0");
+     */
 
     bool kanNaarType(Station *);
     /**

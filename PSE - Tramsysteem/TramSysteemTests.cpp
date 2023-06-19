@@ -7,6 +7,7 @@ using namespace std;
 
 #include "TramSysteemDomainTests.cpp"
 #include "TramSysteemInputTests.cpp"
+#include "TramSysteemOutputTests.cpp"
 
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);

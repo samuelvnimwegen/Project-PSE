@@ -20,7 +20,7 @@ class Station {
     int spoorNr;
 
 public:
-    Station();
+    Station(const string &naam, const int &spoornummer);
     /**
      * Lege constructor van Station.
      *

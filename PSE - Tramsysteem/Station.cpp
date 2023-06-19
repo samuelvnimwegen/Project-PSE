@@ -111,8 +111,12 @@ bool Station::properlyInitialised() {
     return initCheck == this;
 }
 
-Station::Station() : volgende(), vorige(), huidigeTram(), spoorNr() {
+Station::Station(const string &naam, const int &spoornummer) : volgende(), vorige(), huidigeTram(), spoorNr() {
+    REQUIRE(!naam.empty(), "Bij de constructor van Station was de naam leeg");
+    REQUIRE(spoornummer > 0, "Bij de constructor van Station was het spoornummer <= 0");
     initCheck = this;
+    setNaam(naam);
+    setSpoorNr(spoornummer);
     ENSURE(this->properlyInitialised(), "Station bij constructor niet correct geïnitialiseerd");
 }
 

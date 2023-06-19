@@ -88,13 +88,29 @@ void TramSysteem::simulate(int tijd) {
 }
 
 
-bool TramSysteem::isConsistent() {
+bool TramSysteem::consistencyCheck() {
     // checkt of elk huidigStation een volgend en vorig heeft
-    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer isConsistent was gebruikt");
-    REQUIRE(!getLijnen().empty(), "Bij isConsistent van TramSysteem waren er geen lijnen om te bekijken");
-    REQUIRE(!getStations().empty(), "Bij isConsistent van TramSysteem waren er geen stations om te bekijken");
+    REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer consistencyCheck was gebruikt");
+    REQUIRE(!getLijnen().empty(), "Bij consistencyCheck van TramSysteem waren er geen lijnen om te bekijken");
+    REQUIRE(!getStations().empty(), "Bij consistencyCheck van TramSysteem waren er geen stations om te bekijken");
+    REQUIRE(!getTrams().empty(), "Bij consistencyCheck van TramSysteem waren er geen trams om te bekijken");
+
+    bool stationsHebbenSpoornummer = true;
+    for (int i = 0; i < int(getStations().size()); ++i){
+        if (getStations()[i]->getSpoorNr() <=0){
+            stationsHebbenSpoornummer = false;
+        }
+    }
+
+    bool tramsHebbenSpoornummer = true;
+    for (int i = 0; i < int(getTrams().size()); ++i){
+        if (getTrams()[i]->getLijnNr() <=0){
+            tramsHebbenSpoornummer = false;
+        }
+    }
 
     bool volgendEnVorigeCheck = true;
+    bool zelfdeSpoornummer = true;
     int size = stations.size();
     for (int i = 0; i < size; ++i){
         if (stations[i]->getVorige() == 0 or stations[i]->getVolgende() == 0){
@@ -103,17 +119,22 @@ bool TramSysteem::isConsistent() {
         else if (stations[i]->getVorige() == stations[i] or stations[i]->getVolgende() == stations[i]){
             volgendEnVorigeCheck = false;
         }
+        if (stations[i]->getSpoorNr() != stations[i]->getVolgende()->getSpoorNr() or stations[i]->getSpoorNr() != stations[i]->getVorige()->getSpoorNr()){
+            zelfdeSpoornummer = false;
+        }
     }
-
+    ENSURE(volgendEnVorigeCheck, "Bij consistencyCheck van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
     // Vector om de voertuigNummers bij te houden.
     vector<int> voertuigNummers;
 
     // Voor alle trams
     size = trams.size();
+    bool beginstationGeldig = true;
+    bool beginstationGevonden = true;
     for (int i = 0; i < size; ++i){
         // Vergelijkt tramlijn met lijn van beginstation
         if (trams[i]->getBeginStation()->getSpoorNr() != trams[i]->getLijnNr()){
-            return false;
+             beginstationGeldig = false;
         }
         // Checkt of beginstation geldig is in het metronet:
         int stationsSize = stations.size();
@@ -124,7 +145,7 @@ bool TramSysteem::isConsistent() {
             }
         }
         if (!gevonden){
-            return false;
+            beginstationGevonden = false;
         }
         voertuigNummers.push_back(trams[i]->getVoertuigNummer());
     }
@@ -140,23 +161,43 @@ bool TramSysteem::isConsistent() {
         }
     }
 
-    int lijnenSize = lijnen.size();
-    bool tramKanOpLijn = true;
-    for (int i = 0; i < lijnenSize; ++i){
-        Lijn* huidigeLijn = lijnen[i];
-        int stationSize = huidigeLijn->getStations().size();
-        int tramsSize = huidigeLijn->getTrams().size();
-        for (int j = 0; j < tramsSize; ++j){
-            for (int k = 0; k < stationSize; ++k){
-                if (!trams[j]->kanNaarType(stations[k])){
-                    tramKanOpLijn = false;
-                }
-            }
+    bool startStationDuplicates = true;
+    vector<string> beginStationNamen;
+    for (int i = 0; i < int(getTrams().size()); ++i){
+        if (!std::count(beginStationNamen.begin(), beginStationNamen.end(), getTrams()[i]->getBeginStation()->getNaam())){
+            beginStationNamen.push_back(getTrams()[i]->getBeginStation()->getNaam());
+        }
+        else{
+            startStationDuplicates = false;
         }
     }
-    ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
-    ENSURE(voertuigNummerDuplicates, "Bij isConsistent van TramSysteem waren er duplicate voertuignummers");
-    ENSURE(tramKanOpLijn, "Bij isConsistent van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
+
+    ENSURE(voertuigNummerDuplicates, "Bij consistencyCheck van TramSysteem waren er duplicate voertuignummers");
+    ENSURE(beginstationGeldig, "Bij consistencyCheck van TramSysteem kwamen de lijnnummers van een beginstation niet overeen met die van de tram");
+    ENSURE(beginstationGevonden, "Bij consistencyCheck van TramSysteem bestond een beginstation niet in het tramsysteem");
+    ENSURE(zelfdeSpoornummer, "Bij consistencyCheck van TramSysteem hadden het volgende of vorige station niet hetzelfde spoornummer");
+    ENSURE(tramsHebbenSpoornummer, "Bij consistencyCheck van TramSysteem waren er trams zonder- of met een ongeldig spoornummer");
+    ENSURE(stationsHebbenSpoornummer, "Bij consistencyCheck van TramSysteem waren er stations zonder- of met een ongeldig spoornummer");
+    ENSURE(startStationDuplicates, "Bij consistencyCheck van TramSysteem waren trams met hetzelfde startstation");
+
+    bool kanHeleLijnBereiken = true;
+    Station* huidig = getStations()[0];
+    Station* begin = huidig;
+    vector<Station*> bereikBareStations;
+    bereikBareStations.push_back(begin);
+    huidig = huidig->getVolgende();
+    while (huidig != begin){
+        bereikBareStations.push_back(huidig);
+        huidig = huidig->getVolgende();
+    }
+    if (int(findLijn(begin->getSpoorNr())->getStations().size()) > int(bereikBareStations.size())){
+        kanHeleLijnBereiken = false;
+    }
+
+
+
+
+    ENSURE(kanHeleLijnBereiken, "Bij consistencyCheck van TramSysteem kon niet elk station van de lijn bereikt worden");
     return true;
 }
 

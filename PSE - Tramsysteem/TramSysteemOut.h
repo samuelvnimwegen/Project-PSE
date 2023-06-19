@@ -97,15 +97,12 @@ public:
      * REQUIRE(!filename.empty(), "Bij herstel is er nog geen filenaam aangemaakt");
      */
 
-    void botsing(Tram* tram1, Tram* tram2);
-    /**
-     * REQUIRE(this->properlyInitialized(), "TramSysteemOut bij botsing niet correct initialised");
-     * REQUIRE(!filename.empty(), "Bij botsing is er nog geen filenaam aangemaakt");
-     */
-
     void wachten(Tram* tram1, Tram* tram2);
     /**
+     * Wacht op een tram
      *
+     * REQUIRE(this->properlyInitialized(), "Bij wachten is TramSysteemOut niet correct initialised");
+     * REQUIRE(tram1 != 0 and tram2 != 0, "Bij wachten van TramSysteemOut was 1 van de trams 0");
      */
 
 };

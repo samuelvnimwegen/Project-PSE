@@ -15,10 +15,12 @@ class Tram {
     int voertuigNummer;
     string typeString;
 public:
-    Tram();
+    Tram(const int &voertuigNr, const int &lijnNr);
     /**
      * Constructor van de tram-klasse.
      *
+     * REQUIRE(voertuigNr >= 0, "Bij de constructor van Tram was het voertuigNummer <= 0");
+     * REQUIRE(lijnNr >= 0, "Bij de constructor van Tram was het lijnNummer <= 0");
      * ENSURE(this->properlyInitialised(), "Tram bij constructor niet correct geïnitieerd");
      */
 

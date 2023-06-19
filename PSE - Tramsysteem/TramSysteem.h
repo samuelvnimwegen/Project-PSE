@@ -18,6 +18,7 @@
 #include "Halte.h"
 #include "Metrostation.h"
 #include "Lijn.h"
+#include "TramSysteemUtils.h"
 
 
 // Bevat het volledige tramsysteem en bevat alle andere classes.
@@ -154,15 +155,16 @@ public:
      * REQUIRE(tijd > 0, "Bij simulate van TramSysteem was de tijd <= 0");
      */
 
-    bool isConsistent();
+    bool consistencyCheck();
     /**
      * Checkt of een systeem consistent is of niet.
      *
-     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer isConsistent was gebruikt");
-     * REQUIRE(!getLijnen().empty(), "Bij isConsistent van TramSysteem waren er geen lijnen om te bekijken");
-     * ENSURE(volgendEnVorigeCheck, "Bij isConsistent van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
-     * ENSURE(voertuigNummerDuplicates, "Bij isConsistent van TramSysteem waren er duplicate voertuignummers");
-     * ENSURE(tramKanOpLijn, "Bij isConsistent van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
+     * REQUIRE(this->properlyInitialized(), "Niet geïnitialiseerd wanneer consistencyCheck was gebruikt");
+     * REQUIRE(!getLijnen().empty(), "Bij consistencyCheck van TramSysteem waren er geen lijnen om te bekijken");
+     * REQUIRE(!getTrams().empty(), "Bij consistencyCheck van TramSysteem waren er geen trams om te bekijken");
+     * ENSURE(volgendEnVorigeCheck, "Bij consistencyCheck van TramSysteem had niet elk huidigStation een correct volgende of vorig huidigStation");
+     * ENSURE(voertuigNummerDuplicates, "Bij consistencyCheck van TramSysteem waren er duplicate voertuignummers");
+     * ENSURE(tramKanOpLijn, "Bij consistencyCheck van TramSysteem is er een tram die niet naar elk huidigStation op de lijn kan");
      */
 
 

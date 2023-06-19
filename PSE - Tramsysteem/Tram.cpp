@@ -53,14 +53,7 @@ void Tram::setSnelheid(double speed) {
     ENSURE(this->getSnelheid() == speed, "Bij setSnelheid van Tram postconditie fout");
 }
 
-Tram::Tram() : voertuigNummer() {
-    beginStation = 0;
-    huidigStation = 0;
-    snelheid = -1;
-    lijnNr = -1;
-    initCheck = this;
-    ENSURE(this->properlyInitialised(), "Tram bij constructor niet correct geïnitieerd");
-}
+
 
 Station * Tram::getHuidigStation() {
     REQUIRE(this->properlyInitialised(), "Tram bij getHuidigStation niet correct geïnitieerd");
@@ -153,6 +146,18 @@ bool Tram::kanBewegen() {
 void Tram::wacht(TramSysteemOut *tramSysteemOut) {
     REQUIRE(this->properlyInitialised(), "Tram bij wacht niet correct geïnitieerd");
     REQUIRE(!this->kanBewegen(), "Bij wacht van Tram kon de tram nog bewegen");
-    tramSysteemOut->wachten(this, huidigStation->getVolgende()->getTramInStation());
+    Station* volgendStation = huidigStation->getVolgende();
+    while (!volgendStation->tramInStation()){
+        volgendStation = volgendStation->getVolgende();
+    }
+    tramSysteemOut->wachten(this, volgendStation->getTramInStation());
 }
 
+Tram::Tram(const int &voertuigNr, const int &lijnNr) : lijnNr(), beginStation(), snelheid(), huidigStation(), voertuigNummer() {
+    REQUIRE(voertuigNr >= 0, "Bij de constructor van Tram was het voertuigNummer <= 0");
+    REQUIRE(lijnNr >= 0, "Bij de constructor van Tram was het lijnNummer <= 0");
+    initCheck = this;
+    setVoertuigNummer(voertuigNr);
+    setLijnNr(lijnNr);
+    ENSURE(this->properlyInitialised(), "Tram bij constructor niet correct geïnitieerd");
+}

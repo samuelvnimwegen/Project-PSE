@@ -4,6 +4,7 @@
 
 #include "XMLParser.h"
 
+
 // Hulpfunctie die strings van integers naar integers omzet.
 int stringToInt(const string& s){
     int i;
@@ -17,7 +18,8 @@ TramSysteem* XMLParser::readFile(const string &name) {
     TramSysteem* metroSysteem = new TramSysteem;
     //  XML document
     TiXmlDocument doc;
-    REQUIRE(doc.LoadFile(name.c_str()), "Bij readFile in XML_Parser.cc is de file niet correct geladen.");
+    REQUIRE(fileExists(name.c_str()), "Bij readFile in XML_Parser.cc bestaat de file niet.");
+    REQUIRE(doc.LoadFile(name.c_str()), "Bij readFile in XML_Parser.cc was er een syntax-error.");
 
     // Metronet: hier eerste child element.
     TiXmlElement* metronet = doc.FirstChildElement();
@@ -28,6 +30,7 @@ TramSysteem* XMLParser::readFile(const string &name) {
 
     // Eerste loop om alle stations en trams aan te maken;
     while (metronet != 0) {
+        vector<string> namen;
         while (huidigMetronetObject != 0) {
             // x is gelijk aan de naam van dit kind.
             string x = huidigMetronetObject->Value();
@@ -43,18 +46,37 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 REQUIRE(attribuutNaam == "naam", "Bij readFile van XMLParser heeft het ingelezen huidigStation geen naam");
                 string naam = attribuut->GetText();
 
+                REQUIRE(!std::count(namen.begin(), namen.end(), naam), "Bij readFile van XMLParser was er al een station met dezelfde naam");
+                namen.push_back(naam);
+
                 attribuut = attribuut->NextSiblingElement();
                 attribuutNaam = attribuut->Value();
 
                 // Leest het type in en maakt het bijhorende klasse-element aan.
                 REQUIRE(attribuutNaam == "type", "Bij readFile van XMLParser heeft het ingelezen huidigStation geen type");
                 string type = attribuut->GetText();
-                REQUIRE((type == "Halte") or (type == "Metrostation"), "Bij readFile van XMLParser was het huidigStation-type niet herkend");
+                REQUIRE((type == "Halte") or (type == "Metrostation"), "Bij readFile van XMLParser was het huidig Station-type niet herkend");
+
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
+                REQUIRE(attribuutNaam == "volgende", "Bij readFile van XMLParser had een huidigStation geen volgende");
+
+                attribuut = attribuut->NextSiblingElement();
+                attribuutNaam = attribuut->Value();
+                REQUIRE(attribuutNaam == "vorige", "Bij readFile van XMLParser had een huidigStation geen vorige");
+
+                REQUIRE(attribuut->NextSiblingElement() != 0, "Bij readFile van XMLParser had een huidigStation geen spoornummer");
+                attribuut = attribuut->NextSiblingElement();
+                // Spoornummer ingeven.
+                attribuutNaam = attribuut->Value();
+                REQUIRE(attribuutNaam == "spoor", "Bij readFile van XMLParser had een huidigStation geen spoornummer");
+                int spoorNummer = stringToInt(attribuut->GetText());
+
                 if (type == "Metrostation"){
-                    station = new Metrostation;
+                    station = new Metrostation(naam, spoorNummer);
                 }
                 else {
-                    station = new Halte;
+                    station = new Halte(naam, spoorNummer);
                 }
 
                 // Naam geven en huidigStation pushen.
@@ -80,19 +102,7 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 // Leest het type in en maakt het bijhorende klasse-element aan.
                 REQUIRE(attribuutNaam == "type", "Bij readFile van XMLParser heeft het ingelezen huidigStation geen type");
                 string type = attribuut->GetText();
-                REQUIRE((type == "Stadslijner") or (type == "PCC") or (type == "Albatros"), "Bij readFile van XMLParser was het huidigStation-type niet herkend");
-                if (type == "Stadslijner"){
-                    tram = new Stadslijner;
-                }
-                else if (type == "PCC") {
-                    tram = new PCC;
-                }
-                else {
-                    tram = new Albatros;
-                }
-
-                // Lijnnummer ingeven
-                tram->setLijnNr(lijnNr);
+                REQUIRE((type == "Stadslijner") or (type == "PCC") or (type == "Albatros"), "Bij readFile van XMLParser was het huidig Tram-type niet herkend");
 
                 // Als lijnNr nog niet in metroSysteem zit, er in zetten.
                 Lijn* huidigeLijn;
@@ -105,56 +115,62 @@ TramSysteem* XMLParser::readFile(const string &name) {
                     huidigeLijn = metroSysteem->findLijn(lijnNr);
                 }
 
-                // Tram aan lijn toevoegen:
-                huidigeLijn->addTram(tram);
-
                 attribuut = attribuut->NextSiblingElement();
                 attribuutNaam = attribuut->Value();
 
                 // Voertuignummer ingeven
                 REQUIRE(attribuutNaam == "voertuigNr", "Bij readFile van XMLParser had een tram geen voertuignummer.");
-                tram->setVoertuigNummer(stringToInt(attribuut->GetText()));
+                int voertuigNr = stringToInt(attribuut->GetText());
 
+                REQUIRE(attribuut->NextSiblingElement() != 0, "Bij readFile van XMLParser had een tram geen beginstation.");
                 attribuut = attribuut->NextSiblingElement();
                 attribuutNaam = attribuut->Value();
 
+
                 // Beginstation van tram ingeven.
                 REQUIRE(attribuutNaam == "beginStation", "Bij readFile van XMLParser had een tram geen beginstation.");
-                tram->setBeginStation(findStation(attribuut->GetText(), metroSysteem->getStations()));
+                Station* beginStation = findStation(attribuut->GetText(), metroSysteem->getStations());
 
-
+                if (type == "Stadslijner"){
+                    tram = new Stadslijner(voertuigNr, lijnNr);
+                }
+                else if (type == "Albatros"){
+                    tram = new Albatros(voertuigNr, lijnNr);
+                }
                 // Als het een PCC-tram is: Nog 3 attributen inlezen.
-                if (tram->getTypeString() == "PCC"){
-                    PCC* huidigeTram = dynamic_cast<PCC *>(tram);
-                    huidigeTram->setKapot(false);
+                else {
+                    REQUIRE(attribuut->NextSiblingElement() != 0, "Bij readFile van XMLParser had een PCC geen aantal defecten");
                     attribuut = attribuut->NextSiblingElement();
                     attribuutNaam = attribuut->Value();
-
 
                     // Aantal defecten:
                     REQUIRE(attribuutNaam == "aantalDefecten", "Bij readFile van XMLParser had een PCC geen aantal defecten");
                     string aantalDefecten = attribuut->GetText();
-                    huidigeTram->setAantalDefecten(stringToInt(aantalDefecten));
-
+                    int defecten = stringToInt(aantalDefecten);
 
                     attribuut = attribuut->NextSiblingElement();
                     attribuutNaam = attribuut->Value();
 
                     // Reparatie tijd:
                     REQUIRE(attribuutNaam == "reparatieTijd", "Bij readFile van XMLParser had een PCC geen reparatieTijd");
-                    string reparatieTijd = attribuut->GetText();
-                    huidigeTram->setReparatieTijd(stringToInt(reparatieTijd));
+                    string reparatieTijdString = attribuut->GetText();
+                    int reparatieTijd = stringToInt(reparatieTijdString);
 
+                    REQUIRE(attribuut->NextSiblingElement() != 0, "Bij readFile van XMLParser had een PCC geen reparatieKost");
                     attribuut = attribuut->NextSiblingElement();
                     attribuutNaam = attribuut->Value();
 
                     // Reparatie kost:
                     REQUIRE(attribuutNaam == "reparatieKost", "Bij readFile van XMLParser had een PCC geen reparatieKost");
-                    string reparatieKost = attribuut->GetText();
-                    huidigeTram->setReparatieKost(stringToInt(reparatieKost));
-                    huidigeTram->setTotaleKosten(0);
-                    huidigeTram->setResterendeKosten(0);
+                    string reparatieKostString = attribuut->GetText();
+                    int reparatieKost = stringToInt(reparatieKostString);
+
+                    tram = new PCC(voertuigNr, lijnNr, defecten, reparatieTijd, reparatieKost);
                 }
+                // Tram aan lijn toevoegen:
+                huidigeLijn->addTram(tram);
+
+                tram->setBeginStation(beginStation);
 
 
                 // Tram in metroSysteem zetten
@@ -192,12 +208,7 @@ TramSysteem* XMLParser::readFile(const string &name) {
                 REQUIRE(naamAttribuut == "vorige", "Bij readFile van XMLParser had een huidigStation geen vorig huidigStation");
                 stationHuidig->setVorige(findStation(attribuut->GetText() , metroSysteem->getStations()));
 
-                attribuut = attribuut->NextSiblingElement();
 
-                // Spoornummer ingeven.
-                naamAttribuut = attribuut->Value();
-                REQUIRE(naamAttribuut == "spoor", "Bij readFile van XMLParser had een huidigStation geen spoornummer");
-                stationHuidig->setSpoorNr(stringToInt(attribuut->GetText()));
             }
             huidigMetronetObject = huidigMetronetObject->NextSiblingElement();
         }
@@ -225,7 +236,15 @@ TramSysteem* XMLParser::readFile(const string &name) {
 
     ENSURE(!metroSysteem->getTrams().empty(), "Bij readFile zijn er geen trams aangemaakt in het metroSysteem.");
     ENSURE(!metroSysteem->getStations().empty(), "Bij readFile zijn er geen stations aangemaakt in het metroSysteem.");
-    ENSURE(metroSysteem->isConsistent(), "Bij readFile is het metroSysteem niet consistent.");
+    ENSURE(metroSysteem->consistencyCheck(), "Bij readFile is het metroSysteem niet consistent.");
     tramsystemen.push_back(metroSysteem);
     return metroSysteem;
+}
+
+const string &XMLParser::getErrorFile() const {
+    return errorFile;
+}
+
+void XMLParser::setErrorFile(const string &file) {
+    XMLParser::errorFile = file;
 }

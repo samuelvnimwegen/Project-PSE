@@ -10,6 +10,9 @@
 class Albatros: public Tram{
 public:
     Albatros();
+
+    Albatros(const int &voertuigNr, const int &lijnNr);
+
     bool kanNaarType(Station * stat);
     /**
      * REQUIRE(stat != 0, "Bij kanNaarType van Albatros was de input 0");

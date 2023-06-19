@@ -4,6 +4,6 @@
 
 #include "Halte.h"
 
-Halte::Halte() {
+Halte::Halte(const string &naam, const int &spoornummer) : Station(naam, spoornummer) {
     setTypeString("Halte");
 }

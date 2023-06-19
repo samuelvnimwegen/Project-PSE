@@ -19,12 +19,18 @@ class PCC: public Tram{
     PCC* initCheck;
 
 public:
-    PCC();
-    /**
-     * Constructor van PCC
+    PCC(const int &voertuigNr, const int &lijnNr, int aantalDefecten, int reparatieTijd, int reparatieKost);
+    /*
+     * Constructor voor PCC
      *
-     * ENSURE(this->properlyInitiated(), "PCC bij constructor niet correct geïnitieerd");
+     * REQUIRE(voertuigNr > 0, "Bij de constructor van PCC was het voertuigNummer <= 0");
+     * REQUIRE(lijnNr > 0, "Bij de constructor van PCC was het lijnNummer <= 0");
+     * REQUIRE(aantalDefecten > 0, "Bij de constructor van PCC was het aantal defecte <= 0");
+     * REQUIRE(reparatieTijd > 0, "Bij de constructor van PCC was de reparatie tijd <= 0");
+     * REQUIRE(reparatieKost > 0, "Bij de constructor van PCC was de reparatie kost <= 0");
+     * ENSURE(this->properlyInitiated(), "PCC bij de constructor niet correct geïnitieerd");
      */
+
 
     bool kanBewegen();
     /*

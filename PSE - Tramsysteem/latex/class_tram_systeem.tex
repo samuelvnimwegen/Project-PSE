@@ -96,9 +96,9 @@ REQUIRE(tr != 0, \char`\"{}tram moet bestaan bij add\+Tram\char`\"{}); ENSURE(tr
 {\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_tram}{Tram}} $\ast$ $>$ \& Tram\+Systeem\+::get\+Trams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 REQUIRE(this-\/\texorpdfstring{$>$}{>}\mbox{\hyperlink{class_tram_systeem_a43083ac8c53627e5788cde80bca1218f}{properly\+Initialized()}}, \char`\"{}\+Niet geïnitialiseerd wanneer set\+Stations was gebruikt\char`\"{}); ENSURE(\mbox{\hyperlink{class_tram_systeem_a2adf00773d90bc54837efd3a81c7c1ad}{get\+Stations()}} == stat, \char`\"{}\+Postconditie fout bij set\+Huidig\+Station\char`\"{}); \mbox{\Hypertarget{class_tram_systeem_acaddd46c3f038b1d159c56e7ca314ffb}\label{class_tram_systeem_acaddd46c3f038b1d159c56e7ca314ffb}} 
-\index{TramSysteem@{TramSysteem}!isConsistent@{isConsistent}}
-\index{isConsistent@{isConsistent}!TramSysteem@{TramSysteem}}
-\doxysubsubsection{\texorpdfstring{isConsistent()}{isConsistent()}}
+\index{TramSysteem@{TramSysteem}!consistencyCheck@{consistencyCheck}}
+\index{consistencyCheck@{consistencyCheck}!TramSysteem@{TramSysteem}}
+\doxysubsubsection{\texorpdfstring{consistencyCheck()}{consistencyCheck()}}
 {\footnotesize\ttfamily bool Tram\+Systeem\+::is\+Consistent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 REQUIRE(tijd \texorpdfstring{$>$}{>} 0, \char`\"{}\+Bij simulate van Tram\+Systeem was de tijd $<$= 0.\char`\"{}); REQUIRE(\mbox{\hyperlink{class_tram_systeem_acaddd46c3f038b1d159c56e7ca314ffb}{is\+Consistent()}}, \char`\"{}\+Systeem niet consistent bij simulate\char`\"{}); \mbox{\Hypertarget{class_tram_systeem_a43083ac8c53627e5788cde80bca1218f}\label{class_tram_systeem_a43083ac8c53627e5788cde80bca1218f}} 

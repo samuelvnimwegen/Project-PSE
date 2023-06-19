@@ -8,7 +8,7 @@
 
 class Metrostation: public Station{
 public:
-    Metrostation();
+    Metrostation(const string &naam, const int &spoornummer);
 };
 
 

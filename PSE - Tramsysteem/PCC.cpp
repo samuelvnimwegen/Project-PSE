@@ -5,13 +5,6 @@
 #include "PCC.h"
 #include "TramSysteemOut.h"
 
-PCC::PCC() : aantalDefecten(), reparatieTijd(), reparatieKost(), kapot(), counter(), resterendeKosten(), totaleKosten() {
-    setSnelheid(40);
-    setTypeString("PCC");
-    initCheck = this;
-    ENSURE(this->properlyInitiated(), "PCC bij constructor niet correct geïnitieerd");
-}
-
 bool PCC::kanNaarType(Station * stat) {
     REQUIRE(this->properlyInitiated(), "PCC bij kanNaarType niet correct geïnitieerd");
     REQUIRE(stat != 0, "Bij kanNaarType van PCC was de input 0.");
@@ -151,5 +144,21 @@ void PCC::wacht(TramSysteemOut *tramSysteemOut) {
     else{
         Tram::wacht(tramSysteemOut);
     }
+}
 
+PCC::PCC(const int &voertuigNr, const int &lijnNr, int aantalDefecten, int reparatieTijd, int reparatieKost) : Tram(
+        voertuigNr, lijnNr), aantalDefecten(aantalDefecten), reparatieTijd(reparatieTijd), reparatieKost(
+        reparatieKost), kapot(false), counter(0), resterendeKosten(0), totaleKosten(0) {
+    REQUIRE(voertuigNr > 0, "Bij de constructor van PCC was het voertuigNummer <= 0");
+    REQUIRE(lijnNr > 0, "Bij de constructor van PCC was het lijnNummer <= 0");
+    REQUIRE(aantalDefecten > 0, "Bij de constructor van PCC was het aantal defecte <= 0");
+    REQUIRE(reparatieTijd > 0, "Bij de constructor van PCC was de reparatie tijd <= 0");
+    REQUIRE(reparatieKost > 0, "Bij de constructor van PCC was de reparatie kost <= 0");
+    initCheck = this;
+    setTypeString("PCC");
+    setSnelheid(40);
+    setAantalDefecten(aantalDefecten);
+    setReparatieTijd(reparatieTijd);
+    setReparatieKost(reparatieKost);
+    ENSURE(this->properlyInitiated(), "PCC bij de constructor niet correct geïnitieerd");
 }

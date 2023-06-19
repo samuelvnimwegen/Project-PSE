@@ -4,8 +4,6 @@
 
 #include "Metrostation.h"
 
-Metrostation::Metrostation() {
+Metrostation::Metrostation(const string &naam, const int &spoornummer) : Station(naam, spoornummer) {
     setTypeString("Metrostation");
 }
-
-

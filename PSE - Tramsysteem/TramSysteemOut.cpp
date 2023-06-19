@@ -90,7 +90,14 @@ void TramSysteemOut::advanced_summary() {
         string lijn2 = " ";
         for (int j = 0; j < aantalStationsInLijn; ++j){
             Station* huidigStationInLijn = stationsInLijn[j];
-            lijn1 += huidigStationInLijn->getNaam() + "===";
+            string typeChar;
+            if (huidigStationInLijn->getTypeString() == "Halte"){
+                typeChar = "(H)";
+            }
+            else{
+                typeChar = "(M)";
+            }
+            lijn1 += huidigStationInLijn->getNaam() + typeChar + "===";
             bool bevatStation = false;
             for (int k = 0; k < tramSize; ++k){
                 if (tramSysteem->getTrams()[k]->getHuidigStation() == huidigStationInLijn){
@@ -98,10 +105,19 @@ void TramSysteemOut::advanced_summary() {
                 }
             }
             if (bevatStation){
-                lijn2 += "T   ";
+                if (huidigStationInLijn->getTramInStation()->getTypeString() == "PCC"){
+                    typeChar = "P";
+                }
+                else if (huidigStationInLijn->getTramInStation()->getTypeString() == "Albatros"){
+                    typeChar = "A";
+                }
+                else{
+                    typeChar = "S";
+                }
+                lijn2 += typeChar + "      ";
             }
             else{
-                lijn2 += "    ";
+                lijn2 += "       ";
             }
         }
         lijn1 = lijn1.substr(0, lijn1.size() - 2);
@@ -112,6 +128,7 @@ void TramSysteemOut::advanced_summary() {
 
 void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
     REQUIRE(this->properlyInitialized(), "TramSysteemOut bij move niet correct initialised");
+    REQUIRE(tram != 0 and begin != 0 and eind != 0, "Bij move van TramSysteemOut was een input 0");
     REQUIRE(!filename.empty(), "Bij move is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -123,6 +140,7 @@ void TramSysteemOut::move(Tram* tram, Station *begin, Station *eind) {
 
 void TramSysteemOut::herstel(Tram *tram, Station *halte) {
     REQUIRE(this->properlyInitialized(), "TramSysteemOut bij herstel niet correct initialised");
+    REQUIRE(tram != 0 and halte != 0, "Bij herstel van TramSysteemOut was een input 0");
     REQUIRE(!filename.empty(), "Bij herstel is er nog geen filenaam aangemaakt");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
@@ -131,15 +149,6 @@ void TramSysteemOut::herstel(Tram *tram, Station *halte) {
     << halte->getTypeString() << " " << halte->getNaam() << " op lijn " << tram->getLijnNr() <<"." << endl << endl;
 }
 
-void TramSysteemOut::botsing(Tram *tram1, Tram *tram2) {
-    REQUIRE(this->properlyInitialized(), "TramSysteemOut bij botsing niet correct initialised");
-    REQUIRE(!filename.empty(), "Bij botsing is er nog geen filenaam aangemaakt");
-    ofstream outfile;
-    outfile.open(filename.c_str(), ios_base::app);
-
-    outfile << "!!! Botsing van Tram " << tram1->getVoertuigNummer() << " (" << tram1->getTypeString() << ") en Tram "
-            << tram2->getVoertuigNummer() << " (" << tram2->getTypeString() << ") bij Station " << tram2->getHuidigStation()->getNaam() <<". !!! " << endl << endl;
-}
 
 bool TramSysteemOut::properlyInitialized() {
     return initCheck == this;
@@ -161,6 +170,7 @@ TramSysteem *TramSysteemOut::getTramSysteem() {
 
 void TramSysteemOut::wachten(Tram* tram1, Tram* tram2) {
     REQUIRE(this->properlyInitialized(), "Bij wachten is TramSysteemOut niet correct initialised");
+    REQUIRE(tram1 != 0 and tram2 != 0, "Bij wachten van TramSysteemOut was 1 van de trams 0");
     ofstream outfile;
     outfile.open(filename.c_str(), ios_base::app);
 
