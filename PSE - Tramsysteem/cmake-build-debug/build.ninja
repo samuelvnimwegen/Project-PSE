@@ -168,13 +168,6 @@ build CMakeFiles/ttt.dir/TramSysteemUtils.cpp.obj: CXX_COMPILER__ttt_Debug C$:/U
   OBJECT_DIR = CMakeFiles\ttt.dir
   OBJECT_FILE_DIR = CMakeFiles\ttt.dir
 
-build CMakeFiles/ttt.dir/TramSysteemOutputTests.cpp.obj: CXX_COMPILER__ttt_Debug C$:/Users/Samue/Documents/GitHub/Project-PSE/PSE$ -$ Tramsysteem/TramSysteemOutputTests.cpp || cmake_object_order_depends_target_ttt
-  DEP_FILE = CMakeFiles\ttt.dir\TramSysteemOutputTests.cpp.obj.d
-  FLAGS = -std=c++98 -Wall -Werror -O0 -g -fdiagnostics-color=always -std=gnu++98
-  INCLUDES = -I"C:/Users/Samue/Documents/GitHub/Project-PSE/PSE - Tramsysteem/./gtest/include"
-  OBJECT_DIR = CMakeFiles\ttt.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ttt
@@ -183,7 +176,7 @@ build CMakeFiles/ttt.dir/TramSysteemOutputTests.cpp.obj: CXX_COMPILER__ttt_Debug
 #############################################
 # Link the executable ttt.exe
 
-build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/Station.cpp.obj CMakeFiles/ttt.dir/Tram.cpp.obj CMakeFiles/ttt.dir/TramSysteem.cpp.obj CMakeFiles/ttt.dir/main.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt.dir/XML/tinystr.cpp.obj CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/ttt.dir/XMLParser.cpp.obj CMakeFiles/ttt.dir/TramSysteemOut.cpp.obj CMakeFiles/ttt.dir/PCC.cpp.obj CMakeFiles/ttt.dir/Albatros.cpp.obj CMakeFiles/ttt.dir/Stadslijner.cpp.obj CMakeFiles/ttt.dir/Metrostation.cpp.obj CMakeFiles/ttt.dir/Halte.cpp.obj CMakeFiles/ttt.dir/Lijn.cpp.obj CMakeFiles/ttt.dir/TramSysteemUtils.cpp.obj CMakeFiles/ttt.dir/TramSysteemOutputTests.cpp.obj
+build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/Station.cpp.obj CMakeFiles/ttt.dir/Tram.cpp.obj CMakeFiles/ttt.dir/TramSysteem.cpp.obj CMakeFiles/ttt.dir/main.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlparser.cpp.obj CMakeFiles/ttt.dir/XML/tinystr.cpp.obj CMakeFiles/ttt.dir/XML/tinyxml.cpp.obj CMakeFiles/ttt.dir/XML/tinyxmlerror.cpp.obj CMakeFiles/ttt.dir/XMLParser.cpp.obj CMakeFiles/ttt.dir/TramSysteemOut.cpp.obj CMakeFiles/ttt.dir/PCC.cpp.obj CMakeFiles/ttt.dir/Albatros.cpp.obj CMakeFiles/ttt.dir/Stadslijner.cpp.obj CMakeFiles/ttt.dir/Metrostation.cpp.obj CMakeFiles/ttt.dir/Halte.cpp.obj CMakeFiles/ttt.dir/Lijn.cpp.obj CMakeFiles/ttt.dir/TramSysteemUtils.cpp.obj
   FLAGS = -std=c++98 -Wall -Werror -O0 -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
