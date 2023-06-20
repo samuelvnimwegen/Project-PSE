@@ -1,0 +1,58 @@
+----- Tramregeling ----- 
+
+--== STATIONS ==--
+= Station A =
+* Spoor 15:
+<- Station C
+-> Station B
+
+= Station B =
+* Spoor 15:
+<- Station A
+-> Station C
+
+= Station C =
+* Spoor 15:
+<- Station B
+-> Station A
+
+--== TRAMS ==--
+Tram 15 nr 2
+	type: Stadslijner
+	snelheid: 70
+	huidig huidigStation: B
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+        S           
+
+Tram 2 (Stadslijner) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+               S    
+
+Tram 2 (Stadslijner) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+ S                  
+
+Tram 2 (Stadslijner) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+        S           
+
+Tram 2 (Stadslijner) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+               S    
+
+Tram 2 (Stadslijner) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+ S                  
+

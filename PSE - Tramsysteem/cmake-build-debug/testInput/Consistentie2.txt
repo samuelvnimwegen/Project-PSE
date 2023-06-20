@@ -1,0 +1,60 @@
+----- Tramregeling ----- 
+
+--== STATIONS ==--
+= Station A =
+* Spoor 15:
+<- Station C
+-> Station B
+
+= Station B =
+* Spoor 15:
+<- Station A
+-> Station C
+
+= Station C =
+* Spoor 15:
+<- Station B
+-> Station A
+
+--== TRAMS ==--
+Tram 15 nr 4
+	type: PCC
+	snelheid: 40
+	huidig huidigStation: A
+	huidige reparatiekosten: 0 euro
+	totale reparatiekosten: 0 euro
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+ P                  
+
+Tram 4 (PCC) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+        P           
+
+Tram 4 (PCC) reed van Metrostation B naar Metrostation C via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+               P    
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+               P    
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation C op lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+               P    
+
+Tram 4 (PCC) reed van Metrostation C naar Metrostation A via lijn 15.
+
+Lijn 15:
+=A(M)===B(M)===C(M)=
+ P                  
+

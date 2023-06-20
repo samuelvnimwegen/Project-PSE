@@ -1,0 +1,22 @@
+----- Tramregeling ----- 
+
+Lijn 7:
+=A(M)===B(H)===C(M)===D(M)=
+ S             P           
+
+Tram 99 (PCC) reed van Metrostation C naar Metrostation D via lijn 7.
+
+Tram 88 (Stadslijner) reed van Metrostation A naar Metrostation C via lijn 7.
+
+Lijn 7:
+=A(M)===B(H)===C(M)===D(M)=
+               S      P    
+
+Tram 99 (PCC) reed van Metrostation D naar Metrostation A via lijn 7.
+
+Tram 88 (Stadslijner) reed van Metrostation C naar Metrostation D via lijn 7.
+
+Lijn 7:
+=A(M)===B(H)===C(M)===D(M)=
+ P                    S    
+

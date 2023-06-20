@@ -1,0 +1,108 @@
+----- Tramregeling ----- 
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+ S      A      P                         
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+        S      P    
+
+Tram 1 (PCC) reed van Halte C naar Halte D via lijn 15.
+
+Tram 4 (PCC) reed van Metrostation 3 naar Metrostation 1 via lijn 7.
+
+Tram 5 (Stadslijner) reed van Metrostation 2 naar Metrostation 3 via lijn 7.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+ S      A             P                  
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+ P             S    
+
+Tram 1 (PCC) reed van Halte D naar Metrostation E via lijn 15.
+
+Tram 4 (PCC) reed van Metrostation 1 naar Metrostation 2 via lijn 7.
+
+Tram 5 (Stadslijner) reed van Metrostation 3 naar Metrostation 1 via lijn 7.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+ S      A                    P           
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+ S      P           
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation E op lijn 15.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation 2 op lijn 7.
+
+Tram 5 (Stadslijner) is aan het wachten bij Metrostation 1 op Tram 4.
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+ S      A                    P           
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+ S      P           
+
+Tram 1 (PCC) is bezig met herstel bij Metrostation E op lijn 15.
+
+Tram 2 (Albatros) is aan het wachten bij Metrostation B op Tram 1.
+
+Tram 3 (Stadslijner) is aan het wachten bij Metrostation A op Tram 2.
+
+Tram 4 (PCC) is bezig met herstel bij Metrostation 2 op lijn 7.
+
+Tram 5 (Stadslijner) is aan het wachten bij Metrostation 1 op Tram 4.
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+ S      A                    P           
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+ S      P           
+
+Tram 1 (PCC) reed van Metrostation E naar Metrostation F via lijn 15.
+
+Tram 2 (Albatros) reed van Metrostation B naar Metrostation E via lijn 15.
+
+Tram 3 (Stadslijner) reed van Metrostation A naar Metrostation B via lijn 15.
+
+Tram 4 (PCC) reed van Metrostation 2 naar Metrostation 3 via lijn 7.
+
+Tram 5 (Stadslijner) reed van Metrostation 1 naar Metrostation 2 via lijn 7.
+
+Lijn 15:
+=A(M)===B(M)===C(H)===D(H)===E(M)===F(M)=
+        S                    A      P    
+
+Lijn 7:
+=1(M)===2(M)===3(M)=
+        S      P    
+

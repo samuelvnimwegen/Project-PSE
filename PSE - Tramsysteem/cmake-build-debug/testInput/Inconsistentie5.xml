@@ -1,0 +1,32 @@
+<!-- Onbekend type station -->
+<METRONET>
+	<STATION>
+		<naam>A</naam>
+		<type>Voetbalstadion</type>
+		<volgende>B</volgende>
+		<vorige>C</vorige>
+		<spoor>15</spoor>
+	</STATION>
+	<STATION>
+		<naam>B</naam>
+		<type>Metrostation</type>
+		<volgende>C</volgende>
+		<vorige>A</vorige>
+		<spoor>15</spoor>
+	</STATION>
+	<STATION>
+		<naam>C</naam>
+		<type>Metrostation</type>
+		<volgende>A</volgende>
+		<vorige>C</vorige>
+		<spoor>15</spoor>
+	</STATION>
+	<TRAM>
+		<lijnNr>15</lijnNr>
+		<type>Stadslijner</type>
+		<voertuigNr>2</voertuigNr>
+		<beginStation>B</beginStation>
+	</TRAM>
+
+
+</METRONET>
